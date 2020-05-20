@@ -1,8 +1,8 @@
 <head>
-    <title>Header</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="header">
     <ul>
         <li><p>Test</p></li>
     </ul>
-</body>
+</body>php

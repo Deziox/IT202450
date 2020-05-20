@@ -3,9 +3,12 @@
 
 <!DOCTYPE html>
 <html>
-    <h1>REGISTER NOW</h1>
+    <head></head>
+    <body>
+        <h1>REGISTER NOW</h1>
 
-    <?php include('header.php'); ?>
+        <?php include('header.php'); ?>
 
-    <?php include('footer.php'); ?>
+        <?php include('footer.php'); ?>
+    </body>
 </html>
