@@ -1,2 +1,3 @@
-<?php echo "test";?>
-<h1>Another Test</h1>
+<?php echo "Hello, World";
+
+?>
