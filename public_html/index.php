@@ -1,3 +1,17 @@
+<?php
+
+include('weapons.php');
+
+function worldGreet()
+{
+    echo "Hello, World!";
+}
+
+if(array_key_exists('worldgreet',$_POST)){
+    worldGreet();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +20,6 @@
 </head>
 <body>
     <h1>Header One</h1>
-    <?php
-        function worldGreet()
-        {
-            echo "Hello, World!";
-        }
-
-        if(array_key_exists('button1',$_POST)){
-            worldGreet();
-        }
-    ?>
-    <input type="submit" name="button1" class="button" value="Click Me"/>
+    <input type="submit" name="worldgreet" class="button" value="Click Me"/>
 </body>
 </html>
