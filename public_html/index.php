@@ -20,6 +20,6 @@ if(array_key_exists('worldgreet',$_POST)){
 </head>
 <body>
     <h1>Header One</h1>
-    <input type="submit" name="worldgreet" class="button" value="Click Me"/>
+    <input type="button" onclick="window.location.href='register.php'" value="Click Me"/>
 </body>
 </html>
