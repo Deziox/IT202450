@@ -8,7 +8,7 @@
         <div>
             <?php include('header.php'); ?>
         </div>
-        <h1>REGISTER NOW</h1>
+        <h1>REGISTER TODAY</h1>
         <?php include('footer.php'); ?>
     </body>
 </html>
