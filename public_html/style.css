@@ -17,7 +17,7 @@
 }
 
 .header a.logo{
-    font-size: 25px;
+    font-size: 50px;
     font-weight:bold;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .header a.active{
-    background-color: yellow;
+    background-color: dodgerblue;
     color:black;
 }
 
