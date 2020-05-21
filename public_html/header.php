@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <div class="header">
-    <a href="#default" class="logo">battlio</a>
+    <a href="index.php" class="logo">battlio</a>
     <div class="header-right">
         <a href="#home" class="active">home</a>
         <a href="#login">login/register</a>
