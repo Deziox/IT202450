@@ -2,7 +2,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <div class="header">
-    <h1>Header</h1>
-    <p>An amazing header</p>
-    <p>Testing again</p>
+    <a href="#default" class="logo">battlio</a>
+    <div class="header-right">
+        <a href="#home" class="active">home</a>
+        <a href="#login">login/register</a>
+        <a href="#howtoplay">how to play</a>
+    </div>
 </div>
