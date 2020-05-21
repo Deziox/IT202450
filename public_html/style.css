@@ -13,22 +13,24 @@
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
+    text-shadow: -1px 1px 1px black;
 }
 
 .header a.logo{
     font-size: 50px;
     font-weight:bold;
-    text-shadow: 0px 0px 3px black;
+    text-shadow: 0px 0px 10px black;
 }
 
 .header a:hover {
     background-color: #cddddd;
     color:white;
+
 }
 
 .header a.active{
     background-color: dodgerblue;
-    color:lightcoral;
+    color:white;
 }
 
 .header-right{
