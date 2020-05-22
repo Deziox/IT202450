@@ -10,9 +10,22 @@
         }else if(empty($_POST['password'])){
             echo "Password cannot be empty";
         }else {
-            echo htmlspecialchars($_POST['email']);
-            echo htmlspecialchars($_POST['username']);
-            echo htmlspecialchars($_POST['password']);
+            $email = $_POST['email'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "Not a Valid Email";
+            } else if (!preg_match("/^[a-zA-Z0-9]+$/", $username)) {
+                echo "Username cannot have any special symbols";
+            } else if (!preg_match("/^[A-Z].*[A-Z].*[A-Z]$/", $password) || preg_match("/^\s.*\s.*\s$/", $password)) {
+                echo "Password Must have at least one uppercase letter and no spaces";
+            } else{
+
+                echo htmlspecialchars($_POST['email']) . "\n";
+                echo htmlspecialchars($_POST['username']) . "\n";
+                echo htmlspecialchars($_POST['password']) . "\n";
+            }
         }
     }
 ?>
