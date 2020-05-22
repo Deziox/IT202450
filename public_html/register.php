@@ -1,7 +1,11 @@
 <?php
-    if(isset($_GET['submit'])){
-        echo $_GET['email'];
-
+//    if(isset($_GET['submit'])){
+//        echo $_GET['email'];
+//    }
+    if(isset($_POST['submit'])){
+        echo $_POST['email'];
+        echo $_POST['username'];
+        echo $_POST['password'];
     }
 ?>
 
