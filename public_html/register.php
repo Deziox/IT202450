@@ -3,9 +3,17 @@
 //        echo $_GET['email'];
 //    }
     if(isset($_POST['submit'])){
-        echo $_POST['email'];
-        echo $_POST['username'];
-        echo $_POST['password'];
+        if(empty($_POST['email'])){
+            echo "An email is required <br/>";
+        }else if(empty($_POST['username'])){
+            echo "A username is required";
+        }else if(empty($_POST['password'])){
+            echo "Password cannot be empty";
+        }else {
+            echo htmlspecialchars($_POST['email']);
+            echo htmlspecialchars($_POST['username']);
+            echo htmlspecialchars($_POST['password']);
+        }
     }
 ?>
 
