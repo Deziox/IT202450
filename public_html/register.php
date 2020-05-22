@@ -16,7 +16,7 @@
         <?php include('header.php'); ?>
         <section>
             <h2>REGISTER AN ACCOUNT</h2>
-            <form action="register.php" method="get">
+            <form action="register.php" method="post">
                 <label>Email:</label>
                 <input type="text" name="email">
                 <label>Username:</label>
