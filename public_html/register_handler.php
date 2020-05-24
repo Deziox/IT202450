@@ -54,22 +54,26 @@ if(isset($_POST['submit'])){
         //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
         $sql = "SELECT * FROM users WHERE email=$email";
         $row = $conn->query($sql);
-        //echo '<h1>test string</h1>';
-        if(!$row){
-            //header('Location: confirm your email address or something');
-            echo '<h1>test string</h1>';
-
-//            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
-//                echo htmlspecialchars($_POST['email']) . "\n";
-//                echo htmlspecialchars($_POST['username']) . "\n";
-//                echo htmlspecialchars($_POST['password']) . "\n";
-//            }else{
-//                echo "Error: Failed to add user to database <br/>".$conn->error;
-//            }
-
-        }else{
-            echo '<h1>test string number 2</h1>';
+        foreach($row as $i){
+            echo '<h1>$i[\'id\']</h1><br/>'.'<h1>$i[\'email\']</h1><br/>'.'<h1>$i[\'username\']</h1><br/>'.'<h1>$i[\'password\']</h1><br/>';
         }
+
+        //echo '<h1>test string</h1>';
+//        if(!$row){
+//            //header('Location: confirm your email address or something');
+//            echo '<h1>test string</h1>';
+//
+////            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
+////                echo htmlspecialchars($_POST['email']) . "\n";
+////                echo htmlspecialchars($_POST['username']) . "\n";
+////                echo htmlspecialchars($_POST['password']) . "\n";
+////            }else{
+////                echo "Error: Failed to add user to database <br/>".$conn->error;
+////            }
+//
+//        }else{
+//            echo '<h1>test string number 2</h1>';
+//        }
     }
 }
 ?>
