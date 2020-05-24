@@ -1,6 +1,6 @@
 <?php
 
-require('../config.php');
+require('config.php');
 $conn = new mysqli($dbhost,$dbuser,$dbpass,$dbdatabase);
 if($conn->connect_error){
     die("Connection failed: ".$conn->connect_error);
