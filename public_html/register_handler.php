@@ -69,7 +69,7 @@ if(isset($_POST['submit'])){
 //            }
 
         }else{
-
+            echo '<h1>test string number 2<h1/>';
         }
     }
 }
