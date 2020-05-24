@@ -52,9 +52,13 @@ if(isset($_POST['submit'])){
     //Database Managment
     if(!array_filter($errors)){
         //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
-        if(true){
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
+        $stmt->execute([$email]);
+        $row = $stmt->fetch();
+
+        if(!$row){
             //header('Location: confirm your email address or something');
-            echo '<h1>test string<h1/>';
+            echo '<h1>test string</h1>';
 
 //            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
 //                echo htmlspecialchars($_POST['email']) . "\n";
@@ -65,7 +69,7 @@ if(isset($_POST['submit'])){
 //            }
 
         }else{
-            echo '<h1>test string number 2<h1/>';
+            echo '<h1>test string number 2</h1>';
         }
     }
 }
