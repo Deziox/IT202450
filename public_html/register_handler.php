@@ -52,11 +52,7 @@ if(isset($_POST['submit'])){
     //Database Managment
     if(!array_filter($errors)){
         //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
-        $stmt = $conn->prepare("SELECT id FROM Users WHERE email = $email");
-        $stmt->bindValue('email',$email);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($row){
+        if(true){
             //header('Location: confirm your email address or something');
             echo '<h1>test string<h1/>';
 
