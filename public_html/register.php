@@ -21,10 +21,13 @@
             }
 
             //$alphanum = preg_match("/^[a-zA-Z0-9]$/");
-            $specialChars = preg_match("@[^\w]@");
+            $uppercase = preg_match('@[A-Z]@', $password);
+            $lowercase = preg_match('@[a-z]@', $password);
+            $number    = preg_match('@[0-9]@', $password);
+            $specialChars = preg_match('@[^\w]@', $password);
 
-            if (!$specialChars || strlen($password) < 8) {
-                $errors['password'] = "Password must have at least one special character and be at least 8 characters long";
+            if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+                $errors['password'] = "Password must be at least 8 characters long and should have one upper case letter, one number, and one special character.";
             }
                 //echo htmlspecialchars($_POST['email']) . "\n";
                 //echo htmlspecialchars($_POST['username']) . "\n";
