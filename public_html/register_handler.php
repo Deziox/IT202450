@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
         $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
         $stmt->execute([$email]);
         $row = $stmt->fetch();
-
+        echo '<h1>test string</h1>';
         if(!$row){
             //header('Location: confirm your email address or something');
             echo '<h1>test string</h1>';
