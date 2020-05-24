@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
     //Database Managment
     if(!array_filter($errors)){
         //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
-        $sql = "SELECT * FROM users WHERE email=$email";
+        $sql = "SELECT * FROM Users WHERE email=$email";
         $row = $conn->query($sql);
         foreach($row as $i){
             echo '<h1>$i[\'id\']</h1><br/>'.'<h1>$i[\'email\']</h1><br/>'.'<h1>$i[\'username\']</h1><br/>'.'<h1>$i[\'password\']</h1><br/>';
