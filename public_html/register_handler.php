@@ -1,11 +1,21 @@
 <?php
 
 require('config.php');
-$conn = new mysqli($dbhost,$dbuser,$dbpass,$dbdatabase);
-if($conn->connect_error){
-    die("Connection failed: ".$conn->connect_error);
+//$conn = new mysqli($dbhost,$dbuser,$dbpass,$dbdatabase);
+//if($conn->connect_error){
+//    die("Connection failed: ".$conn->connect_error);
+//}
+
+try {
+    $conn = new PDO("mysql:host=$dbhost;dbname=$dbdatabase", $dbuser, $dbpass);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
 }
-echo "Connection was successfully established!";
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
+}
 
 $errors = array('email'=>'','username'=>'','password'=>'');
 
@@ -39,18 +49,23 @@ if(isset($_POST['submit'])){
         }
     }
 
+    //Database Managment
     if(!array_filter($errors)){
-        $result = $conn->query("SELECT id FROM Users WHERE email = $email");
-        if($result->num_rows == 0){
-            //header('Location: confirm your email address or something');
+        //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
+        $stmt = $conn->prepare("SELECT id FROM Users WHERE email = $email");
+        $stmt->bindValue('email',$email);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($row){
+            header('Location: confirm your email address or something');
 
-            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
-                echo htmlspecialchars($_POST['email']) . "\n";
-                echo htmlspecialchars($_POST['username']) . "\n";
-                echo htmlspecialchars($_POST['password']) . "\n";
-            }else{
-                echo "Error: Failed to add user to database <br/>".$conn->error;
-            }
+//            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
+//                echo htmlspecialchars($_POST['email']) . "\n";
+//                echo htmlspecialchars($_POST['username']) . "\n";
+//                echo htmlspecialchars($_POST['password']) . "\n";
+//            }else{
+//                echo "Error: Failed to add user to database <br/>".$conn->error;
+//            }
 
         }else{
 
