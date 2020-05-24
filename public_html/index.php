@@ -12,6 +12,6 @@ include('weapons.php');
 </head>
 <body>
     <h1>Header One</h1>
-    <input type="button" onclick="window.location.href='register.php'" value="Click Me"/>
+    <input type="button" onclick="window.location.href='login/register.php'" value="Click Me"/>
 </body>
 </html>
