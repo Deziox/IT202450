@@ -1,5 +1,5 @@
 <?php
-    include('register_handler.php');
+    include('login/register_handler.php');
 ?>
 
 <!DOCTYPE html>
