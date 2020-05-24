@@ -19,12 +19,20 @@
             if (!preg_match("/^[a-zA-Z0-9]+$/", $username)) {
                 $errors['username'] = "Username cannot have any special symbols";
             }
-            if (!preg_match("/^[A-Z].*[A-Z].*[A-Z]$/", $password) || preg_match("/^\s.*\s.*\s$/", $password)) {
-                $errors['password'] = "Password Must have at least one uppercase letter and no spaces";
+
+            $alphanum = preg_match("/^[a-zA-Z0-9]$/");
+            $specialChars = preg_match("@[^\w]@");
+
+            if (!$alphanum || !$specialChars || strlen($password) < 8) {
+                $errors['password'] = "Password must have at least one special character and be at least 8 characters long";
             }
                 //echo htmlspecialchars($_POST['email']) . "\n";
                 //echo htmlspecialchars($_POST['username']) . "\n";
                 //echo htmlspecialchars($_POST['password']) . "\n";
+        }
+
+        if(!array_filter($errors)){
+            header('Location: confirm your email address or something');
         }
     }
 ?>
