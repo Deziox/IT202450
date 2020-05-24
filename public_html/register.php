@@ -20,10 +20,10 @@
                 $errors['username'] = "Username cannot have any special symbols";
             }
 
-            $alphanum = preg_match("/^[a-zA-Z0-9]$/");
+            //$alphanum = preg_match("/^[a-zA-Z0-9]$/");
             $specialChars = preg_match("@[^\w]@");
 
-            if (!$alphanum || !$specialChars || strlen($password) < 8) {
+            if (!$specialChars || strlen($password) < 8) {
                 $errors['password'] = "Password must have at least one special character and be at least 8 characters long";
             }
                 //echo htmlspecialchars($_POST['email']) . "\n";
