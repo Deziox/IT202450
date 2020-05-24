@@ -24,6 +24,7 @@ if(isset($_POST['submit'])){
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "Not a Valid Email";
         }
+
         if (!preg_match("/^[a-zA-Z0-9]+$/", $username)) {
             $errors['username'] = "Username cannot have any special symbols";
         }
@@ -36,13 +37,24 @@ if(isset($_POST['submit'])){
         if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
             $errors['password'] = "Password must be at least 8 characters long and should have one upper case letter, one number, and one special character.";
         }
-        //echo htmlspecialchars($_POST['email']) . "\n";
-        //echo htmlspecialchars($_POST['username']) . "\n";
-        //echo htmlspecialchars($_POST['password']) . "\n";
     }
 
     if(!array_filter($errors)){
-        header('Location: confirm your email address or something');
+        $result = $conn->query("SELECT id FROM Users WHERE email = %{$email}%");
+        if($result->num_rows == 0){
+            //header('Location: confirm your email address or something');
+
+            if($conn->query("INSERT INTO Users (email,username,password) VALUES (%{$email}%,%{$username}%,%{$password}%)") === TRUE){
+                echo htmlspecialchars($_POST['email']) . "\n";
+                echo htmlspecialchars($_POST['username']) . "\n";
+                echo htmlspecialchars($_POST['password']) . "\n";
+            }else{
+                echo "Error: Failed to add user to database <br/>".$conn->error;
+            }
+
+        }else{
+
+        }
     }
 }
 ?>
