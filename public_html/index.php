@@ -2,14 +2,6 @@
 
 include('weapons.php');
 
-function worldGreet()
-{
-    echo "Hello, World!";
-}
-
-if(array_key_exists('worldgreet',$_POST)){
-    worldGreet();
-}
 ?>
 
 <!DOCTYPE html>
