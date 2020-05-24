@@ -57,7 +57,8 @@ if(isset($_POST['submit'])){
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if($row){
-            header('Location: confirm your email address or something');
+            //header('Location: confirm your email address or something');
+            echo '<h1>test string<h1/>';
 
 //            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
 //                echo htmlspecialchars($_POST['email']) . "\n";
