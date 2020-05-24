@@ -40,11 +40,11 @@ if(isset($_POST['submit'])){
     }
 
     if(!array_filter($errors)){
-        $result = $conn->query("SELECT id FROM Users WHERE email = %{$email}%");
+        $result = $conn->query("SELECT id FROM Users WHERE email = {$email}");
         if($result->num_rows == 0){
             //header('Location: confirm your email address or something');
 
-            if($conn->query("INSERT INTO Users (email,username,password) VALUES (%{$email}%,%{$username}%,%{$password}%)") === TRUE){
+            if($conn->query("INSERT INTO Users (email,username,password) VALUES ({$email},{$username},{$password})") === TRUE){
                 echo htmlspecialchars($_POST['email']) . "\n";
                 echo htmlspecialchars($_POST['username']) . "\n";
                 echo htmlspecialchars($_POST['password']) . "\n";
