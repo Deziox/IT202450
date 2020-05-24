@@ -52,10 +52,9 @@ if(isset($_POST['submit'])){
     //Database Managment
     if(!array_filter($errors)){
         //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
-        $stmt->execute([$email]);
-        $row = $stmt->fetch();
-        echo '<h1>test string</h1>';
+        $sql = "SELECT * FROM users WHERE email=$email";
+        $row = $conn->query($sql);
+        //echo '<h1>test string</h1>';
         if(!$row){
             //header('Location: confirm your email address or something');
             echo '<h1>test string</h1>';
