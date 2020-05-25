@@ -61,16 +61,20 @@ if(isset($_POST['submit'])){
             $r = $stmt->execute(array(":email"=>$email));
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            if($stmt->rowCount() > 0){
+                echo "Email already exists";
+            }else {
 
-//            $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
-//            $r = $stmt->execute(array(
-//                ":email"=>$email,
-//                ":username"=>$username,
-//                ":password"=>$password
-//            ));
-            echo var_export($stmt->errorInfo(),true);
-            echo var_export($r,true);
-            echo var_export($results,true);
+                $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
+                $r = $stmt->execute(array(
+                    ":email"=>$email,
+                    ":username"=>$username,
+                    ":password"=>$password
+                ));
+                echo var_export($stmt->errorInfo(), true);
+                echo var_export($r, true);
+                echo var_export($results, true);
+            }
 
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();
