@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
             echo var_export($r,true);
 
         }catch(Exception $e){
-            echo $e->getMessage();
+            echo "Connection failed = ".$e->getMessage();
         }
 
         echo $dbhost;
