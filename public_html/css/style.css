@@ -18,8 +18,8 @@
 
 .header a.logo{
     font-size: 50px;
-    font-weight:bold;
-    text-shadow: 0px 0px 10px black;
+    font-weight: lighter;
+    //text-shadow: 0px 0px 10px black;
 }
 
 .header a:hover {
