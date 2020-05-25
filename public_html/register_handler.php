@@ -54,6 +54,7 @@ if(isset($_POST['submit'])){
         //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
 
         try{
+            $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
             $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
             $r = $stmt->execute(array(
