@@ -59,11 +59,19 @@ if(isset($_POST['submit'])){
 
             $stmt = $db->prepare("SELECT * FROM Users WHERE email = :email");
             $r = $stmt->execute(array(":email"=>$email));
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            $emailresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if($stmt->rowCount() > 0){
-                echo "Email already exists";
-            }else {
+                $errors['email'] = "Email already exists";
+            }
+
+            $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username");
+            $r = $stmt->execute(array(":username"=>$username));
+            $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if($stmt->rowCount() > 0){
+                $errors['username'] = "Username already taken, choose another";
+            }
+
+            if(!array_filter($errors)){
 
                 $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
                 $r = $stmt->execute(array(
@@ -73,14 +81,12 @@ if(isset($_POST['submit'])){
                 ));
                 echo var_export($stmt->errorInfo(), true);
                 echo var_export($r, true);
-                echo var_export($results, true);
+                echo var_export($emailresult, true);
             }
 
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();
         }
-
-        echo $dbhost;
 
         //echo '<h1>test string</h1>';
 //        if(!$row){
