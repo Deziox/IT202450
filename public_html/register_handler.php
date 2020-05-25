@@ -56,14 +56,21 @@ if(isset($_POST['submit'])){
         try{
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
-            $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
-            $r = $stmt->execute(array(
-                ":email"=>$email,
-                ":username"=>$username,
-                ":password"=>$password
-            ));
+
+            $stmt = $db->prepare("SELECT * FROM Users WHERE email = :email");
+            $r = $stmt->execute(array(":email"=>$email));
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+//            $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
+//            $r = $stmt->execute(array(
+//                ":email"=>$email,
+//                ":username"=>$username,
+//                ":password"=>$password
+//            ));
             echo var_export($stmt->errorInfo(),true);
             echo var_export($r,true);
+            echo var_export($results,true);
 
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();
