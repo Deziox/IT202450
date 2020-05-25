@@ -6,16 +6,16 @@ require('config.php');
 //    die("Connection failed: ".$conn->connect_error);
 //}
 
-try {
-    $conn = new PDO("mysql:host=$dbhost;dbname=$dbdatabase", $dbuser, $dbpass);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
-}
-catch(PDOException $e)
-{
-    echo "Connection failed: " . $e->getMessage();
-}
+//try {
+//    $conn = new PDO("mysql:host=$dbhost;dbname=$dbdatabase", $dbuser, $dbpass);
+//    // set the PDO error mode to exception
+//    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//    echo "Connected successfully";
+//}
+//catch(PDOException $e)
+//{
+//    echo "Connection failed: " . $e->getMessage();
+//}
 
 $errors = array('email'=>'','username'=>'','password'=>'');
 
@@ -52,11 +52,23 @@ if(isset($_POST['submit'])){
     //Database Managment
     if(!array_filter($errors)){
         //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
-//        $sql = "SELECT * FROM Users WHERE email=$email";
-//        $row = $conn->query($sql);
-//        foreach($row as $i){
-//            echo '<h1>$i[\'id\']</h1><br/>'.'<h1>$i[\'email\']</h1><br/>'.'<h1>$i[\'username\']</h1><br/>'.'<h1>$i[\'password\']</h1><br/>';
-//        }
+
+        try{
+            $db = new PDO($connection_string,$dbuser,$dbpass);
+            $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
+            $r = $stmt->execute(array(
+                ":email"=>$email,
+                ":username"=>$username,
+                ":password"=>$password
+            ));
+            echo var_export($stmt->errorInfo(),true);
+            echo var_export($r,true);
+
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+
+        echo $dbhost;
 
         //echo '<h1>test string</h1>';
 //        if(!$row){
