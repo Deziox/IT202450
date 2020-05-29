@@ -11,7 +11,7 @@ include('login_handler.php');
     <h2>Login</h2>
     <div>
         <h1>Don't Have an account?</h1>
-        <input type="button" onclick="window.location.href='register.php'" value="Register"/>
+        <input type="button" onclick="window.location.href='login.php'" value="Register"/>
     </div>
     <form action="register.php" method="post">
         <label>Username:</label>
