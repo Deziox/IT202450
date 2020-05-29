@@ -27,7 +27,6 @@ if(isset($_POST['submit'])){
             $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username AND password = :password");
             $r = $stmt->execute(array(":username"=>$username,":password"=>$password));
             $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
             if($stmt->rowCount() < 1){
                 $errors['username'] = "Username and/or Password is invalid";
             }else{
