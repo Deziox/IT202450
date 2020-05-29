@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if(isset($_SESSION['username'])){
     //header("location:login_success.php");
     echo "there is a session";
