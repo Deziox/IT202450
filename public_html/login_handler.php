@@ -22,7 +22,6 @@ if(isset($_POST['submit'])){
 
     //Database Managment
     if(!array_filter($errors)){
-        //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
 
         try{
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -44,23 +43,6 @@ if(isset($_POST['submit'])){
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();
         }
-
-        //echo '<h1>test string</h1>';
-//        if(!$row){
-//            //header('Location: confirm your email address or something');
-//            echo '<h1>test string</h1>';
-//
-////            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
-////                echo htmlspecialchars($_POST['email']) . "\n";
-////                echo htmlspecialchars($_POST['username']) . "\n";
-////                echo htmlspecialchars($_POST['password']) . "\n";
-////            }else{
-////                echo "Error: Failed to add user to database <br/>".$conn->error;
-////            }
-//
-//        }else{
-//            echo '<h1>test string number 2</h1>';
-//        }
     }
 }
 ?>
