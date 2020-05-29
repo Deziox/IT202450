@@ -1,5 +1,9 @@
 <?php
 
+if(isset($_SESSION['username'])){
+    header("location:login_success.php");
+}
+
 require('config.php');
 
 $errors = array('username'=>'','password'=>'');
