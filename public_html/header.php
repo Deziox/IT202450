@@ -6,6 +6,7 @@
     <div class="header-right">
         <a href="index.php">home</a>
         <a href="#login" class="active">login/register</a>
-        <a href="#howtoplay">how to play</a>
+        <a href="#outfits">outfits</a>
+        <a href="profile">profile</a>
     </div>
 </div>

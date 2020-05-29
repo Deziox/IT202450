@@ -10,7 +10,7 @@ include('login_handler.php');
 <section>
     <h2>Login</h2>
     <div>
-        <h1>Don't Have an account?</h1>
+        <h4>Don't Have an account?</h4>
         <input type="button" onclick="window.location.href='register.php'" value="Register"/>
     </div>
     <form action="login.php" method="post">

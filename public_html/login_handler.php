@@ -24,13 +24,15 @@ if(isset($_POST['submit'])){
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
 
-            $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username");
-            $r = $stmt->execute(array(":username"=>$username));
+            $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username AND password = :password");
+            $r = $stmt->execute(array(":username"=>$username,":password"=>$password));
             $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if($stmt->rowCount() < 1){
-                $errors['username'] = "No account associated with that email";
-            }else{
 
+            if($stmt->rowCount() < 1){
+                $errors['username'] = "Username and/or Password is invalid";
+            }else{
+                $_SESSION['username'] = $username;
+                header("location:login_success.php");
             }
 
             echo "SELECT user result: ".var_export($userresult, true)."<br/>";
