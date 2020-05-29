@@ -1,7 +1,8 @@
 <?php
 
 if(isset($_SESSION['username'])){
-    header("location:login_success.php");
+    //header("location:login_success.php");
+    echo "there is a session";
 }
 
 require('config.php');
