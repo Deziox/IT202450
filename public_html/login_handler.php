@@ -1,8 +1,8 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
-    //header("location:login_success.php");
-    echo "there is a session";
+    header("location:index.php");
+    //echo "there is a session";
 }
 
 require('config.php');
@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
     }else {
         $username = $_POST['username'];
         $password = $_POST['password'];
-
+        $hash = password_hash($password,PASSWORD_BCRYPT);
     }
 
     //Database Managment
@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
 
 
             $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username AND password = :password");
-            $r = $stmt->execute(array(":username"=>$username,":password"=>$password));
+            $r = $stmt->execute(array(":username"=>$username,":password"=>$hash));
             $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if($stmt->rowCount() < 1){
                 $errors['username'] = "Username and/or Password is invalid";

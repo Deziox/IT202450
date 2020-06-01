@@ -1,6 +1,6 @@
 <?php
 
-include('weapons.php');
+include('header.php');
 
 ?>
 

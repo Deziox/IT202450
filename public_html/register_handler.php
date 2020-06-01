@@ -76,10 +76,11 @@ if(isset($_POST['submit'])){
 
             if(!array_filter($errors)){
                 $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
+                $hash = password_hash($password,PASSWORD_BCRYPT);
                 $r = $stmt->execute(array(
                     ":email"=>$email,
                     ":username"=>$username,
-                    ":password"=>$password
+                    ":password"=>$hash
                 ));
                 echo var_export($stmt->errorInfo(), true);
                 echo var_export($r, true);
