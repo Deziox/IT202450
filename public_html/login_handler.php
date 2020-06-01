@@ -37,7 +37,11 @@ if(isset($_POST['submit'])){
                 $errors['username'] = "Username and/or Password is invalid";
             }else{
                 if(password_verify($password,$rpass)) {
-                    $_SESSION['username'] = $username;
+                    $_SESSION['user'] = array(
+                        "id"=>$userresult['id'],
+                        "email"=>$userresult['email'],
+                        "username"=>$userresult['username']);
+
                     header("location:login_success.php");
                 }else{
                     $errors['password'] = "Password is invalid";
