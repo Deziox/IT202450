@@ -8,7 +8,7 @@ if(isset($_SESSION['user'])){
         $_SESSION['welcome'] = "<h1>login successful, welcome " . $_SESSION['user']['username'] . "</h1><br/>" . var_export($_SESSION, true) . '<br /><br /><a href="logout.php">Logout</a>';
         echo "test 2";
     }else{
-        $_SESSION['welcome'] = "<div></div>";
+        $_SESSION['welcome'] = '<br /><br /><a href="logout.php">Logout</a>';
         echo "test 3";
     }
 }
