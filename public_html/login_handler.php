@@ -28,14 +28,20 @@ if(isset($_POST['submit'])){
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
 
-            $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username AND password = :password");
+            $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username");
             $r = $stmt->execute(array(":username"=>$username,":password"=>$hash));
-            $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if($stmt->rowCount() < 1){
+            $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
+            $rpass = $userresult['password'];
+
+            if(!$userresult){
                 $errors['username'] = "Username and/or Password is invalid";
             }else{
-                $_SESSION['username'] = $username;
-                header("location:login_success.php");
+                if(password_verify($password,$rpass)) {
+                    $_SESSION['username'] = $username;
+                    header("location:login_success.php");
+                }else{
+                    $errors['password'] = "Password is invalid";
+                }
             }
 
             echo "SELECT user result: ".var_export($userresult, true)."<br/>";
