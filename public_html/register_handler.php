@@ -1,21 +1,6 @@
 <?php
 
 require('config.php');
-//$conn = new mysqli($dbhost,$dbuser,$dbpass,$dbdatabase);
-//if($conn->connect_error){
-//    die("Connection failed: ".$conn->connect_error);
-//}
-
-//try {
-//    $conn = new PDO("mysql:host=$dbhost;dbname=$dbdatabase", $dbuser, $dbpass);
-//    // set the PDO error mode to exception
-//    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//    echo "Connected successfully";
-//}
-//catch(PDOException $e)
-//{
-//    echo "Connection failed: " . $e->getMessage();
-//}
 
 $errors = array('email'=>'','username'=>'','password'=>'');
 
@@ -90,23 +75,6 @@ if(isset($_POST['submit'])){
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();
         }
-
-        //echo '<h1>test string</h1>';
-//        if(!$row){
-//            //header('Location: confirm your email address or something');
-//            echo '<h1>test string</h1>';
-//
-////            if($conn->query("INSERT INTO Users (email, username, password) VALUES ($email, $username, $password)") === TRUE){
-////                echo htmlspecialchars($_POST['email']) . "\n";
-////                echo htmlspecialchars($_POST['username']) . "\n";
-////                echo htmlspecialchars($_POST['password']) . "\n";
-////            }else{
-////                echo "Error: Failed to add user to database <br/>".$conn->error;
-////            }
-//
-//        }else{
-//            echo '<h1>test string number 2</h1>';
-//        }
     }
 }
 ?>
