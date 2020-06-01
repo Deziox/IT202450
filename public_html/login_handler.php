@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
 
 
             $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username");
-            $r = $stmt->execute(array(":username"=>$username,":password"=>$hash));
+            $r = $stmt->execute(array(":username"=>$username));
             $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
             $rpass = $userresult['password'];
 
