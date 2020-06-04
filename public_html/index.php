@@ -20,8 +20,6 @@ if(isset($_SESSION['user'])){
 <head>
     <meta charset="UTF-8">
     <title>Danzel Test Site</title>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Space+Mono">
 </head>
 <body>
     <h1>Header One</h1>
