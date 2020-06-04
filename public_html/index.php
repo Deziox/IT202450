@@ -20,6 +20,11 @@ if(isset($_SESSION['user'])){
 <head>
     <meta charset="UTF-8">
     <title>Danzel Test Site</title>
+    <style>
+        h1 {
+            font-family: 'Space Mono',normal;
+        }
+    </style>
 </head>
 <body>
     <h1>Header One</h1>
