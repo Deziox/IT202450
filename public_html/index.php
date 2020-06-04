@@ -25,5 +25,12 @@ if(isset($_SESSION['user'])){
     <h1>Header One</h1>
     <input type="button" onclick="window.location.href='register.php'" value="Click Me To Register"/>
     <?php echo "<div>".$_SESSION['welcome']."</div>";?>
+    <div class="container">
+        <div class="content">
+            <h1 class="content-header">recent outfits</h1>
+            <hr>
+        </div>
+        <?php include('footer.php');?>
+    </div>
 </body>
 </html>
