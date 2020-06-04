@@ -1,3 +1,3 @@
 <div class="footer">
-    <p>MyViewers &copy; <?php echo date('Y'); ?></p>
+    <p>aestheticus &copy; <?php echo date('Y'); ?></p>
 </div>
