@@ -2,11 +2,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Space+Mono">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .content-header{
-            font-family: 'Space Mono',normal;
-        }
-    </style>
+    <link rel="stylesheet" href="css/content.css">
 </head>
 <div class="header">
     <a href="index.php" class="logo">a e s t h e t i c u s</a>
