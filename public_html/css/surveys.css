@@ -19,6 +19,10 @@ img.clothes{
     width: 400px;
 }
 
+tr.clothes{
+    border: 1px solid dodgerblue;
+}
+
 h1.survey-title{
     font-family: 'Space Mono',normal;
     text-align: center;
