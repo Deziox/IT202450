@@ -18,3 +18,8 @@ img.clothes{
     height: 400px;
     width: 400px;
 }
+
+h1.survey-title{
+    font-family: 'Space Mono',normal;
+    text-align: center;
+}

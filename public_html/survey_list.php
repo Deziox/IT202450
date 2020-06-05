@@ -14,15 +14,22 @@
             if(!$surveys){
                 echo "no surveys";
             }else{
-                echo '<table style="width:100%">';
-                foreach($surveys as $s){
+
+
+                foreach($surveys as $s) {
                     //echo var_export($s,true);
+                    echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
+                    echo '<table style="width:100%">';
                     echo '<tr>';
-                    echo '<th><img class="clothes" src="data:image/png;base64,'.base64_encode($s['top_1_image']).'"/></th>';
-                    echo '<th><img class="clothes" src="data:image/png;base64,'.base64_encode($s['top_2_image']).'"/></th>';
+                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_1_image']) . '"/></th>';
+                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_2_image']) . '"/></th>';
                     echo '</tr>';
+                    echo '<tr>';
+                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_1_image']) . '"/></th>';
+                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_2_image']) . '"/></th>';
+                    echo '</tr>';
+                    echo '</table>';
                 }
-                echo '</table>';
             }
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();
