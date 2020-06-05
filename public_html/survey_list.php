@@ -18,24 +18,27 @@
 
                 foreach($surveys as $s) {
                     //echo var_export($s,true);
+                    echo '<div class="survey">';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
                     echo '<table style="width:100%">';
-                    echo '<tr>';
+                    echo '<tr><h4 class="top">top</h4>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_1_image']) . '"/></th>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_2_image']) . '"/></th>';
                     echo '</tr>';
-                    echo '<tr>';
+                    echo '<tr><h4 class="bottom">bottom</h4>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_1_image']) . '"/></th>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_2_image']) . '"/></th>';
                     echo '</tr>';
                     echo '</table>';
+                    echo '</div>';
                 }
             }
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();
         }
     ?>
+<!--
 <div class="survey">
     <div class="top">top</div>
     <div class="bottom">bottom</div>
-</div>
+</div>-->
