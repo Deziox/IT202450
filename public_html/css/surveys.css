@@ -26,4 +26,5 @@ tr.clothes{
 h1.survey-title{
     font-family: 'Space Mono',normal;
     text-align: center;
+    text-decoration: underline;
 }
