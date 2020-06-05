@@ -29,6 +29,13 @@ if(isset($_SESSION['user'])){
         <div class="content">
             <h1 class="content-header">recent outfits</h1>
             <hr>
+
+            <div class="survey">
+                <div class="top">top</div>
+                <div class="bottom">bottom</div>
+            </div>
+
+
         </div>
         <?php include('footer.php');?>
     </div>
