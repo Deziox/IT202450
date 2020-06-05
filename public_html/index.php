@@ -22,8 +22,7 @@ if(isset($_SESSION['user'])){
     <title>Danzel Test Site</title>
 </head>
 <body>
-    <h1>Header One</h1>
-    <input type="button" onclick="window.location.href='register.php'" value="Click Me To Register"/>
+    <!--<input type="button" onclick="window.location.href='register.php'" value="Click Me To Register"/>-->
     <?php echo "<div>".$_SESSION['welcome']."</div>";?>
     <div class="container">
         <div class="content">

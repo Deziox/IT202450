@@ -17,17 +17,28 @@
                 foreach($surveys as $s) {
                     //echo var_export($s,true);
                     echo '<div class="survey">';
+                    echo '<form>';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
                     echo '<table style="width:100%">';
-                    echo '<tr><th><h4 class="top">top: </h4></th></tr><tr style="border:solid dodgerblue;border-width:0 1px">';
+                    echo '<tr><th><h4 class="top">top: </h4></th></tr><tr>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_1_image']) . '"/></th>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_2_image']) . '"/></th>';
-                    echo '</tr>';
-                    echo '<tr><th><h4 class="bottom">bottom: </h4></th></tr><tr style="border:solid dodgerblue;border-width:0 1px">';
+
+                    echo '</tr><tr>';
+                    echo '<th><input type="radio" id="top1" name="top1" value="top1"></th>';
+                    echo '<th><input type="radio" id="top2" name="top2" value="top2"></th></tr>';
+
+                    echo '<tr><th><h4 class="bottom">bottom: </h4></th></tr><tr>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_1_image']) . '"/></th>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_2_image']) . '"/></th>';
-                    echo '</tr>';
+
+                    echo '</tr><tr>';
+                    echo '<th><input type="radio" id="bottom1" name="bottom1" value="bottom1"></th>';
+                    echo '<th><input type="radio" id="bottom2" name="bottom2" value="bottom2"></th></tr>';
+
                     echo '</table>';
+                    echo '<input type="submit" value="Submit">';
+                    echo '</form>';
                     echo '</div>';
                 }
             }
