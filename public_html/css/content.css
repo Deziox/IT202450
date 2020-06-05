@@ -15,7 +15,12 @@
     padding: 10px;
 }
 
-.top .bottom{
+.top{
+    font-family: 'Space Mono',normal;
+    text-align: center;
+}
+
+.bottom{
     font-family: 'Space Mono',normal;
     text-align: center;
 }
