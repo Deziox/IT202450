@@ -16,7 +16,7 @@
         }else{
             foreach($surveys as $s){
                 //echo var_export($s,true);
-                echo '<img src="data:image/png;base64,'.base64_encode($s['top_1_image']).'"/>';
+                echo '<img class="clothes" src="data:image/png;base64,'.base64_encode($s['top_1_image']).'"/>';
             }
         }
     }catch(Exception $e){
