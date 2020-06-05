@@ -20,6 +20,18 @@ if(isset($_SESSION['user'])){
 <head>
     <meta charset="UTF-8">
     <title>Danzel Test Site</title>
+    <script>
+        function getVote(top,bottom,id) {
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                    document.getElementById("poll"+id).innerHTML=this.responseText;
+                }
+            }
+            xmlhttp.open("GET","vote.php?top="+top"&bottom="+bottom,true);
+            xmlhttp.send();
+        }
+    </script>
 </head>
 <body>
     <!--<input type="button" onclick="window.location.href='register.php'" value="Click Me To Register"/>-->
