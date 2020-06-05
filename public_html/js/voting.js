@@ -1,3 +1,3 @@
 function vote() {
-    alert("test " + top + " " + bottom + " " + id);
+    alert("test ");
 }
