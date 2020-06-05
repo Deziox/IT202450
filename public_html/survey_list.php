@@ -16,12 +16,6 @@
             }else{
                 foreach($surveys as $s) {
                     //echo var_export($s,true);
-
-                    echo '<div class="survey">';
-                    echo '<a class="survey-title">'.$s['title'].'</a>';
-                    echo '</div>';
-
-                    /*
                     echo '<div class="survey">';
                     echo '<form method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
@@ -46,7 +40,7 @@
                     echo '<input type="submit" value="Submit">';
                     echo '</form>';
                     echo '<div id="poll'.$s['id'].'"></div>';
-                    echo '</div>';*/
+                    echo '</div>';
                 }
             }
         }catch(Exception $e){

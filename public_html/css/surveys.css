@@ -28,10 +28,3 @@ h1.survey-title{
     text-align: center;
     text-decoration: underline;
 }
-
-a.survey-title{
-    font-family: 'Space Mono',normal;
-    text-align: center;
-    text-decoration: underline;
-    background-color: dodgerblue;
-}
