@@ -20,11 +20,7 @@ if(isset($_SESSION['user'])){
 <head>
     <meta charset="UTF-8">
     <title>Danzel Test Site</title>
-    <script>
-        function getVote(top,bottom,id) {
-            alert("test " + top + " " + bottom + " " + id);
-        }
-    </script>
+    <script src="js/voting.js"></script>
 </head>
 <body>
     <!--<input type="button" onclick="window.location.href='register.php'" value="Click Me To Register"/>-->
