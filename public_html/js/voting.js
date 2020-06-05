@@ -1,3 +1,3 @@
-function vote(top,bottom,id) {
+function vote() {
     alert("test " + top + " " + bottom + " " + id);
 }
