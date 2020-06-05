@@ -1,6 +1,4 @@
-<div class="survey">
-
-    <?php
+<?php
         require('config.php');
         session_start();
 
@@ -30,7 +28,7 @@
             echo "Connection failed = ".$e->getMessage();
         }
     ?>
-
+<div class="survey">
     <div class="top">top</div>
     <div class="bottom">bottom</div>
 </div>
