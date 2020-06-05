@@ -30,11 +30,7 @@ if(isset($_SESSION['user'])){
             <h1 class="content-header">recent outfits</h1>
             <hr>
 
-            <div class="survey">
-                <div class="top">top</div>
-                <div class="bottom">bottom</div>
-            </div>
-
+            <?php include('survey_list.php');?>
 
         </div>
         <?php include('footer.php');?>
