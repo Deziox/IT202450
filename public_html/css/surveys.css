@@ -15,7 +15,8 @@
 }
 
 img.clothes{
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     height: 400px;
     width: 400px;
 }
