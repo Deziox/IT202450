@@ -25,16 +25,16 @@
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_2_image']) . '"/></th>';
 
                     echo '</tr><tr>';
-                    echo '<th><input type="radio" id="top1" name="top1" value="top1"></th>';
-                    echo '<th><input type="radio" id="top2" name="top2" value="top2"></th></tr>';
+                    echo '<th><input type="radio" id="top1" name="top" value="top1"></th>';
+                    echo '<th><input type="radio" id="top2" name="top" value="top2"></th></tr>';
 
                     echo '<tr><th><h4 class="bottom">bottom: </h4></th></tr><tr>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_1_image']) . '"/></th>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_2_image']) . '"/></th>';
 
                     echo '</tr><tr>';
-                    echo '<th><input type="radio" id="bottom1" name="bottom1" value="bottom1"></th>';
-                    echo '<th><input type="radio" id="bottom2" name="bottom2" value="bottom2"></th></tr>';
+                    echo '<th><input type="radio" id="bottom1" name="bottom" value="bottom1"></th>';
+                    echo '<th><input type="radio" id="bottom2" name="bottom" value="bottom2"></th></tr>';
 
                     echo '</table>';
                     echo '<input type="submit" value="Submit">';
