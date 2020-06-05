@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
     <title>Danzel Test Site</title>
     <script>
         function getVote(top,bottom) {
-            alert("test");
+            alert("test " + top + " " + bottom);
         }
     </script>
 </head>
