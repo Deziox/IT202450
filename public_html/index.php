@@ -21,8 +21,8 @@ if(isset($_SESSION['user'])){
     <meta charset="UTF-8">
     <title>Danzel Test Site</title>
     <script>
-        function getVote(top,bottom) {
-            alert("test " + top + " " + bottom);
+        function getVote(top,bottom,id) {
+            alert("test " + top + " " + bottom + " " + id);
         }
     </script>
 </head>
