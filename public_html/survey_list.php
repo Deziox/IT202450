@@ -7,7 +7,7 @@
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
 
-            $stmt = $db->prepare("SELECT * FROM Surveys ORDER BY created_at ASC");
+            $stmt = $db->prepare("SELECT * FROM Surveys ORDER BY created_at DESC");
             $r = $stmt->execute();
             $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
