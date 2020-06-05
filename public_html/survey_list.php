@@ -15,7 +15,7 @@
             echo "no surveys";
         }else{
             foreach($surveys as $s){
-                //echo var_export($s,true);
+                echo var_export($s,true);
                 echo '<img src="data:image/png;base64,'.base64_encode($surveys['top_1_image']).'"/>';
             }
         }
