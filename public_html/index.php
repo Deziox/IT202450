@@ -22,6 +22,8 @@ if(isset($_SESSION['user'])){
     <title>Danzel Test Site</title>
     <script>
         function getVote(top,bottom,id) {
+            alert("test");
+            /*
             var xmlhttp=new XMLHttpRequest();
             xmlhttp.onreadystatechange=function() {
                 if (this.readyState==4 && this.status==200) {
@@ -29,7 +31,7 @@ if(isset($_SESSION['user'])){
                 }
             }
             xmlhttp.open("GET","vote.php?top="+top"&bottom="+bottom,true);
-            xmlhttp.send();
+            xmlhttp.send();*/
         }
     </script>
 </head>
