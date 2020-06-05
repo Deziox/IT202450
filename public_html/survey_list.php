@@ -14,8 +14,6 @@
             if(!$surveys){
                 echo "no surveys";
             }else{
-
-
                 foreach($surveys as $s) {
                     //echo var_export($s,true);
                     echo '<div class="survey">';
