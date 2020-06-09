@@ -1,3 +1,6 @@
+<h1 class="content-header">recent outfits</h1>
+<hr>
+
 <?php
         require('config.php');
         session_start();
