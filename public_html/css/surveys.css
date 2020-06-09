@@ -16,7 +16,7 @@
 
 img.clothes{
     height: 400px;
-    width: 400px;
+    width: auto;
 }
 
 tr.clothes{
