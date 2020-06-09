@@ -33,3 +33,7 @@ h1.survey-title{
 table.survey-table{
     margin: auto;
 }
+
+form.survey-form{
+    text-align: center;
+}
