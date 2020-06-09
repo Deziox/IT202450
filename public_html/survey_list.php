@@ -4,8 +4,8 @@
 <?php
         require('config.php');
         session_start();
-
-        if(isset($_SESSION['user'])){
+        $sessionset = isset($_SESSION['user']);
+        if($sessionset){
             $votestring = "vote";
         }else{
             $votestring = "login to vote";
@@ -46,7 +46,13 @@
                     echo '<th><input type="radio" id="bottom2" name="bottom" value="bottom2"></th></tr>';
 
                     echo '</table>';
-                    echo '<input class="vote-button" type="submit" value="'.$votestring.'">';
+
+                    if($sessionset) {
+                        echo '<input class="vote-button" type="submit" value="vote">';
+                    }else{
+                        echo '<input class="vote-button" type="button" onclick="window.location.href=\'login.php\'" value="login to vote"/>';
+                    }
+
                     echo '</form>';
                     echo '<div id="poll'.$s['id'].'"></div>';
                     echo '</div>';
