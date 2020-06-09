@@ -15,8 +15,8 @@
 }
 
 img.clothes{
-    height: 200px;
-    width: auto;
+    height: auto;
+    max-width: 75%;
 }
 
 tr.clothes{
