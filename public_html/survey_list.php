@@ -16,10 +16,10 @@
             }else{
                 foreach($surveys as $s) {
                     //echo var_export($s,true);
-                    echo '<div class="survey">';
-                    echo '<form class="survey-form" method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
+                    echo '<div class="survey'.$s['id'].'">';
+                    echo '<form method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
-                    echo '<table style="width:100%">';
+                    echo '<table class="survey-table">';
                     echo '<tr><th><h4 class="top">top: </h4></th></tr><tr>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_1_image']) . '"/></th>';
                     echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_2_image']) . '"/></th>';

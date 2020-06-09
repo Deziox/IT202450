@@ -4,7 +4,7 @@
     margin:auto;
 }
 
-.survey-form{
+.survey-table{
     padding: 20px;
     overflow: auto;
 }
@@ -22,6 +22,7 @@
 img.clothes{
     height: 400px;
     width: auto;
+
 }
 
 tr.clothes{
