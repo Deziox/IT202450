@@ -16,11 +16,11 @@
     <script>
         $(document).ready(function(){
            //trigger/container variables
-           var trigger = $('#nav'), container = $('.content');
+           var trigger = $('.header-right'), container = $('.content');
 
            //fire on click
-           trigger.on('click',function(){
-               var $this = $(this) target = $this.data('target');
+           trigger.on('click','#nav',function(){
+               var $this = $(this), target = $this.data('target');
                container.load(target + '.php');
                return false;
            });
