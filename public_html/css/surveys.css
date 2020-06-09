@@ -1,7 +1,7 @@
 .survey{
     border-color: lightskyblue;
     border-style: solid;
-    margin:auto;
+    margin: 20px auto;
 }
 
 .top{
@@ -31,7 +31,5 @@ h1.survey-title{
 }
 
 table.survey-table{
-    width: auto;
     margin: auto;
-    background-color: aliceblue;
 }
