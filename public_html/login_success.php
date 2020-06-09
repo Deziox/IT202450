@@ -3,7 +3,6 @@
     if(isset($_SESSION['user'])) {
         header("location:index.php");
     }else{
-        echo "TEST";
-        //header("location:login.php");
+        header("location:login.php");
     }
 ?>

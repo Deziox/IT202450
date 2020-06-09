@@ -17,6 +17,8 @@
                 document.getElementsByTagName("title").item(0).innerHTML = "aestheticus|" + target;
                 return false;
             });
+
+
         });
     </script>
 </head>

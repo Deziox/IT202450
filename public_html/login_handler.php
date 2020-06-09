@@ -44,6 +44,7 @@ if(isset($_POST['submit'])){
                     header("location:login_success.php");
                 }else{
                     $errors['password'] = "Password is invalid";
+                    $_SESSION['invalid_password'] = true;
                 }
             }
 

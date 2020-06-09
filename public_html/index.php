@@ -4,12 +4,11 @@ include('header.php');
 
 if(isset($_SESSION['user'])){
     //echo "test 1";
-    if(!isset($_SESSION['welcome'])) {
-        //$_SESSION['welcome'] = "<h1>login successful, welcome " . $_SESSION['user']['username'] . "</h1><br/>" . var_export($_SESSION, true) . '<br /><br /><a href="logout.php">Logout</a>';
-        //echo "test 2";
+    if(isset($_SESSION['invalid_password'])) {
+        $indexlink = 'login';
+        unset($_SESSION['invalid_password']);
     }else{
-        //$_SESSION['welcome'] = '<br /><br /><a href="logout.php">Logout</a>';
-        //echo "test 3";
+        $indexlink = 'survey_list';
     }
 }
 
@@ -27,9 +26,7 @@ if(isset($_SESSION['user'])){
     <?php //echo "<div>".$_SESSION['welcome']."</div>";?>
     <div class="container">
         <div class="content">
-
-            <?php include('survey_list.php');?>
-
+            <?php include($indexlink.".php");?>
         </div>
         <?php include('footer.php');?>
     </div>
