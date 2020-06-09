@@ -4,12 +4,6 @@
     margin:auto;
 }
 
-table.survey-table{
-    padding: 20px;
-    width: auto;
-    background-color: aliceblue;
-}
-
 .top{
     font-family: 'Space Mono',normal;
     text-align: center;
@@ -21,9 +15,8 @@ table.survey-table{
 }
 
 img.clothes{
-    height: 400px;
-    width: auto;
-
+    max-width: 50%;
+    height: auto;
 }
 
 tr.clothes{
@@ -35,4 +28,9 @@ h1.survey-title{
     font-family: 'Space Mono',normal;
     text-align: center;
     text-decoration: underline;
+}
+
+survey-table{
+    width: auto;
+    background-color: aliceblue;
 }
