@@ -6,9 +6,9 @@
         session_start();
 
         if(isset($_SESSION['user'])){
-            $buttonstring = "vote";
+            $votestring = "vote";
         }else{
-            $buttonstring = "login to vote";
+            $votestring = "login to vote";
         }
 
         try{
@@ -46,7 +46,7 @@
                     echo '<th><input type="radio" id="bottom2" name="bottom" value="bottom2"></th></tr>';
 
                     echo '</table>';
-                    echo '<input class="vote-button" type="submit" value="Submit">';
+                    echo '<input class="vote-button" type="submit" value="'.$votestring.'">';
                     echo '</form>';
                     echo '<div id="poll'.$s['id'].'"></div>';
                     echo '</div>';
