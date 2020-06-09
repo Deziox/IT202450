@@ -1,13 +1,12 @@
-a.register-button a.login-button {
+a.register-button, a.login-button {
     border-radius: 4px;
     background-color: lightskyblue;
     border: none;
     color: white;
     text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
+    font-size: 18px;
+    padding: 1px 10px;
+    width: 100px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
 }
