@@ -5,6 +5,12 @@
         require('config.php');
         session_start();
 
+        if(isset($_SESSION['user'])){
+            $buttonstring = "vote";
+        }else{
+            $buttonstring = "login to vote";
+        }
+
         try{
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
