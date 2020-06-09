@@ -1,0 +1,13 @@
+#register-button{
+    border-radius: 4px;
+    background-color: lightskyblue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/surveys.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
