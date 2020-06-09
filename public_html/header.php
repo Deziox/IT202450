@@ -37,6 +37,6 @@
     <div class="header-right">
         <a id="nav" name="survey_list" href="index.php" data-target="survey_list" class="active">home</a>
         <a id="nav" name="outfits" href="#" data-target="outfits">outfits</a>
-        <?php echo '<a id="nav" name="register" href="#" data-target="'.$logregdatatarget.'">'.$logreg.'</a>'?>
+        <?php echo '<a id="nav" name="'.$logregdatatarget.'" href="#" data-target="'.$logregdatatarget.'">'.$logreg.'</a>'?>
     </div>
 </div>
