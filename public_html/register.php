@@ -5,7 +5,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+            $(document).ready(function(){
+                //trigger/container variables
+                var trigger = $('.register'), container = $('.content');
 
+                //fire on click
+                trigger.on('click','.login-button',function(){
+                    var $this = $(this), target = $this.data('target');
+                    container.load(target + '.php');
+                    return false;
+                });
+            });
+        </script>
     </head>
     <body>
         <?php //include('header.php'); ?>
@@ -14,7 +26,7 @@
             <div class="register">
                 <h1>Already Have an account?</h1>
                 <!--<input type="button" onclick="window.location.href='login.php'" value="Login"/>-->
-                <a class="login-button" href="#" data-target="survey_list">Login</a>
+                <a class="login-button" href="#" data-target="login">login</a>
                 <form action="register.php" method="post">
                     <label>Email:</label>
                     <?php echo "<div class=\"error\">".$errors['email']."</div>";?>
