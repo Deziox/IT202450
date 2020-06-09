@@ -3,6 +3,7 @@
     border-style: solid;
     margin:auto;
     padding: 20px;
+    overflow: auto;
 }
 
 .top{
