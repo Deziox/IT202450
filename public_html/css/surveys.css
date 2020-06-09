@@ -1,5 +1,5 @@
 .survey{
-    border-color: black;
+    border-color: lightskyblue;
     border-style: solid;
     margin:auto;
 }
@@ -15,7 +15,7 @@
 }
 
 img.clothes{
-    height: 50px;
+    height: 200px;
     width: auto;
 }
 
@@ -30,7 +30,7 @@ h1.survey-title{
     text-decoration: underline;
 }
 
-survey-table{
+table.survey-table{
     width: auto;
     margin: auto;
     background-color: aliceblue;
