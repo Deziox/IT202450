@@ -28,6 +28,7 @@ img.clothes{
 
 tr.clothes{
     border: 1px solid dodgerblue;
+    width: auto;
 }
 
 h1.survey-title{
