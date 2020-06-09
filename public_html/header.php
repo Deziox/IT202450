@@ -38,6 +38,12 @@
     <div class="header-right">
         <a id="nav" name="survey_list" href="index.php" data-target="survey_list" class="active">home</a>
         <a id="nav" name="outfits" href="#" data-target="outfits">outfits</a>
-        <?php echo '<a id="nav" name="'.$logregdatatarget.'" href="'.$logregdatatarget.'.php">'.$logreg.'</a>'?>
+        <?php
+            if(isset($_SESSION['user'])) {
+                echo '<a id="nav" name="profile" href="#" data-target="profile">'.$_SESSION["user"]["username"].'</a>';
+            }else{
+                echo '<a id="nav" name="register" href="register.php">login/register</a>';
+            }
+        ?>
     </div>
 </div>

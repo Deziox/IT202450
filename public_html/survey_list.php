@@ -24,7 +24,6 @@
                 echo "no surveys";
             }else{
                 foreach($surveys as $s) {
-                    //echo var_export($s,true);
                     echo '<div class="survey" id="survey_'.$s['id'].'">';
                     echo '<form class="survey-form" method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
@@ -62,8 +61,3 @@
             echo "Connection failed = ".$e->getMessage();
         }
     ?>
-<!--
-<div class="survey">
-    <div class="top">top</div>
-    <div class="bottom">bottom</div>
-</div>-->
