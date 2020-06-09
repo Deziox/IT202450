@@ -17,7 +17,7 @@
                 foreach($surveys as $s) {
                     //echo var_export($s,true);
                     echo '<div class="survey" id="survey_'.$s['id'].'">';
-                    echo '<form method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
+                    echo '<form class="survey-form" method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
                     echo '<table class="survey-table">';
                     echo '<tr><th><h4 class="top">top: </h4></th></tr><tr">';
