@@ -29,3 +29,9 @@ input.register-button, input.login-button {
 .reglog-center{
     text-align: center
 }
+
+.reglog-switch{
+    margin: 20px;
+    border-radius: 10px;
+    border: 2px solid lightskyblue;
+}

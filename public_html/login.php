@@ -24,9 +24,12 @@
 <section class="reglog-center">
     <h2>Login</h2>
     <div class="login">
-        <h4>Don't Have an account?</h4>
-        <!--<input type="button" onclick="window.location.href='register.php'" value="Register"/>-->
-        <a class="register-button" href="#" data-target="register">register</a>
+        <div class="reglog-switch">
+            <h4>Don't Have an account?</h4>
+            <!--<input type="button" onclick="window.location.href='register.php'" value="Register"/>-->
+            <a class="register-button" href="#" data-target="register">register</a>
+        </div>
+
         <form action="login.php" method="post">
             <label>Username:</label>
             <?php echo "<div class=\"error\">".$errors['username']."</div>";?>
@@ -34,7 +37,7 @@
             <label>Password:</label>
             <?php echo "<div class=\"error\">".$errors['password']."</div>";?>
             <input type="password" name="password"><br/>
-            <div>
+            <div style="margin: 20px;">
                 <input class="login-button" type="submit" name="submit" value="login">
             </div>
         </form>
