@@ -1,4 +1,4 @@
-#register-button a, #login-button a{
+a.register-button a.login-button {
     border-radius: 4px;
     background-color: lightskyblue;
     border: none;
