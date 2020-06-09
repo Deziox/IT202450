@@ -2,6 +2,9 @@
     border-color: lightskyblue;
     border-style: solid;
     margin:auto;
+}
+
+.survey-form{
     padding: 20px;
     overflow: auto;
 }
