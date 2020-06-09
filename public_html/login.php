@@ -17,13 +17,11 @@
                 document.getElementsByTagName("title").item(0).innerHTML = "aestheticus|" + target;
                 return false;
             });
-
-
         });
     </script>
 </head>
 <body>
-<?php //include('header.php'); ?>
+<?php include('header.php'); ?>
 <section class="reglog-center">
     <h2>Login</h2>
     <div class="login">
@@ -33,7 +31,7 @@
             <a class="register-button" href="#" data-target="register">register</a>
         </div>
 
-        <form action="index.php" method="post">
+        <form action="login.php" method="post">
             <label>Username:</label>
             <?php echo "<div class=\"error\">".$errors['username']."</div>";?>
             <input type="text" name="username"><br/>
