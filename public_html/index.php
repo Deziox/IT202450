@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Danzel Test Site</title>
+    <title>aestheticus|home</title>
     <script src="js/voting.js"></script>
 </head>
 <body>

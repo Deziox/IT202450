@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
                 }
             }
 
-            echo "SELECT user result: ".var_export($userresult, true)."<br/>";
+            //echo "SELECT user result: ".var_export($userresult, true)."<br/>";
 
         }catch(Exception $e){
             echo "Connection failed = ".$e->getMessage();

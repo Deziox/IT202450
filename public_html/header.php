@@ -27,6 +27,7 @@
                container.load(target + '.php');
                document.getElementsByClassName("active").item(0).removeAttribute("class");
                document.getElementsByName(target).item(0).className = "active";
+               document.getElementsByTagName("title").item(0).innerHTML = "aestheticus|" + target;
                return false;
            });
         });
