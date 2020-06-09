@@ -37,7 +37,7 @@
                     echo '<th><input type="radio" id="bottom2" name="bottom" value="bottom2"></th></tr>';
 
                     echo '</table>';
-                    echo '<input type="submit" value="Submit">';
+                    echo '<input class="vote-button" type="submit" value="Submit">';
                     echo '</form>';
                     echo '<div id="poll'.$s['id'].'"></div>';
                     echo '</div>';

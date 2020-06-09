@@ -37,3 +37,17 @@ table.survey-table{
 form.survey-form{
     text-align: center;
 }
+
+input.vote-button{
+    border-radius: 4px;
+    background-color: dodgerblue;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
