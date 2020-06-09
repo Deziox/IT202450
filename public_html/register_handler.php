@@ -67,9 +67,7 @@ if(isset($_POST['submit'])){
                     ":username"=>$username,
                     ":password"=>$hash
                 ));
-                echo var_export($stmt->errorInfo(), true);
-                echo var_export($r, true);
-
+                header("location:login.php");
             }
 
         }catch(Exception $e){
