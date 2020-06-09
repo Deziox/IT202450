@@ -23,9 +23,8 @@
            trigger.on('click','#nav',function(){
                var $this = $(this), target = $this.data('target');
                container.load(target + '.php');
-
+               console.log(typeof $this);
                document.getElementsByClassName("active").item(0).removeAttribute("class");
-               $this.className = "active";
                return false;
            });
         });
