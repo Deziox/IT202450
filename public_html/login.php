@@ -33,7 +33,7 @@
             <a class="register-button" href="#" data-target="register">register</a>
         </div>
 
-        <form method="post">
+        <form action="index.php" method="post">
             <label>Username:</label>
             <?php echo "<div class=\"error\">".$errors['username']."</div>";?>
             <input type="text" name="username"><br/>
