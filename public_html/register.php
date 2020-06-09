@@ -21,14 +21,14 @@
         </script>
     </head>
     <body>
-        <?php //include('header.php'); ?>
+        <?php include('header.php'); ?>
         <section class="reglog-center">
             <h2>REGISTER AN ACCOUNT</h2>
             <div class="register">
                 <div class="reglog-switch">
                     <h3>Already Have an account?</h3>
-                    <!--<input type="button" onclick="window.location.href='login.php'" value="Login"/>-->
-                    <a class="login-button" href="#" data-target="login">login</a>
+                    <input class="login-button" type="button" onclick="window.location.href='login.php'" value="Login"/>
+                    <!--<a class="login-button" href="#" data-target="login">login</a>-->
                 </div>
                 <form action="register.php" method="post">
                     <label>Email:</label>
