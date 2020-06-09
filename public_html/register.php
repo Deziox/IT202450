@@ -25,7 +25,7 @@
             <h2>REGISTER AN ACCOUNT</h2>
             <div class="register">
                 <div class="reglog-switch">
-                    <h1>Already Have an account?</h1>
+                    <h3>Already Have an account?</h3>
                     <!--<input type="button" onclick="window.location.href='login.php'" value="Login"/>-->
                     <a class="login-button" href="#" data-target="login">login</a>
                 </div>
