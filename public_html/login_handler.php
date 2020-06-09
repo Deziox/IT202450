@@ -40,12 +40,11 @@ if(isset($_POST['submit'])){
                         "id"=>$userresult['id'],
                         "email"=>$userresult['email'],
                         "username"=>$userresult['username']);
-
-                    header("location:login_success.php");
                 }else{
                     $errors['password'] = "Password is invalid";
                     $_SESSION['invalid_password'] = true;
                 }
+                header("location:login_success.php");
             }
 
             //echo "SELECT user result: ".var_export($userresult, true)."<br/>";
