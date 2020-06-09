@@ -14,6 +14,7 @@
             trigger.on('click','.register-button',function(){
                 var $this = $(this), target = $this.data('target');
                 container.load(target + '.php');
+                document.getElementsByTagName("title").item(0).innerHTML = "aestheticus|" + target;
                 return false;
             });
         });
