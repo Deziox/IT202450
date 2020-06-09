@@ -23,7 +23,9 @@
            trigger.on('click','#nav',function(){
                var $this = $(this), target = $this.data('target');
                container.load(target + '.php');
+
                document.getElementsByClassName("active").item(0).removeAttribute("class");
+               $this.setAttribute("class","active");
                return false;
            });
         });
