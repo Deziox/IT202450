@@ -25,7 +25,7 @@
                container.load(target + '.php');
 
                document.getElementsByClassName("active").item(0).removeAttribute("class");
-               $(this).setAttribute("class","active");
+               $this.className = "active";
                return false;
            });
         });
