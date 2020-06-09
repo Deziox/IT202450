@@ -21,7 +21,7 @@
     </head>
     <body>
         <?php //include('header.php'); ?>
-        <section>
+        <section class="reglog-center">
             <h2>REGISTER AN ACCOUNT</h2>
             <div class="register">
                 <h1>Already Have an account?</h1>
@@ -38,7 +38,7 @@
                     <?php echo "<div class=\"error\">".$errors['password']."</div>";?>
                     <input type="password" name="password"><br/>
                     <div>
-                        <input type="submit" name="submit" value="Register">
+                        <input class="register-button-button" type="submit" name="submit" value="register">
                     </div>
                 </form>
             </div>

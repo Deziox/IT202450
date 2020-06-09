@@ -9,4 +9,23 @@ a.register-button, a.login-button {
     width: 100px;
     transition: all 0.5s;
     cursor: pointer;
+    margin-bottom: 10px;
+}
+
+input.register-button, input.login-button {
+    border-radius: 4px;
+    background-color: lightskyblue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 1px 10px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.reglog-center{
+    text-align: center
 }
