@@ -16,7 +16,7 @@
     <script>
         $(document).ready(function(){
            //trigger/container variables
-           var trigger = $('#a'), container = $('#content');
+           var trigger = $('#nav'), container = $('.content');
 
            //fire on click
            trigger.on('click',function(){
@@ -28,10 +28,10 @@
     </script>
 </head>
 <div class="header">
-    <a href="index.php" class="logo">a e s t h e t i c u s</a>
+    <a id="nav" href="index.php" data-target="survey-list" class="logo">a e s t h e t i c u s</a>
     <div class="header-right">
-        <a href="index.php" data-target="survey-list" class="active">home</a>
-        <a href="#" data-target="outfits">outfits</a>
-        <?php echo '<a href="#" data-target="register">'.$logreg.'</a>'?>
+        <a id="nav" href="index.php" data-target="survey-list" class="active">home</a>
+        <a id="nav" href="#" data-target="outfits">outfits</a>
+        <?php echo '<a id="nav" href="#" data-target="register">'.$logreg.'</a>'?>
     </div>
 </div>
