@@ -28,9 +28,9 @@
     </script>
 </head>
 <div class="header">
-    <a id="nav" href="index.php" data-target="survey-list" class="logo">a e s t h e t i c u s</a>
+    <a id="nav" href="index.php" data-target="survey_list" class="logo">a e s t h e t i c u s</a>
     <div class="header-right">
-        <a id="nav" href="index.php" data-target="survey-list" class="active">home</a>
+        <a id="nav" href="index.php" data-target="survey_list" class="active">home</a>
         <a id="nav" href="#" data-target="outfits">outfits</a>
         <?php echo '<a id="nav" href="#" data-target="register">'.$logreg.'</a>'?>
     </div>

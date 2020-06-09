@@ -6,7 +6,7 @@
 <html>
     <head></head>
     <body>
-        <?php include('header.php'); ?>
+        <?php //include('header.php'); ?>
         <section>
             <h2>REGISTER AN ACCOUNT</h2>
             <div>

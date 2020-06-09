@@ -1,12 +1,12 @@
 <?php
-include('login_handler.php');
+    include('login_handler.php');
 ?>
 
 <!DOCTYPE html>
 <html>
 <head></head>
 <body>
-<?php include('header.php'); ?>
+<?php //include('header.php'); ?>
 <section>
     <h2>Login</h2>
     <div>
