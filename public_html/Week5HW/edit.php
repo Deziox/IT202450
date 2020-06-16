@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
         <div class="reglog-switch">
             <h3>Edit Title Week 5 HW</h3>
         </div>
-        <form action="edit.php.php" method="post" enctype="multipart/form-data">
+        <form action="edit.php" method="post" enctype="multipart/form-data">
 
             <label>survey id:</label>
             <?php echo "<div class=\"error\">".$errors['surveyid']."</div>";?>
