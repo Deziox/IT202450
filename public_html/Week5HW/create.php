@@ -8,31 +8,29 @@ if(isset($_POST['submit'])){
     if(empty($_POST['title'])){
         $errors['title'] = "A title is required for your aesthetic";
     }else if(empty($_POST['top_1'])){
-        $errors['top_1'] = "A title is requried for first top";
+        $errors['top_1'] = "A title is required for first top";
     }else if(empty($_POST['top_2'])){
-        $errors['top_2'] = "A title is requried for second top";
+        $errors['top_2'] = "A title is required for second top";
     }else if(empty($_POST['top_1'])){
-        $errors['bottom_1'] = "A title is requried for first bottom";
+        $errors['bottom_1'] = "A title is required for first bottom";
     }else if(empty($_POST['top_2'])){
-        $errors['bottom_2'] = "A title is requried for second bottom";
-    }else if(empty($_POST['top_1'])){
-        $errors['top_1_image'] = "An image is requried for first top";
-    }else if(empty($_POST['top_2'])){
-        $errors['top_2_image'] = "An image is requried for second top";
-    }else if(empty($_POST['top_1'])){
-        $errors['bottom_1_image'] = "An image is requried for first bottom";
-    }else if(empty($_POST['top_2'])){
-        $errors['bottom_2_image'] = "An image is requried for second bottom";
+        $errors['bottom_2'] = "A title is required for second bottom";
     }else {
         $title = $_POST['title'];
         $top_1 = $_POST['top_1'];
         $top_2 = $_POST['top_2'];
         $bottom_1 = $_POST['bottom_1'];
         $bottom_2 = $_POST['bottom_2'];
-        $top_1_image = $_POST['top_1_image'];
-        $top_2_image = $_POST['top_2_image'];
-        $bottom_1_image = $_POST['bottom_1_image'];
-        $bottom_2_image = $_POST['bottom_2_image'];
+
+        if(!isset($_FILES['top_1_image']) || $_FILES['top_1_image']['size'] <= 0){
+            $errors['top_1_image'] = "An image is required for first top";
+        }else if(!isset($_FILES['top_2_image']) || $_FILES['top_2_image']['size'] <= 0){
+            $errors['top_2_image'] = "An image is required for second top";
+        }else if(!isset($_FILES['bottom_1_image']) || $_FILES['bottom_1_image']['size'] <= 0){
+            $errors['bottom_1_image'] = "An image is required for first bottom";
+        }else if(!isset($_FILES['bottom_2_image']) || $_FILES['bottom_2_image']['size'] <= 0){
+            $errors['bottom_2_image'] = "An image is required for second bottom";
+        }
 
         if($_POST['published'] == 'yes'){
             $published = '1';
@@ -55,18 +53,25 @@ if(isset($_POST['submit'])){
                 $r = $stmt->execute(array(
                     ":user_id"=>$_SESSION['user']['id'],
                     ":title"=>$title,
-
                     ":top_1"=>$top_1,
-                    ":top_1_image"=>$top_1_image,
                     ":top_2"=>$top_2,
-                    ":top_2_image"=>$top_2_image,
-
                     ":bottom_1"=>$bottom_1,
-                    ":bottom_1_image"=>$bottom_1_image,
                     ":bottom_2"=>$bottom_2,
-                    ":bottom_2_image"=>$bottom_2_image,
                     ":published"=>$published
                 ));
+
+                $top_1_image = fopen($_FILES['top_1_image']['tmp_name'],'rb');
+                $stmt->bindParam(':top_1_image',$top_1_image,PDO::PARAM_LOB);
+
+                $top_2_image = fopen($_FILES['top_2_image']['tmp_name'],'rb');
+                $stmt->bindParam(':top_2_image',$top_2_image,PDO::PARAM_LOB);
+
+                $bottom_1_image = fopen($_FILES['bottom_1_image']['tmp_name'],'rb');
+                $stmt->bindParam(':bottom_1_image',$bottom_1_image,PDO::PARAM_LOB);
+
+                $bottom_2_image = fopen($_FILES['bottom_2_image']['tmp_name'],'rb');
+                $stmt->bindParam(':bottom_2_image',$bottom_2_image,PDO::PARAM_LOB);
+
                 header("location:../index.php");
             }
 
