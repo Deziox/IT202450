@@ -83,7 +83,6 @@ if(isset($_POST['submit'])){
 <body>
 <?php include('header.php'); ?>
 <section class="reglog-center">
-    <h2>REGISTER AN ACCOUNT</h2>
     <div class="register">
         <div class="reglog-switch">
             <h3>Create Survey Week 5 HW</h3>
