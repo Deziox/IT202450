@@ -50,15 +50,6 @@ if(isset($_POST['submit'])){
             if(!array_filter($errors)){
                 $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES 
                                                                     (:user_id,:title,:top_1,:top_1_image,:top_2,:top_2_image,:bottom_1,:bottom_1_image,:bottom_2,:bottom_2_image,:published)");
-                $r = $stmt->execute(array(
-                    ":user_id"=>$_SESSION['user']['id'],
-                    ":title"=>$title,
-                    ":top_1"=>$top_1,
-                    ":top_2"=>$top_2,
-                    ":bottom_1"=>$bottom_1,
-                    ":bottom_2"=>$bottom_2,
-                    ":published"=>$published
-                ));
 
                 $top_1_image = fopen($_FILES['top_1_image']['tmp_name'],'rb');
                 $stmt->bindParam(':top_1_image',$top_1_image,PDO::PARAM_LOB);
@@ -71,6 +62,16 @@ if(isset($_POST['submit'])){
 
                 $bottom_2_image = fopen($_FILES['bottom_2_image']['tmp_name'],'rb');
                 $stmt->bindParam(':bottom_2_image',$bottom_2_image,PDO::PARAM_LOB);
+
+                $r = $stmt->execute(array(
+                    ":user_id"=>$_SESSION['user']['id'],
+                    ":title"=>$title,
+                    ":top_1"=>$top_1,
+                    ":top_2"=>$top_2,
+                    ":bottom_1"=>$bottom_1,
+                    ":bottom_2"=>$bottom_2,
+                    ":published"=>$published
+                ));
 
                 header("location:../index.php");
             }
