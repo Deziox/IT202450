@@ -65,7 +65,8 @@ if(isset($_POST['submit'])){
                 $stmt->bindParam('sssbsbsbsbi',$_SESSION['user']['id'],$title,$top_1,$top_1_image,$top_2,$top_2_image,$bottom_1,$bottom_1_image,$bottom_2,$bottom_2_image,$published);
 
                 $r = $stmt->execute();
-                header("location:../index.php");
+                echo 'TEST GOT HERE';
+                //header("location:../index.php");
             }
 
         }catch(Exception $e){
