@@ -47,26 +47,44 @@ if(isset($_POST['submit'])){
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
-            /*$top_1_image = addslashes(file_get_contents($_FILES['top_1_image']['tmp_name']));
+            $top_1_image = addslashes(file_get_contents($_FILES['top_1_image']['tmp_name']));
             $top_2_image = addslashes(file_get_contents($_FILES['top_2_image']['tmp_name']));
             $bottom_1_image = addslashes(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
             $bottom_2_image = addslashes(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
-            */
+            /*$top_1_image = fopen($_FILES['top_1_image']['tmp_name'],'rb');
+                $stmt->bindParam(':top_1_image',$top_1_image,PDO::PARAM_LOB);
+
+                $top_2_image = fopen($_FILES['top_2_image']['tmp_name'],'rb');
+                $stmt->bindParam(':top_2_image',$top_2_image,PDO::PARAM_LOB);
+
+                $bottom_1_image = fopen($_FILES['bottom_1_image']['tmp_name'],'rb');
+                $stmt->bindParam(':bottom_1_image',$bottom_1_image,PDO::PARAM_LOB);
+
+                $bottom_2_image = fopen($_FILES['bottom_2_image']['tmp_name'],'rb');
+                $stmt->bindParam(':bottom_2_image',$bottom_2_image,PDO::PARAM_LOB);*/
             if(!array_filter($errors)){
                 //$stmt = $db->prepare("INSERT INTO Surveys (user_id,title,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES
                 //                                                    (:user_id,:title,:top_1,:top_1_image,:top_2,:top_2_image,:bottom_1,:bottom_1_image,:bottom_2,:bottom_2_image,:published)");
                 $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES 
-                                                                   (?,?,?,?,?,?,?,?,?,?,?)");
+                                                                   (:user_id,:title,:top_1,:top_1_image,:top_2,:top_2_image,:bottom_1,:bottom_1_image,:bottom_2,:bottom_2_image,:published)");
 
-                $top_1_image = fopen($_FILES['top_1_image']['tmp_name'],'rb');
-                $top_2_image = fopen($_FILES['top_2_image']['tmp_name'],'rb');
-                $bottom_1_image = fopen($_FILES['bottom_1_image']['tmp_name'],'rb');
-                $bottom_2_image = fopen($_FILES['bottom_2_image']['tmp_name'],'rb');
-                $stmt->bindParam('sssbsbsbsbi',$_SESSION['user']['id'],$title,$top_1,$top_1_image,$top_2,$top_2_image,$bottom_1,$bottom_1_image,$bottom_2,$bottom_2_image,$published);
 
-                $r = $stmt->execute();
-                echo 'TEST GOT HERE';
-                //header("location:../index.php");
+                $r = $stmt->execute(array(
+                    ":user_id"=>$_SESSION['user']['id'],
+                    ":title"=>$title,
+
+                    ":top_1"=>$top_1,
+                    ":top_1_image"=>$top_1_image,
+                    ":top_2"=>$top_2,
+                    ":top_2_image"=>$top_2_image,
+
+                    ":bottom_1"=>$bottom_1,
+                    ":bottom_1_image"=>$bottom_1_image,
+                    ":bottom_2"=>$bottom_2,
+                    ":bottom_2_image"=>$bottom_2_image,
+                    ":published"=>$published
+                ));
+                header("location:../index.php");
             }
 
         }catch(Exception $e){
