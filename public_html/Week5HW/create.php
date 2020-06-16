@@ -102,7 +102,7 @@ if(isset($_POST['submit'])){
         <div class="reglog-switch">
             <h3>Create Survey Week 5 HW</h3>
         </div>
-        <form action="create.php" method="post">
+        <form action="create.php" method="post" enctype="multipart/form-data">
             <label>aesthetic title:</label>
             <?php echo "<div class=\"error\">".$errors['title']."</div>";?>
             <input type="text" name="title"><br/>
