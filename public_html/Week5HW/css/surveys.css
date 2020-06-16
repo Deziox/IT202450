@@ -1,0 +1,78 @@
+.survey{
+    border-color: lightskyblue;
+    border-style: solid;
+    margin: 20px auto;
+}
+
+.top{
+    font-family: 'Space Mono',normal;
+    text-align: center;
+}
+
+.bottom{
+    font-family: 'Space Mono',normal;
+    text-align: center;
+}
+
+img.clothes{
+    height: auto;
+    max-width: 75%;
+}
+
+tr.clothes{
+    border: 1px solid dodgerblue;
+    width: auto;
+}
+
+h1.survey-title{
+    font-family: 'Space Mono',normal;
+    text-align: center;
+    text-decoration: underline;
+}
+
+table.survey-table{
+    margin: auto;
+}
+
+form.survey-form{
+    text-align: center;
+}
+
+input.vote-button{
+    border-radius: 4px;
+    background-color: lightskyblue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+input.vote-button span{
+    cursor: pointer;
+    display: inline-block;
+    position:relative;
+    transition: 0.5s;
+}
+
+input.vote-button span:after{
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+input.vote-button:hover span{
+    padding-right: 25px;
+}
+
+input.vote-button:hover span:after{
+    opacity: 1;
+    right: 0;
+}

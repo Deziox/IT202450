@@ -1,0 +1,10 @@
+.content{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.content-header{
+    font-family: 'Space Mono',normal;
+    text-align: center;
+}
