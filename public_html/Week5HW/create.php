@@ -48,6 +48,11 @@ if(isset($_POST['submit'])){
 
             $target_dir = "images/".$_SESSION['user']['username']."/";
 
+            $top_1_name = $_FILES['top_1_image']['name'];
+            $top_2_name = $_FILES['top_2_image']['name'];
+            $bottom_1_name = $_FILES['bottom_1_image']['name'];
+            $bottom_2_name = $_FILES['bottom_2_image']['name'];
+
             $target_top1 = $target_dir . basename($_FILES["top_1_image"]["name"]);
             $target_top2 = $target_dir . basename($_FILES["top_2_image"]["name"]);
             $target_bottom1 = $target_dir . basename($_FILES["bottom_1_image"]["name"]);
@@ -58,10 +63,15 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom1 = strtolower(pathinfo($target_bottom1,PATHINFO_EXTENSION));
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
 
-            $top_1_image = addslashes(file_get_contents($_FILES['top_1_image']['tmp_name']));
-            $top_2_image = addslashes(file_get_contents($_FILES['top_2_image']['tmp_name']));
-            $bottom_1_image = addslashes(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
-            $bottom_2_image = addslashes(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
+            $top_1_image = 'data:image/'.$imageFileTypeTop1.';base64,'.base64_encode(file_get_contents($_FILES['top_1_image']['tmp_name']));
+            $top_2_image = 'data:image/'.$imageFileTypeTop2.';base64,'.base64_encode(file_get_contents($_FILES['top_2_image']['tmp_name']));
+            $bottom_1_image = 'data:image/'.$imageFileTypeBottom1.';base64,'.base64_encode(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
+            $bottom_2_image = 'data:image/'.$imageFileTypeBottom2.';base64,'.base64_encode(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
+
+            move_uploaded_file($_FILES['top_1_image']['tmp_name'],$target_dir.$top_1_name);
+            move_uploaded_file($_FILES['top_2_image']['tmp_name'],$target_dir.$top_2_name);
+            move_uploaded_file($_FILES['bottom_1_image']['tmp_name'],$target_dir.$bottom_1_name);
+            move_uploaded_file($_FILES['bottom_2_image']['tmp_name'],$target_dir.$bottom_2_name);
 
             if(!array_filter($errors)){
                 //$stmt = $db->prepare("INSERT INTO Surveys (user_id,title,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES
