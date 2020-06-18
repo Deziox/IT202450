@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('config.php');
-
+print_r($_FILES);
 $errors = array('title'=>'','top_1'=>'','top_1_image'=>'','top_2'=>'','top_2_image'=>'','bottom_1'=>'','bottom_1_image'=>'','bottom_2'=>'','bottom_2_image'=>'');
 
 if(isset($_POST['submit'])){
