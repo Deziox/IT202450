@@ -77,10 +77,10 @@ if(isset($_POST['submit'])){
             $bottom_1_image = $bottom_1_name;
             $bottom_2_image = $bottom_2_name;
 
-            move_uploaded_file($_FILES['top_1_image']['tmp_name'],$target_dir.$top_1_name);
-            move_uploaded_file($_FILES['top_2_image']['tmp_name'],$target_dir.$top_2_name);
-            move_uploaded_file($_FILES['bottom_1_image']['tmp_name'],$target_dir.$bottom_1_name);
-            move_uploaded_file($_FILES['bottom_2_image']['tmp_name'],$target_dir.$bottom_2_name);
+            copy($_FILES['top_1_image']['tmp_name'],$target_dir.$top_1_name);
+            copy($_FILES['top_2_image']['tmp_name'],$target_dir.$top_2_name);
+            copy($_FILES['bottom_1_image']['tmp_name'],$target_dir.$bottom_1_name);
+            copy($_FILES['bottom_2_image']['tmp_name'],$target_dir.$bottom_2_name);
 
             if(!array_filter($errors)){
                 //$stmt = $db->prepare("INSERT INTO Surveys (user_id,title,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES
