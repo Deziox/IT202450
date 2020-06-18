@@ -29,16 +29,16 @@
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
                     echo '<table class="survey-table">';
                     echo '<tr><th><h4 class="top">top: </h4></th></tr><tr">';
-                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_1_image']) . '"/></th>';
-                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['top_2_image']) . '"/></th>';
+                    echo '<th><img class="clothes" src="data:image/jpeg;base64,' . base64_encode($s['top_1_image']) . '"/></th>';
+                    echo '<th><img class="clothes" src="data:image/jpeg;base64,' . base64_encode($s['top_2_image']) . '"/></th>';
 
                     echo '</tr><tr>';
                     echo '<th><input type="radio" id="top1" name="top" value="top1"></th>';
                     echo '<th><input type="radio" id="top2" name="top" value="top2"></th></tr>';
 
                     echo '<tr><th><h4 class="bottom">bottom: </h4></th></tr><tr>';
-                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_1_image']) . '"/></th>';
-                    echo '<th><img class="clothes" src="data:image/png;base64,' . base64_encode($s['bottom_2_image']) . '"/></th>';
+                    echo '<th><img class="clothes" src="data:image/jpeg;base64,' . base64_encode($s['bottom_1_image']) . '"/></th>';
+                    echo '<th><img class="clothes" src="data:image/jpeg;base64,' . base64_encode($s['bottom_2_image']) . '"/></th>';
 
                     echo '</tr><tr>';
                     echo '<th><input type="radio" id="bottom1" name="bottom" value="bottom1"></th>';
