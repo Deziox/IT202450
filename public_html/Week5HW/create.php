@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
-            $target_dir = "/images/".$_SESSION['user']['username']."/";
+            $target_dir = "images/";
 
             $top_1_name = $_FILES['top_1_image']['name'];
             $top_2_name = $_FILES['top_2_image']['name'];
@@ -67,10 +67,15 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
             echo $imageFileTypeBottom2;
 
-            $top_1_image = 'data:image/'.$imageFileTypeTop1.';base64,'.base64_encode(file_get_contents($_FILES['top_1_image']['tmp_name']));
-            $top_2_image = 'data:image/'.$imageFileTypeTop2.';base64,'.base64_encode(file_get_contents($_FILES['top_2_image']['tmp_name']));
-            $bottom_1_image = 'data:image/'.$imageFileTypeBottom1.';base64,'.base64_encode(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
-            $bottom_2_image = 'data:image/'.$imageFileTypeBottom2.';base64,'.base64_encode(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
+            //$top_1_image = 'data:image/'.$imageFileTypeTop1.';base64,'.base64_encode(file_get_contents($_FILES['top_1_image']['tmp_name']));
+            //$top_2_image = 'data:image/'.$imageFileTypeTop2.';base64,'.base64_encode(file_get_contents($_FILES['top_2_image']['tmp_name']));
+            //$bottom_1_image = 'data:image/'.$imageFileTypeBottom1.';base64,'.base64_encode(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
+            //$bottom_2_image = 'data:image/'.$imageFileTypeBottom2.';base64,'.base64_encode(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
+
+            $top_1_image = $top_1_name;
+            $top_2_image = $top_2_name;
+            $bottom_1_image = $bottom_1_name;
+            $bottom_2_image = $bottom_2_name;
 
             move_uploaded_file($_FILES['top_1_image']['tmp_name'],$target_dir.$top_1_name);
             move_uploaded_file($_FILES['top_2_image']['tmp_name'],$target_dir.$top_2_name);
