@@ -59,13 +59,13 @@ if(isset($_POST['submit'])){
             $target_bottom2 = $target_dir . basename($_FILES["bottom_2_image"]["name"]);
 
             $imageFileTypeTop1 = strtolower(pathinfo($target_top1,PATHINFO_EXTENSION));
-            echo "<script>alert('".$imageFileTypeTop1."');</script>";
+            echo $imageFileTypeTop1;
             $imageFileTypeTop2 = strtolower(pathinfo($target_top2,PATHINFO_EXTENSION));
-            echo "<script>alert('".$imageFileTypeTop2."');</script>";
+            echo $imageFileTypeTop2;
             $imageFileTypeBottom1 = strtolower(pathinfo($target_bottom1,PATHINFO_EXTENSION));
-            echo "<script>alert('".$imageFileTypeBottom1."');</script>";
+            echo $imageFileTypeBottom1;
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
-            echo "<script>alert('".$imageFileTypeBottom2."');</script>";
+            echo $imageFileTypeBottom2;
 
             $top_1_image = 'data:image/'.$imageFileTypeTop1.';base64,'.base64_encode(file_get_contents($_FILES['top_1_image']['tmp_name']));
             $top_2_image = 'data:image/'.$imageFileTypeTop2.';base64,'.base64_encode(file_get_contents($_FILES['top_2_image']['tmp_name']));
@@ -99,7 +99,7 @@ if(isset($_POST['submit'])){
                     ":bottom_2_image"=>$bottom_2_image,
                     ":published"=>$published
                 ));
-                header("location:../index.php");
+                //header("location:../index.php");
             }
 
         }catch(Exception $e){
