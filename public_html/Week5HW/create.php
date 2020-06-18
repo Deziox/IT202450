@@ -63,15 +63,10 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom1 = strtolower(pathinfo($target_bottom1,PATHINFO_EXTENSION));
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
 
-            //$top_1_image = 'data:image/'.$imageFileTypeTop1.';base64,'.base64_encode(file_get_contents($_FILES['top_1_image']['tmp_name']));
-            //$top_2_image = 'data:image/'.$imageFileTypeTop2.';base64,'.base64_encode(file_get_contents($_FILES['top_2_image']['tmp_name']));
-            //$bottom_1_image = 'data:image/'.$imageFileTypeBottom1.';base64,'.base64_encode(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
-            //$bottom_2_image = 'data:image/'.$imageFileTypeBottom2.';base64,'.base64_encode(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
-
-            $top_1_image = $top_1_name;
-            $top_2_image = $top_2_name;
-            $bottom_1_image = $bottom_1_name;
-            $bottom_2_image = $bottom_2_name;
+            $top_1_image = 'data:image/'.$imageFileTypeTop1.';base64,'.base64_encode(file_get_contents($_FILES['top_1_image']['tmp_name']));
+            $top_2_image = 'data:image/'.$imageFileTypeTop2.';base64,'.base64_encode(file_get_contents($_FILES['top_2_image']['tmp_name']));
+            $bottom_1_image = 'data:image/'.$imageFileTypeBottom1.';base64,'.base64_encode(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
+            $bottom_2_image = 'data:image/'.$imageFileTypeBottom2.';base64,'.base64_encode(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
 
             move_uploaded_file($_FILES['top_1_image']['tmp_name'],$target_dir.$top_1_name);
             move_uploaded_file($_FILES['top_2_image']['tmp_name'],$target_dir.$top_2_name);
@@ -81,7 +76,6 @@ if(isset($_POST['submit'])){
             if(!array_filter($errors)){
                 $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES 
                                                                    (:user_id,:title,:top_1,:top_1_image,:top_2,:top_2_image,:bottom_1,:bottom_1_image,:bottom_2,:bottom_2_image,:published)");
-
 
                 $r = $stmt->execute(array(
                     ":user_id"=>$_SESSION['user']['id'],
