@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
-            $target_dir = "images/".$_SESSION['user']['username']."/";
+            $target_dir = "/images/".$_SESSION['user']['username']."/";
 
             $top_1_name = $_FILES['top_1_image']['name'];
             $top_2_name = $_FILES['top_2_image']['name'];
