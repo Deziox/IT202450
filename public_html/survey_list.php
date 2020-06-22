@@ -26,8 +26,8 @@
             echo '<form action="/index.php" method="get">
                     <label>Sort by: </label>
                     <select id="date_sort" name="date_sort">
-                      <option value="ASC">ascending</option>
-                      <option value="DESC">descending</option>
+                      <option value="ASC"'. ($sort == 'ASC'?"selected":"") .'>ascending</option>
+                      <option value="DESC"'.($sort == 'DESC'?"selected":"").'>descending</option>
                     </select>
                     <input type="submit">
                   </form>';
