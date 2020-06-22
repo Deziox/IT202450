@@ -7,8 +7,10 @@
 
         if(isset($_GET['search'])){
             $searchstring = $_GET['search'];
+            $query = "SELECT * FROM Surveys WHERE tag like CONCAT('%',:searchstring,'%') ORDER BY created_at DESC";
         }else{
             $searchstring = '';
+            $query = "SELECT * FROM Surveys ORDER BY created_at DESC";
         }
 
         $sessionset = isset($_SESSION['user']);
@@ -23,7 +25,7 @@
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
 
-            $stmt = $db->prepare("SELECT * FROM Surveys WHERE tag like CONCAT('%',:searchstring,'%') ORDER BY created_at DESC");
+            $stmt = $db->prepare($query);
             $r = $stmt->execute();
             $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
