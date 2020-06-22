@@ -57,7 +57,10 @@
                     echo '<div class="survey" id="survey_'.$s['id'].'">';
                     echo '<form class="survey-form" method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
-                    echo '<h1>created: '.$s['created_at'].'</h1>';
+
+                    echo '<h3>created: '.$s['created_at'].'</h3>';
+                    echo '<h3>tags: '.$s['tags'].'</h3>';
+
                     echo '<table class="survey-table">';
                     echo '<tr><th><h4 class="top">top: </h4></th></tr><tr">';
                     //echo '<th><img class="clothes" src="' . $s['top_1_image'] . '"/></th>';
