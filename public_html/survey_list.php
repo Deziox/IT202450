@@ -13,8 +13,8 @@
             $h = 'outfits matching "'.$_GET['search'].'"';
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
-            if(isset($_GET['date_sort'])){
-                $sort = $_GET['date_sort'];
+            if(isset($_POST['date_sort'])){
+                $sort = $_POST['date_sort'];
             }else{
                 $sort = 'ASC';
             }
@@ -23,7 +23,7 @@
             $h = "recent outfits";
 
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
-            echo '<form action="/index.php" method="get">
+            echo '<form action="/index.php" method="post">
                     <label>Sort by: </label>
                     <select id="date_sort" name="date_sort">
                       <option value="ASC"'. ($sort == 'ASC'?"selected":"") .'>ascending</option>
