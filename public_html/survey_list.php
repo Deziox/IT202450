@@ -11,13 +11,26 @@
                                 ELSE 2
                             END";
             $h = 'outfits matching "'.$_GET['search'].'"';
+            echo '<h1 class="content-header">$h</h1><hr>';
         }else{
+            if(isset($_GET['date_sort'])){
+                $s = $_GET['date_sort'];
+            }else{
+                $s = 'DESC';
+            }
             $searchstring = '';
-            $query = "SELECT * FROM Surveys ORDER BY created_at DESC";
+            $query = "SELECT * FROM Surveys ORDER BY created_at".$s;
             $h = "recent outfits";
+            echo '<h1 class="content-header">$h</h1><hr>';
+            echo '<form action="/index.php" method="get">
+                    <label>Sort by: </label>
+                    <select id="date_sort" name="date_sort">
+                      <option value="ascending">ascending</option>
+                      <option value="descending">descending</option>
+                    </select>
+                    <input type="submit">
+                  </form>';
         }
-
-        echo '<h1 class="content-header">recent outfits</h1><hr>';
 
         $sessionset = isset($_SESSION['user']);
         if($sessionset){
