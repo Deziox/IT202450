@@ -7,7 +7,12 @@
 
         if(isset($_GET['search'])){
             $searchstring = $_GET['search'];
-            $query = "SELECT * FROM Surveys WHERE tags like CONCAT('%',:searchstring,'%') ORDER BY created_at DESC";
+            $query = "SELECT * FROM Surveys WHERE tags LIKE CONCAT('%',:searchstring,'%') ORDER BY 
+                            CASE
+                                WHEN tags LIKE CONCAT(:searchstring,'%') THEN 1
+                                WHEN tags LIKE CONCAT('%',:searchstring) THEN 3
+                                ELSE 2
+                            END";
         }else{
             $searchstring = '';
             $query = "SELECT * FROM Surveys ORDER BY created_at DESC";
