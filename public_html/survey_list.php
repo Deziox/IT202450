@@ -4,6 +4,13 @@
 <?php
         require('config.php');
         session_start();
+
+        if(isset($_GET['search'])){
+            $searchstring = $_GET['search'];
+        }else{
+            $searchstring = '';
+        }
+
         $sessionset = isset($_SESSION['user']);
         if($sessionset){
             $votestring = "vote";
@@ -16,7 +23,7 @@
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
 
-            $stmt = $db->prepare("SELECT * FROM Surveys ORDER BY created_at DESC");
+            $stmt = $db->prepare("SELECT * FROM Surveys WHERE tag like CONCAT('%',:searchstring,'%') ORDER BY created_at DESC");
             $r = $stmt->execute();
             $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
