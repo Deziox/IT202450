@@ -11,7 +11,7 @@
                                 ELSE 2
                             END";
             $h = 'outfits matching "'.$_GET['search'].'"';
-            echo '<h1 class="content-header">$h</h1><hr>';
+            echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
             if(isset($_GET['date_sort'])){
                 $s = $_GET['date_sort'];
@@ -19,9 +19,9 @@
                 $s = 'DESC';
             }
             $searchstring = '';
-            $query = "SELECT * FROM Surveys ORDER BY created_at".$s;
+            $query = "SELECT * FROM Surveys ORDER BY created_at ".$s;
             $h = "recent outfits";
-            echo '<h1 class="content-header">$h</h1><hr>';
+            echo '<h1 class="content-header">'.$h.'</h1><hr>';
             echo '<form action="/index.php" method="get">
                     <label>Sort by: </label>
                     <select id="date_sort" name="date_sort">
