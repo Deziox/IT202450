@@ -30,6 +30,7 @@
             $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if(!$surveys){
+                echo var_export($_GET);
                 echo "no surveys";
             }else{
                 foreach($surveys as $s) {
