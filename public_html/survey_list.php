@@ -26,7 +26,7 @@
 
 
             $stmt = $db->prepare($query);
-            $r = $stmt->execute();
+            $r = $stmt->execute(array(":searchstring"=>$searchstring));
             $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if(!$surveys){
