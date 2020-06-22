@@ -5,7 +5,7 @@
 <body>
 <?php include('header.php'); ?>
 <section class="reglog-center">
-    <h2>Login</h2>
+    <h2>search</h2>
     <div class="login">
         <div class="reglog-switch">
             <h1>searching for specific tags</h1>
