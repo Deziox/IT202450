@@ -1,6 +1,3 @@
-<h1 class="content-header">recent outfits</h1>
-<hr>
-
 <?php
         require('config.php');
         session_start();
@@ -13,10 +10,14 @@
                                 WHEN tags LIKE CONCAT('%',:searchstring) THEN 3
                                 ELSE 2
                             END";
+            $h = 'outfits matching "'.$_GET['search'].'"';
         }else{
             $searchstring = '';
             $query = "SELECT * FROM Surveys ORDER BY created_at DESC";
+            $h = "recent outfits";
         }
+
+        echo '<h1 class="content-header">recent outfits</h1><hr>';
 
         $sessionset = isset($_SESSION['user']);
         if($sessionset){
