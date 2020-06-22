@@ -14,19 +14,20 @@
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
             if(isset($_GET['date_sort'])){
-                $s = $_GET['date_sort'];
+                $sort = $_GET['date_sort'];
             }else{
-                $s = 'DESC';
+                $sort = 'ASC';
             }
             $searchstring = '';
-            $query = "SELECT * FROM Surveys ORDER BY created_at ".$s;
+            $query = "SELECT * FROM Surveys ORDER BY created_at ".$sort;
             $h = "recent outfits";
+
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
             echo '<form action="/index.php" method="get">
                     <label>Sort by: </label>
                     <select id="date_sort" name="date_sort">
-                      <option value="ascending">ascending</option>
-                      <option value="descending">descending</option>
+                      <option value="ASC">ascending</option>
+                      <option value="DESC">descending</option>
                     </select>
                     <input type="submit">
                   </form>';
@@ -56,6 +57,7 @@
                     echo '<div class="survey" id="survey_'.$s['id'].'">';
                     echo '<form class="survey-form" method="post" onsubmit="vote(top.value,bottom.value,'.$s['id'].')">';
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
+                    echo '<h1>created: '.$s['created_at'].'</h1>';
                     echo '<table class="survey-table">';
                     echo '<tr><th><h4 class="top">top: </h4></th></tr><tr">';
                     echo '<th><img class="clothes" src="' . $s['top_1_image'] . '"/></th>';
