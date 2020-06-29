@@ -167,6 +167,8 @@
                 moveTarget();
                 // Increase the score
                 score++;
+
+                sideLength += Math.floor(Math.random() * (Math.floor(2) - Math.ceil(-2))) + Math.ceil(-2);
             }
         }
         // Draw the square
