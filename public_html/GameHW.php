@@ -43,7 +43,7 @@
     var id = null;
 
     // Listen for keydown events
-    canvas.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function(event) {
         event.preventDefault();
         console.log(event.key, event.keyCode);
         if (event.keyCode === 40) { // DOWN
@@ -61,7 +61,7 @@
     });
 
     // Listen for keyup events
-    canvas.addEventListener('keyup', function(event) {
+    document.addEventListener('keyup', function(event) {
         event.preventDefault();
         console.log(event.key, event.keyCode);
         if (event.keyCode === 40) { // DOWN
