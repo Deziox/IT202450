@@ -1,7 +1,7 @@
 <?php
     include('header.php');
 ?>
-    <canvas id="canvas" width="600" height="400"></canvas>
+    <canvas id="canvas" width="600" height="400" style="margin:auto"></canvas>
     <script type="text/javascript">//<![CDATA[
 
 
