@@ -180,7 +180,11 @@
         // Draw the target
         context.fillStyle = 'rgba(0,255,0,1)';
         //context.fillRect(targetX, targetY, targetLength, targetLength);
-        context.fillText("food",targetX,targetY,targetLength);
+        if((Math.floor(Math.random() * 2) === 1){
+            context.fillText("food",targetX,targetY,targetLength);
+        }else {
+            context.fillRect(targetX, targetY, targetLength, targetLength);
+        }
         // Draw the score and time remaining
         context.fillStyle = '#000000';
         context.font = '24px Arial';
