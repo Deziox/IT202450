@@ -32,6 +32,8 @@
     var targetY = 0;
     var targetLength = 25;
 
+    var foodshape = 2;
+
     // Determine if number a is within the range b to c (exclusive)
     function isWithin(a, b, c) {
         return (a > b && a < c);
@@ -172,6 +174,8 @@
                 if(sideLength <= 0){
                     sideLength = 50;
                 }
+
+                foodshape = Math.floor((Math.random() * 2) + 1);
             }
         }
         // Draw the square
@@ -180,7 +184,7 @@
         // Draw the target
         context.fillStyle = 'rgba(0,255,0,1)';
         //context.fillRect(targetX, targetY, targetLength, targetLength);
-        if(Math.floor((Math.random() * 2) + 1) == 1){
+        if(foodshape == 1){
             context.fillText("food",targetX,targetY,targetLength);
         }else {
             context.fillRect(targetX, targetY, targetLength, targetLength);
