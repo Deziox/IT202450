@@ -1,5 +1,5 @@
 <?php
-    include('header');
+    include('header.php');
 ?>
     <canvas id="canvas" width="600" height="400"></canvas>
     <script type="text/javascript">//<![CDATA[
