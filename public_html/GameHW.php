@@ -170,7 +170,7 @@
             }
         }
         // Draw the square
-        context.fillStyle = 'rgba(255,0,0,1)';
+        context.fillStyle = 'rgba(255,0,0,' + (countdown/30) + ')';
         context.fillRect(x, y, sideLength, sideLength);
         // Draw the target
         context.fillStyle = 'rgba(0,255,0,1)';
