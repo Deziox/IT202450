@@ -180,7 +180,7 @@
         // Draw the target
         context.fillStyle = 'rgba(0,255,0,1)';
         //context.fillRect(targetX, targetY, targetLength, targetLength);
-        if((Math.floor(Math.random() * 2) === 1){
+        if(Math.floor((Math.random() * 2) + 1) == 1){
             context.fillText("food",targetX,targetY,targetLength);
         }else {
             context.fillRect(targetX, targetY, targetLength, targetLength);
