@@ -179,7 +179,9 @@
         context.fillRect(x, y, sideLength, sideLength);
         // Draw the target
         context.fillStyle = 'rgba(0,255,0,1)';
-        context.fillRect(targetX, targetY, targetLength, targetLength);
+        //context.fillRect(targetX, targetY, targetLength, targetLength);
+        context.arc(targetX, targetY, (targetLength/2), 0, 2 * Math.PI, false);
+        context.fill();
         // Draw the score and time remaining
         context.fillStyle = '#000000';
         context.font = '24px Arial';
