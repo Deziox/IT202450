@@ -1,7 +1,6 @@
 <?php
     include('header');
 ?>
-<body>
     <canvas id="canvas" width="600" height="400"></canvas>
     <script type="text/javascript">//<![CDATA[
 
@@ -46,17 +45,17 @@
     // Listen for keydown events
     canvas.addEventListener('keydown', function(event) {
         event.preventDefault();
-        console.log(event.key, event.code);
-        if (event.code === 40) { // DOWN
+        console.log(event.key, event.keyCode);
+        if (event.keyCode === 40) { // DOWN
             down = true;
         }
-        if (event.code === 38) { // UP
+        if (event.keyCode === 38) { // UP
             up = true;
         }
-        if (event.code === 37) { // LEFT
+        if (event.keyCode === 37) { // LEFT
             left = true;
         }
-        if (event.code === 39) { // RIGHT
+        if (event.keyCode === 39) { // RIGHT
             right = true;
         }
     });
@@ -64,17 +63,17 @@
     // Listen for keyup events
     canvas.addEventListener('keyup', function(event) {
         event.preventDefault();
-        console.log(event.key, event.code);
-        if (event.code === 40) { // DOWN
+        console.log(event.key, event.keyCode);
+        if (event.keyCode === 40) { // DOWN
             down = false;
         }
-        if (event.code === 38) { // UP
+        if (event.keyCode === 38) { // UP
             up = false;
         }
-        if (event.code === 37) { // LEFT
+        if (event.keyCode === 37) { // LEFT
             left = false;
         }
-        if (event.code === 39) { // RIGHT
+        if (event.keyCode === 39) { // RIGHT
             right = false;
         }
     });
@@ -197,4 +196,3 @@
 
 
     //]]></script>
-</body>
