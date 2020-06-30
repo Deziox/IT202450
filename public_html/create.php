@@ -108,7 +108,6 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 <?php include('header.php'); ?>
-<img src="../images/test.png">
 <section class="reglog-center">
     <div class="register">
         <div class="reglog-switch">
