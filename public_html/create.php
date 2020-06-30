@@ -111,7 +111,7 @@ if(isset($_POST['submit'])){
 <section class="reglog-center">
     <div class="register">
         <div class="reglog-switch">
-            <h3>Create Survey Week 5 HW</h3>
+            <h3>create new aesthetic</h3>
         </div>
         <form action="create.php" method="post" enctype="multipart/form-data">
             <label>aesthetic title:</label>
