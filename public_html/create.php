@@ -141,8 +141,8 @@ if(isset($_POST['submit'])){
             <label>Published</label>
             <input type="checkbox" name="published" value="yes"><br/>
 
-            <div style="margin: 40px;">
-                <input class="register-button" type="submit" name="submit" value="find aesthetic">
+            <div style="margin: 20px;">
+                <input class="create-button" type="submit" name="submit" value="find aesthetic">
             </div>
         </form>
     </div>
