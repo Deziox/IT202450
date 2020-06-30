@@ -17,6 +17,7 @@ if(isset($_POST['submit'])){
         $errors['bottom_2'] = "A title is required for second bottom";
     }else {
         $title = $_POST['title'];
+        $tags = $_POST['tags'];
         $top_1 = $_POST['top_1'];
         $top_2 = $_POST['top_2'];
         $bottom_1 = $_POST['bottom_1'];
@@ -48,6 +49,7 @@ if(isset($_POST['submit'])){
 
             $target_dir = "images/";
 
+
             $top_1_name = $_FILES['top_1_image']['name'];
             $top_2_name = $_FILES['top_2_image']['name'];
             $bottom_1_name = $_FILES['bottom_1_image']['name'];
@@ -74,12 +76,13 @@ if(isset($_POST['submit'])){
             move_uploaded_file($_FILES['bottom_2_image']['tmp_name'],$target_dir.$bottom_2_name);
 
             if(!array_filter($errors)){
-                $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES 
-                                                                   (:user_id,:title,:top_1,:top_1_image,:top_2,:top_2_image,:bottom_1,:bottom_1_image,:bottom_2,:bottom_2_image,:published)");
+                $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,tags,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES 
+                                                                   (:user_id,:title,:tags,:top_1,:top_1_image,:top_2,:top_2_image,:bottom_1,:bottom_1_image,:bottom_2,:bottom_2_image,:published)");
 
                 $r = $stmt->execute(array(
                     ":user_id"=>$_SESSION['user']['id'],
                     ":title"=>$title,
+                    ":tags"=>$tags,
 
                     ":top_1"=>$top_1,
                     ":top_1_image"=>$top_1_image,
@@ -137,6 +140,10 @@ if(isset($_POST['submit'])){
             <?php echo "<div class=\"error\">".$errors['bottom_2']."</div>";?>
             <input type="text" name="bottom_2"><br/>
             <input type="file" name="bottom_2_image"> <?php echo "<div class=\"error\">".$errors['bottom_2_image']."</div>";?> <br/>
+
+            <label>Tags (Separated by commas)</label>
+            <?php echo "<div class=\"error\">".$errors['tags']."</div>";?>
+            <input type="text" name="tags"><br/>
 
             <label>Published</label>
             <input type="checkbox" name="published" value="yes"><br/>
