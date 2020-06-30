@@ -1,4 +1,5 @@
 <?php
+session_start();
     if(isset($_SESSION['user'])){
         $logreg = $_SESSION['user']['username'];
         $logregdatatarget = "profile";
