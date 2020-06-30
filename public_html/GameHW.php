@@ -176,6 +176,9 @@
                 }
 
                 foodshape = Math.floor((Math.random() * 2) + 1);
+
+                countdown += 1;
+                if(countdown > 30){ countdown = 30;}
             }
         }
         // Draw the square

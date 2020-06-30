@@ -16,7 +16,7 @@
             if(isset($_POST['date_sort'])){
                 $sort = $_POST['date_sort'];
             }else{
-                $sort = 'ASC';
+                $sort = 'DESC';
             }
             $searchstring = '';
             $query = "SELECT * FROM Surveys ORDER BY created_at ".$sort;
