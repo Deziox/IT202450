@@ -79,13 +79,8 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom1 = strtolower(pathinfo($target_bottom1,PATHINFO_EXTENSION));
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
 
-//            $s3->upload($bucket, $_FILES['top_1_image']['name'], fopen($_FILES['top_1_image']['tmp_name'], 'rb'),'public-read');
-//            $s3->upload($bucket, $_FILES['top_2_image']['name'], fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
-//            $s3->upload($bucket, $_FILES['bottom_1_image']['name'], fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
-//            $s3->upload($bucket, $_FILES['bottom_2_image']['name'], fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
-
             if(!array_filter($errors)){
-                $nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'];
+                $nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'] + 1;
 
                 $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,tags,top_1,top_2,bottom_1,bottom_2,published) VALUES 
                                                                    (:user_id,:title,:tags,:top_1,:top_2,:bottom_1,:bottom_2,:published)");
@@ -93,7 +88,7 @@ if(isset($_POST['submit'])){
                 $r = $stmt->execute(array(
                     ":user_id"=>$_SESSION['user']['id'],
                     ":title"=>$title,
-                    ":tags"=>$nextId,
+                    ":tags"=>$tags,
 
                     ":top_1"=>$top_1,
                     ":top_2"=>$top_2,
@@ -104,7 +99,10 @@ if(isset($_POST['submit'])){
                     ":published"=>$published
                 ));
 
-
+                $s3->upload($bucket, $nextId.'t1'.$imageFileTypeTop1, fopen($_FILES['top_1_image']['tmp_name'], 'rb'),'public-read');
+                $s3->upload($bucket, $nextId.'t2'.$imageFileTypeTop1, fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
+                $s3->upload($bucket, $nextId.'b1'.$imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
+                $s3->upload($bucket, $nextId.'b2'.$imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
 
                 header("location:index.php");
             }
