@@ -25,7 +25,6 @@ if(isset($_SESSION['invalid_password'])) {
 </head>
 <body>
     <!--<input type="button" onclick="window.location.href='register.php'" value="Click Me To Register"/>-->
-    <?php echo 'next_id '.$_POST['next_id'];?>
     <div class="container">
         <div class="content">
             <?php include($indexlink.".php");?>

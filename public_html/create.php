@@ -85,13 +85,13 @@ if(isset($_POST['submit'])){
 //            $s3->upload($bucket, $_FILES['bottom_2_image']['name'], fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
 
             if(!array_filter($errors)){
-                $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,tags,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES 
-                                                                   (:user_id,:title,:tags,:top_1,:top_1_image,:top_2,:top_2_image,:bottom_1,:bottom_1_image,:bottom_2,:bottom_2_image,:published)");
+                $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,tags,top_1,top_2,bottom_1,bottom_2,published) VALUES 
+                                                                   (:user_id,:title,:tags,:top_1,:top_2,:bottom_1,:bottom_2,:published)");
 
                 $r = $stmt->execute(array(
                     ":user_id"=>$_SESSION['user']['id'],
                     ":title"=>$title,
-                    ":tags"=>$tags,
+                    ":tags"=>$db->lastInsertId(),
 
                     ":top_1"=>$top_1,
                     ":top_2"=>$top_2,
@@ -102,7 +102,7 @@ if(isset($_POST['submit'])){
                     ":published"=>$published
                 ));
 
-                $_POST['next_id'] = $db->lastInsertId();
+
 
                 header("location:index.php");
             }
