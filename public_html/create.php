@@ -80,7 +80,7 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
 
             if(!array_filter($errors)){
-                $nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'] + 1;
+                $nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'] + 2;
 
                 $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,tags,top_1,top_2,bottom_1,bottom_2,published) VALUES 
                                                                    (:user_id,:title,:tags,:top_1,:top_2,:bottom_1,:bottom_2,:published)");
