@@ -23,6 +23,7 @@ $test = $s3->getObject([
 ]);
 
 echo var_export($test);
+echo '<img src='.$test['effectiveUri'].'/>';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
@@ -35,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         <p>Upload error :( <?php echo $e->getMessage();?></p>
     <?php } } ?>
 <h2>Upload a file</h2>
-<img src=""
+
 <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']?>" method="POST">
     <input name="userfile" type="file"><input type="submit" value="Upload">
 </form>
