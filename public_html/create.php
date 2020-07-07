@@ -83,6 +83,7 @@ if(isset($_POST['submit'])){
             $stmt = $db->prepare($query);
             $stmt->execute();
             $next_id = $stmt->fetch(PDO::FETCH_ASSOC);
+            $_POST['next_id'] = $next_id;
 
 //            $s3->upload($bucket, $_FILES['top_1_image']['name'], fopen($_FILES['top_1_image']['tmp_name'], 'rb'),'public-read');
 //            $s3->upload($bucket, $_FILES['top_2_image']['name'], fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
@@ -106,7 +107,7 @@ if(isset($_POST['submit'])){
 
                     ":published"=>$published
                 ));
-                header("location:index.php?imgtest=".$next_id);
+                header("location:index.php");
             }
 
         }catch(Exception $e){
