@@ -89,7 +89,10 @@ if(!isset($_SESSION['user'])){
                         break;
                 }
 
-                $stmt = $db->prepare("UPDATE Surveys SET top1_bottom1 = :top1_bottom1,top1_bottom2 = :top1_bottom2,top2_bottom1 = :top2_bottom1,top2_bottom2 = :top2_bottom2 WHERE id = :id");
+                $stmt = $db->prepare("UPDATE Surveys SET top1_bottom1 = :top1_bottom1,
+                                    top1_bottom2 = :top1_bottom2,
+                                    top2_bottom1 = :top2_bottom1,
+                                    top2_bottom2 = :top2_bottom2 WHERE id = :id");
 
                 $r = $stmt->execute(array(
                     ":top1_bottom1"=>$top1_bottom1,
