@@ -73,13 +73,13 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
                     foreach($result['Contents'] as $object){
                         //echo var_export($object).'\n';
                         if(strpos($object['Key'],$s['id']) === 0) {
-                            if (strpos($object['Key'], 't1') !== false) {
+                            if ($object['Key'] === $s['id'].'t1') {
                                 $t1 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
-                            } else if (strpos($object['Key'], 't2') !== false) {
+                            } else if ($object['Key'] === $s['id'].'t2') {
                                 $t2 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
-                            } else if (strpos($object['Key'], 'b1') !== false) {
+                            } else if ($object['Key'] === $s['id'].'b1') {
                                 $b1 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
-                            } else if (strpos($object['Key'], 'b2') !== false) {
+                            } else if ($object['Key'] === $s['id'].'b2') {
                                 $b2 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
                             }
                         }
