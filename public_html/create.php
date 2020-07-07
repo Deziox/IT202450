@@ -1,4 +1,18 @@
 <?php
+require('../vendor/autoload.php');
+// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
+$s3 = new Aws\S3\S3Client([
+    'version'  => 'latest',
+    'region'   => 'us-east-1',
+    'credentials' => [
+        'key'    => getenv('AWS_ACCESS_KEY_ID'),
+        'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
+    ]
+]);
+$bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
+?>
+
+<?php
 session_start();
 require('config.php');
 //print_r($_FILES);
@@ -65,15 +79,16 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom1 = strtolower(pathinfo($target_bottom1,PATHINFO_EXTENSION));
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
 
-            $top_1_image = 'data:image/'.$imageFileTypeTop1.';base64,'.base64_encode(file_get_contents($_FILES['top_1_image']['tmp_name']));
-            $top_2_image = 'data:image/'.$imageFileTypeTop2.';base64,'.base64_encode(file_get_contents($_FILES['top_2_image']['tmp_name']));
-            $bottom_1_image = 'data:image/'.$imageFileTypeBottom1.';base64,'.base64_encode(file_get_contents($_FILES['bottom_1_image']['tmp_name']));
-            $bottom_2_image = 'data:image/'.$imageFileTypeBottom2.';base64,'.base64_encode(file_get_contents($_FILES['bottom_2_image']['tmp_name']));
+            $query = "SHOW TABLE STATUS LIKE Surveys";
+            $stmt = $db->prepare($query);
+            $stmt->execute();
+            $next_id = $stmt->fetch(PDO::FETCH_ASSOC);
+            echo 'Next id: '.$next_id;
 
-            move_uploaded_file($_FILES['top_1_image']['tmp_name'],$target_dir.$top_1_name);
-            move_uploaded_file($_FILES['top_2_image']['tmp_name'],$target_dir.$top_2_name);
-            move_uploaded_file($_FILES['bottom_1_image']['tmp_name'],$target_dir.$bottom_1_name);
-            move_uploaded_file($_FILES['bottom_2_image']['tmp_name'],$target_dir.$bottom_2_name);
+//            $s3->upload($bucket, $_FILES['top_1_image']['name'], fopen($_FILES['top_1_image']['tmp_name'], 'rb'),'public-read');
+//            $s3->upload($bucket, $_FILES['top_2_image']['name'], fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
+//            $s3->upload($bucket, $_FILES['bottom_1_image']['name'], fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
+//            $s3->upload($bucket, $_FILES['bottom_2_image']['name'], fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
 
             if(!array_filter($errors)){
                 $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,tags,top_1,top_1_image,top_2,top_2_image,bottom_1,bottom_1_image,bottom_2,bottom_2_image,published) VALUES 
@@ -85,14 +100,11 @@ if(isset($_POST['submit'])){
                     ":tags"=>$tags,
 
                     ":top_1"=>$top_1,
-                    ":top_1_image"=>$top_1_image,
                     ":top_2"=>$top_2,
-                    ":top_2_image"=>$top_2_image,
 
                     ":bottom_1"=>$bottom_1,
-                    ":bottom_1_image"=>$bottom_1_image,
                     ":bottom_2"=>$bottom_2,
-                    ":bottom_2_image"=>$bottom_2_image,
+
                     ":published"=>$published
                 ));
                 header("location:index.php");
