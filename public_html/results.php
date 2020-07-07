@@ -35,6 +35,7 @@ if(!isset($_SESSION['user'])){
             $top1_bottom2 = $s['top1_bottom2'];
             $top2_bottom1 = $s['top2_bottom1'];
             $top2_bottom2 = $s['top2_bottom2'];
+            $votes = $s['votes'];
 
             if (!isset($_POST['top']) || !isset($_POST['bottom'])) {
 
@@ -88,17 +89,20 @@ if(!isset($_SESSION['user'])){
                         $top2_bottom2++;
                         break;
                 }
+                $votes++;
 
                 $stmt = $db->prepare("UPDATE Surveys SET top1_bottom1 = :top1_bottom1,
                                     top1_bottom2 = :top1_bottom2,
                                     top2_bottom1 = :top2_bottom1,
-                                    top2_bottom2 = :top2_bottom2 WHERE id = :id");
+                                    top2_bottom2 = :top2_bottom2,
+                                    votes = :votes WHERE id = :id");
 
                 $r = $stmt->execute(array(
                     ":top1_bottom1"=>$top1_bottom1,
                     ":top1_bottom2"=>$top1_bottom2,
                     ":top2_bottom1"=>$top2_bottom1,
                     ":top2_bottom2"=>$top2_bottom2,
+                    ":votes"=>$votes,
                     ":id"=>$_GET['id']
                 ));
 
