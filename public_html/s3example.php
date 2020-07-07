@@ -20,7 +20,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
 foreach($result['Contents'] as $object){
     echo var_export($object).'\n';
-    echo '<img src='.'https://aestheticus.s3.amazonaws.com/'.$object['Key'].'/>';
+    echo '<img src='.'https://aestheticus.s3.amazonaws.com/'.$object['Key'].'>';
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
