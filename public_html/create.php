@@ -85,13 +85,15 @@ if(isset($_POST['submit'])){
 //            $s3->upload($bucket, $_FILES['bottom_2_image']['name'], fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
 
             if(!array_filter($errors)){
+                $nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'];
+
                 $stmt = $db->prepare("INSERT INTO Surveys (user_id,title,tags,top_1,top_2,bottom_1,bottom_2,published) VALUES 
                                                                    (:user_id,:title,:tags,:top_1,:top_2,:bottom_1,:bottom_2,:published)");
 
                 $r = $stmt->execute(array(
                     ":user_id"=>$_SESSION['user']['id'],
                     ":title"=>$title,
-                    ":tags"=>$db->lastInsertId(),
+                    ":tags"=>$nextId,
 
                     ":top_1"=>$top_1,
                     ":top_2"=>$top_2,
