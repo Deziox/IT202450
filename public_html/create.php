@@ -79,12 +79,6 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom1 = strtolower(pathinfo($target_bottom1,PATHINFO_EXTENSION));
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
 
-            $query = "SHOW TABLE STATUS LIKE Surveys";
-            $stmt = $db->prepare($query);
-            $stmt->execute();
-            $next_id = $stmt->fetch(PDO::FETCH_ASSOC);
-            $_POST['next_id'] = $next_id;
-
 //            $s3->upload($bucket, $_FILES['top_1_image']['name'], fopen($_FILES['top_1_image']['tmp_name'], 'rb'),'public-read');
 //            $s3->upload($bucket, $_FILES['top_2_image']['name'], fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
 //            $s3->upload($bucket, $_FILES['bottom_1_image']['name'], fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
@@ -107,6 +101,9 @@ if(isset($_POST['submit'])){
 
                     ":published"=>$published
                 ));
+
+                $_POST['next_id'] = $db->lastInsertId();
+
                 header("location:index.php");
             }
 
