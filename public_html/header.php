@@ -41,7 +41,7 @@ session_start();
         <a id="nav" name="outfits" href="search.php">outfits</a>
         <?php
             if(isset($_SESSION['user'])) {
-                echo '<a id="nav" name="create" href="create.php">create</a>';
+                echo '<a id="nav" name="create" href="#" data-target="create">create</a>';
                 echo '<a id="nav" name="profile" href="#" data-target="profile">'.$_SESSION["user"]["username"].'</a>';
             }else{
                 echo '<a id="nav" name="register" href="register.php">login/register</a>';
