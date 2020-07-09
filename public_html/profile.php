@@ -1,8 +1,8 @@
 <?php
+    session_start();
     if(!isset($_GET['profile_id'])){
         if(isset($_SESSION['user'])) {
             header("location: profile.php?profile_id=".$_SESSION['user']['id']);
-            header("location: GameHW.php");
         }else{
             header("location: index.php");
         }
