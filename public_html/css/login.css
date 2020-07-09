@@ -26,6 +26,11 @@ input.register-button, input.login-button {
     margin-bottom: 10px;
 }
 
+.redtext {
+    color: red;
+    text-shadow: black;
+}
+
 input.create-button {
     border-radius: 4px;
     background-color: lightskyblue;

@@ -39,10 +39,10 @@ session_start();
     <div class="header-right">
         <a id="nav" name="survey_list" href="index.php" data-target="survey_list" class="active">home</a>
         <a id="nav" name="outfits" href="search.php">outfits</a>
-        <?php
+        <?php //data-target="profile"
             if(isset($_SESSION['user'])) {
-                echo '<a id="nav" name="create" href="#" data-target="create">create</a>';
-                echo '<a id="nav" name="profile" href="#" data-target="profile">'.$_SESSION["user"]["username"].'</a>';
+                echo '<a id="nav" name="create" href="create.php">create</a>';
+                echo '<a id="nav" name="profile" href="profile.php">'.$_SESSION["user"]["username"].'</a>';
             }else{
                 echo '<a id="nav" name="register" href="register.php">login/register</a>';
             }
