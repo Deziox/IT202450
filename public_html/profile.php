@@ -27,7 +27,7 @@
     <?php include("header.php");?>
 
     <div class="profile-container">
-        <div class="profile-img"><?php echo '<img src="'.$profile_img.'"';?></div>
+        <div class="profile-img"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?></div>
         <div class="profile-bio"></div>
     </div>
 
