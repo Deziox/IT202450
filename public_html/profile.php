@@ -20,7 +20,7 @@
         $r = $stmt->execute(array(":id"=>$profile_id));
         $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
         if($userresult['id'] !== $_GET['profile_id']){
-            header("location: page_not_found.php?test=".$userresult);
+            header("location: page_not_found.php");
         }
 
         $uname = $userresult['username'];
@@ -46,7 +46,7 @@
     <?php include("header.php");?>
 
     <div class="profile-container">
-        <?php echo '<h3 class="profile-name">'.$uname.'</h3>'?>
+        <?php echo '<h1 class="profile-name">'.$uname.'</h1>'?>
         <div class="profile-img"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?></div>
         <div class="profile-bio"></div>
     </div>

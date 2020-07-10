@@ -8,14 +8,16 @@
 
 img.profile-img{
     height: auto;
-    max-width: 60%;
+    max-width: 15%;
+    box-shadow: 0px 0px 40px 20px #87cefa;
 }
 
 div.profile-img{
-    padding: 6%;
+    padding: 2%;
     text-align: center;
 }
 
-h3.profile-name{
+h1.profile-name{
     text-align: center;
+    font-family: 'Space Mono',normal;
 }
