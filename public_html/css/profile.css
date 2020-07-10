@@ -2,22 +2,19 @@
 
 }
 
-.profile-bio{
-
-}
-
 img.profile-img{
     height: auto;
     max-width: 15%;
     box-shadow: 0px 0px 40px 20px #87cefa;
 }
 
-div.profile-img{
+div.profile-img, div.profile-bio{
     padding: 2%;
     text-align: center;
 }
 
-h1.profile-name{
+h1.profile-name, h3.profile-bio{
     text-align: center;
     font-family: 'Space Mono',normal;
+    padding: 10px 10px 0px 10px;
 }

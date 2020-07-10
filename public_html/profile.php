@@ -24,6 +24,7 @@
         }
 
         $uname = $userresult['username'];
+        $bio = $userresult['bio'];
 
     }catch(Exception $e){
         echo "Connection failed = ".$e->getMessage();
@@ -39,6 +40,7 @@
             break;
         }
     }
+
 ?>
 <html>
 <head><link rel="stylesheet" href="css/profile.css"></head>
@@ -48,7 +50,7 @@
     <div class="profile-container">
         <?php echo '<h1 class="profile-name">'.$uname.'</h1>'?>
         <div class="profile-img"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?></div>
-        <div class="profile-bio"></div>
+        <div class="profile-bio"><?php echo '<h3 class="profile-bio">'.$bio.'</h3>'?></div>
     </div>
 
     <div class="reglog-center">
