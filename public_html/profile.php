@@ -21,7 +21,7 @@
         $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
         $uname = $userresult['username'];
 
-        if($uname == false){
+        if($uname === false){
             header("location: page_not_found.php?test=".$userresult);
         }
 
