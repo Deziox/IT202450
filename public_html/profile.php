@@ -19,11 +19,11 @@
         $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
         $r = $stmt->execute(array(":id"=>$profile_id));
         $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
-        $uname = $userresult['username'];
-
-        if($uname === false){
+        if($userresult['id'] !== $_GET['profile_id']){
             header("location: page_not_found.php?test=".$userresult);
         }
+
+        $uname = $userresult['username'];
 
     }catch(Exception $e){
         echo "Connection failed = ".$e->getMessage();
