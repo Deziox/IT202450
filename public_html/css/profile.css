@@ -10,3 +10,8 @@ img.profile-img{
     height: auto;
     max-width: 60%;
 }
+
+div.profile-img{
+    padding: 6%;
+    text-align: center;
+}
