@@ -1,4 +1,5 @@
 <?php
+    require('config.php');
     session_start();
     if(!isset($_GET['profile_id'])){
         if(isset($_SESSION['user'])) {
