@@ -20,12 +20,13 @@
         $r = $stmt->execute(array(":id"=>$profile_id));
         $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($userresult === false){
+        if(count($userresult) == 0){
             header("location: page_not_found.php?test=".$userresult);
         }
         $uname = $userresult['username'];
-        //echo $uname;
-        //echo var_export($userresult);
+        echo $uname."\n";
+        echo var_export($userresult)."\n";
+        echo $userresult;
 
     }catch(Exception $e){
         echo "Connection failed = ".$e->getMessage();
