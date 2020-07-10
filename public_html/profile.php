@@ -20,7 +20,7 @@
         $r = $stmt->execute(array(":id"=>$profile_id));
         $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        //if(!$userresult) {header("location: page_not_found.php");}
+        if(!isset($userresult['username'])){header("location: page_not_found.php");}
         $uname = $userresult['username'];
         echo $uname;
 
