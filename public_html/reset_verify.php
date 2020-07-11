@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['submit'])){
     if(!isset($_POST['rcode'])){
-        header('location: index.html');
+        header('location: index.php');
     }
 
     if(empty($_POST['email'])){
