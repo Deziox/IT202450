@@ -2,8 +2,7 @@
     if(isset($_POST['submit'])){
         if(empty($_POST['email'])){
             $errors['email'] = "Email cannot be empty";
-        }
-        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        }else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "Not a Valid Email";
         }
 
@@ -24,6 +23,10 @@
             $mail->AddAddress($_POST['email']);
 
             $mail->send();
+
+            $_POST['rcode'] = $rcode;
+
+            header('location: reset_verify.php');
         }
     }
 ?>
