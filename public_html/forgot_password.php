@@ -38,7 +38,7 @@
     <h2>Login</h2>
     <div class="login">
 
-        <form action="login.php" method="post">
+        <form action="forgot_password.php" method="post">
             <label>Forgot your password? Enter your email: </label>
             <?php echo "<div class=\"error\">".$errors['email']."</div>";?>
             <input type="text" name="email"><br/>
