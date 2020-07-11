@@ -21,7 +21,7 @@
                                 <h1>your password reset code: </h1>
                                 '.$rcode.'
                            </html>';
-            $mail->AddAddress('dezioxe@gmail.com');
+            $mail->AddAddress($_POST['email']);
 
             $mail->send();
         }
