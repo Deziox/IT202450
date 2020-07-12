@@ -95,17 +95,14 @@
                 echo '<h3>created: '.$s['created_at'].'</h3>';
                 echo '<h3>tags: '.$s['tags'].'</h3>';
 
-                echo '<table class="survey-table">';
-                echo '<tr><th><h4 class="top">top: </h4></th></tr><tr>';
-                echo '<th><img class="profile-clothes" src="' . $t1 . '"></th>';
-                echo '<th><img class="profile-clothes" src="' . $t2 . '"></th></tr>';
+                echo '<h4 class="top">top: </h4>';
+                echo '<img class="profile-clothes" src="' . $t1 . '">';
+                echo '<img class="profile-clothes" src="' . $t2 . '">';
 
+                echo '<h4 class="bottom">bottom: </h4>';
+                echo '<img class="profile-clothes" src="' . $b1 . '">';
+                echo '<img class="profile-clothes" src="' . $b2 . '">';
 
-                echo '<tr><th><h4 class="bottom">bottom: </h4></th></tr><tr>';
-                echo '<th><img class="profile-clothes" src="' . $b1 . '"></th>';
-                echo '<th><img class="profile-clothes" src="' . $b2 . '"></th></tr>';
-
-                echo '</table>';
                 echo '<div id="poll'.$s['id'].'"></div>';
                 echo '</div>';
             }
