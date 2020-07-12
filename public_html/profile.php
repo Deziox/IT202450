@@ -68,6 +68,7 @@
         $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if(!$surveys){
+            echo var_export($surveys)."\n";
             echo var_export($_GET);
             echo "no surveys";
         }else{
