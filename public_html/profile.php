@@ -123,9 +123,15 @@
         echo "Connection failed = ".$e->getMessage();
     }
     ?>
-
-    <div class="reglog-center">
-        <input class="login-button redtext" type="button" onclick="window.location.href='logout.php'" value="logout"/>
-    </div>
+    <?php
+        if(isset($_SESSION['user'])) {
+            if($_SESSION['user']['id'] === $_GET['profile_id']) {
+                echo '
+                <div class="reglog-center" >
+                    <input class="login-button redtext" type = "button" onclick = "window.location.href=\'logout.php\'" value = "logout" />
+                </div >';
+            }
+        }
+    ?>
 </body>
 </html>
