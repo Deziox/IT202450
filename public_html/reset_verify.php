@@ -17,24 +17,25 @@
             header('location: index.php');
         }
 
+        if(isset($_POST['submit'])){
+
+            if(empty($_POST['code'])){
+                $errors['code'] = "The code is obviously not empty...";
+                $_POST['tries']++;
+            }else if ($rcode !== $_POST['code']) {
+                $errors['code'] = "Incorrect verification code";
+                $_POST['tries']++;
+            }
+
+            if(!array_filter($errors)){
+                $stmt = $db->prepare("UPDATE Users SET rcode = :rcode WHERE id = :id");
+                $r = $stmt->execute(array(":rcode"=>'_'.$rcode,":id"=>$_GET['id']));
+
+                header('location: password_reset.php?id='.$_GET['id']);
+            }
+        }
     }catch(Exception $e){
         echo "Connection failed = ".$e->getMessage();
-    }
-
-
-    if(isset($_POST['submit'])){
-
-        if(empty($_POST['code'])){
-            $errors['code'] = "The code is obviously not empty...";
-            $_POST['tries']++;
-        }else if ($rcode !== $_POST['code']) {
-            $errors['code'] = "Incorrect verification code";
-            $_POST['tries']++;
-        }
-
-        if(!array_filter($errors)){
-            header('location: GameHW.php');
-        }
     }
 ?>
 
