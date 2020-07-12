@@ -91,10 +91,7 @@
 
                 echo '<div class="survey" id="survey_'.$s['id'].'">';
                 echo '<table class="survey-table">';
-                echo '<tr>
-                        <th>
-                            <h1 class="profile-survey-title">' . $s['title'] . '</h1>
-                        </th>
+                echo '<tr> <h1 class="profile-survey-title">' . $s['title'] . '</h1>
                         <th>
                             <img class="profile-clothes" src="' . $t1 . '">
                         </th>
