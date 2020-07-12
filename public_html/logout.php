@@ -1,9 +1,9 @@
 <?php
-    include("header.php");
 
     session_start();
     session_unset();
     session_destroy();
+    include("header.php");
     echo "<h1 class='reglog-center'>logged out successfully</h1>";
 
     if (ini_get("session.use_cookies")) {
