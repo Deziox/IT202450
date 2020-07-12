@@ -25,10 +25,10 @@ if(isset($_POST['submit'])){
 <body>
 <?php include('header.php'); ?>
 <section class="reglog-center">
-    <h2>Login</h2>
+    <h2>Verify</h2>
     <div class="login">
 
-        <form action="reset_verify.php" method="post">
+        <?php echo '<form action="reset_verify.php?rcode='.$_POST['rcode'].'" method="post">' ?>
             <label>Verify your password reset code:</label>
             <?php echo "<div class=\"error\">".$errors['code']."</div>";?>
             <input type="text" name="code"><br/>

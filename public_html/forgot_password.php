@@ -1,4 +1,5 @@
 <?php
+    require('config.php');
     if(isset($_POST['submit'])){
         if(empty($_POST['email'])){
             $errors['email'] = "Email cannot be empty";
@@ -10,7 +11,7 @@
             include('mailer-config.php');
             $alphnum = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $rcode = '';
-            for($i = 0; $i < 6; $i++){
+            for($i = 0; $i < 12; $i++){
                 $random_char = $alphnum[mt_rand(0,strlen($alphnum) - 1)];
                 $rcode .= $random_char;
             }
@@ -24,9 +25,17 @@
 
             $mail->send();
 
-            $_POST['rcode'] = $rcode;
+            try{
+                $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+                $db = new PDO($connection_string,$dbuser,$dbpass);
 
-            header('location: reset_verify.php');
+                $stmt = $db->prepare("UPDATE Users SET rcode = :rcode WHERE email = :email");
+                $r = $stmt->execute(array(":rcode"=>$rcode,":email"=>$_POST['email']));
+
+                header('location: reset_verify.php');
+            }catch(Exception $e){
+                echo "Connection failed = ".$e->getMessage();
+            }
         }
     }
 ?>
