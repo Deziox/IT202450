@@ -24,6 +24,11 @@ tr.clothes{
     width: auto;
 }
 
+img.profile-clothes{
+    height: auto;
+    max-width: 10%;
+}
+
 h1.survey-title{
     font-family: 'Space Mono',normal;
     text-align: center;
