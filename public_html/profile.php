@@ -60,9 +60,8 @@
         echo '<h1 class="content-header">'.$h.'</h1><hr>';
 
     try{
-        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-        $db = new PDO($connection_string,$dbuser,$dbpass);
-
+//        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+//        $db = new PDO($connection_string,$dbuser,$dbpass);
 
         $stmt = $db->prepare($query);
         $r = $stmt->execute(array(":user_id"=>$profile_id));
