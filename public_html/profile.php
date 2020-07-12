@@ -51,6 +51,16 @@
         <?php echo '<h1 class="profile-name">'.$uname.'</h1>'?>
         <div class="profile-img"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?></div>
         <div class="profile-bio"><?php echo '<h3 class="profile-bio">'.$bio.'</h3>'?></div>
+        <?php
+        if(isset($_SESSION['user'])) {
+            if($_SESSION['user']['id'] === $_GET['profile_id']) {
+                echo '
+                <div class="reglog-center" >
+                    <input class="login-button redtext" type = "button" onclick = "window.location.href=\'logout.php\'" value = "logout" />
+                </div >';
+            }
+        }
+        ?>
     </div>
 
     <?php
@@ -116,16 +126,6 @@
     }catch(Exception $e){
         echo "Connection failed = ".$e->getMessage();
     }
-    ?>
-    <?php
-        if(isset($_SESSION['user'])) {
-            if($_SESSION['user']['id'] === $_GET['profile_id']) {
-                echo '
-                <div class="reglog-center" >
-                    <input class="login-button redtext" type = "button" onclick = "window.location.href=\'logout.php\'" value = "logout" />
-                </div >';
-            }
-        }
     ?>
 </body>
 </html>
