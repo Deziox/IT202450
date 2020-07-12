@@ -54,7 +54,7 @@
     </div>
 
     <?php
-    if(isset($_GET['search']))
+    if(isset($_GET['profile_id']))
         $query = "SELECT * FROM Surveys WHERE user_id = :user_id ORDER BY created_at DESC";
         $h = $uname."'s outfits";
         echo '<h1 class="content-header">'.$h.'</h1><hr>';
