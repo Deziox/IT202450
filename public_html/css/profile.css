@@ -23,3 +23,9 @@ h1.profile-name, h3.profile-bio{
     font-family: 'Space Mono',normal;
     padding: 10px 10px 0px 10px;
 }
+
+h1.profile-survey-title{
+    font-family: 'Space Mono',normal;
+    text-align: left;
+    text-decoration: underline;
+}
