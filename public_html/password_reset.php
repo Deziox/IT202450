@@ -34,16 +34,20 @@
             }
 
             if(!array_filter($errors)){
-                //$result = $conn->query("SELECT id FROM Users WHERE email = $email");
+
                 if(!array_filter($errors)){
-                    $stmt = $db->prepare("UPDATE Surveys SET password = :password WHERE user_id = :user_id");
+                    $stmt = $db->prepare("UPDATE Users SET password = :password WHERE id = :user_id");
                     $hash = password_hash($_POST['npass'],PASSWORD_BCRYPT);
 
                     $r = $stmt->execute(array(
                         ":password"=>$hash,
                         ":user_id"=>$_GET['id']
                     ));
-                    header("location: index.php");
+
+                    $stmt = $db->prepare("UPDATE Users SET rcode = NULL WHERE id = :user_id");
+                    $r = $stmt->execute(array(":user_id"=>$_GET['id']));
+
+                    header("location: login.php");
                 }
             }
         }
