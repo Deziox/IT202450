@@ -26,7 +26,7 @@ input.register-button, input.login-button {
     margin-bottom: 10px;
 }
 
-input.fogot-button {
+input.forgot-button {
     border-radius: 4px;
     background-color: lightskyblue;
     border: none;
