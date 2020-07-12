@@ -32,7 +32,12 @@
                 $stmt = $db->prepare("UPDATE Users SET rcode = :rcode WHERE email = :email");
                 $r = $stmt->execute(array(":rcode"=>$rcode,":email"=>$_POST['email']));
 
-                header('location: reset_verify.php');
+                $stmt = $db->prepare("SELECT * FROM Users WHERE email = :email");
+                $r = $stmt->execute(array(":email"=>$_POST['email']));
+                $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
+                $id = $userresult['id'];
+
+                header('location: reset_verify.php?id='.$id);
             }catch(Exception $e){
                 echo "Connection failed = ".$e->getMessage();
             }
