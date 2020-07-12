@@ -18,3 +18,8 @@ h1.profile-name, h3.profile-bio{
     font-family: 'Space Mono',normal;
     padding: 10px 10px 0px 10px;
 }
+
+img.profile-clothes{
+    height: auto;
+    max-width: 10%;
+}

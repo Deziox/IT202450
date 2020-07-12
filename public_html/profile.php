@@ -90,31 +90,22 @@
                 }
 
                 echo '<div class="survey" id="survey_'.$s['id'].'">';
-                echo '<form class="survey-form" method="post" action="results.php?id='.$s['id'].'">'; //onsubmit="vote(top.value,bottom.value,'.$s['id'].')"
                 echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
 
                 echo '<h3>created: '.$s['created_at'].'</h3>';
                 echo '<h3>tags: '.$s['tags'].'</h3>';
 
                 echo '<table class="survey-table">';
-                echo '<tr><th><h4 class="top">top: </h4></th></tr><tr">';
-                echo '<th><img class="clothes" src="' . $t1 . '"></th>';
-                echo '<th><img class="clothes" src="' . $t2 . '"></th>';
+                echo '<tr><th><h4 class="top">top: </h4></th></tr><tr>';
+                echo '<th><img class="profile-clothes" src="' . $t1 . '"></th>';
+                echo '<th><img class="profile-clothes" src="' . $t2 . '"></th></tr>';
 
-                echo '</tr><tr>';
-                echo '<th><input type="radio" id="top1" name="top" value="top1"></th>';
-                echo '<th><input type="radio" id="top2" name="top" value="top2"></th></tr>';
 
                 echo '<tr><th><h4 class="bottom">bottom: </h4></th></tr><tr>';
-                echo '<th><img class="clothes" src="' . $b1 . '"></th>';
-                echo '<th><img class="clothes" src="' . $b2 . '"></th>';
-
-                echo '</tr><tr>';
-                echo '<th><input type="radio" id="bottom1" name="bottom" value="bottom1"></th>';
-                echo '<th><input type="radio" id="bottom2" name="bottom" value="bottom2"></th></tr>';
+                echo '<th><img class="profile-clothes" src="' . $b1 . '"></th>';
+                echo '<th><img class="profile-clothes" src="' . $b2 . '"></th></tr>';
 
                 echo '</table>';
-                echo '</form>';
                 echo '<div id="poll'.$s['id'].'"></div>';
                 echo '</div>';
             }
