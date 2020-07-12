@@ -26,6 +26,21 @@ input.register-button, input.login-button {
     margin-bottom: 10px;
 }
 
+input.fogot-button {
+    border-radius: 4px;
+    background-color: lightskyblue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 1px 10px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
 .redtext {
     color: red;
     text-shadow: black;
