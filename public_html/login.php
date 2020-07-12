@@ -30,7 +30,7 @@
             <input class="register-button" type="button" onclick="window.location.href='register.php'" value="Register"/>
             <br>
             <h5>Forgot your password?</h5>
-            <input class="forgot-button" type="button" onclick="window.location.href='register.php'" value="Forgot Password"/>
+            <input class="forgot-button" type="button" onclick="window.location.href='forgot_password.php'" value="Forgot Password"/>
             <!--<a class="register-button" href="#" data-target="register">register</a>-->
         </div>
 
