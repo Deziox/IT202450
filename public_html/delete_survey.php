@@ -18,23 +18,24 @@ if(!isset($_SESSION['user'])){
             $db = new PDO($connection_string, $dbuser, $dbpass);
 
             $surveys = explode(',', $_SESSION['user']['surveys']);
-            echo var_export($surveys);
+            //echo var_export($surveys);
             if (!in_array($_GET['id'], $surveys)) {
-                //header('location: index.php');
-                echo 'test 1';
+                header('location: index.php');
+                //echo 'test 1';
+            }else {
+
+                $stmt = $db->prepare("DELETE FROM Surveys WHERE id = :id");
+                $r = $stmt->execute(array(":id" => $_GET['id']));
+
+                unset($surveys[array_search($_GET['id'], $surveys)]);
+                $_SESSION['user']['surveys'] = $surveys;
+
+                $stmt = $db->prepare("UPDATE Users SET surveys = :surveys WHERE id = :id");
+                $r = $stmt->execute(array(":surveys" => join(',', $surveys), ":id" => $_SESSION['user']['id']));
+
+                header('location: index.php');
+                //echo 'test 2';
             }
-
-            $stmt = $db->prepare("DELETE FROM Surveys WHERE id = :id");
-            $r = $stmt->execute(array(":id" => $_GET['id']));
-
-            unset($surveys[array_search($_GET['id'], $surveys)]);
-            $_SESSION['user']['surveys'] = $surveys;
-
-            $stmt = $db->prepare("UPDATE Users SET surveys = :surveys WHERE id = :id");
-            $r = $stmt->execute(array(":surveys" => join(',', $surveys), ":id" => $_SESSION['user']['id']));
-
-            //header('location: index.php');
-            echo 'test 2';
         } catch (Exception $e) {
             echo $e->getMessage();
         }
