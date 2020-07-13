@@ -3,7 +3,7 @@
 require("config.php");
 
 if(!isset($_SESSION['user'])){
-    header('location: index.php');
+    header('location: GameHW.php');
 }else {
     if (!isset($_GET['id'])) {
         header('location: index.php');
