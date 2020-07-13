@@ -4,6 +4,7 @@ require("config.php");
 
 if(!isset($_SESSION['user'])){
     header('location: index.php');
+    session_abort();
 }
 
 if(!isset($_GET['id'])){
