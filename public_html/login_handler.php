@@ -39,7 +39,10 @@ if(isset($_POST['submit'])){
                     $_SESSION['user'] = array(
                         "id"=>$userresult['id'],
                         "email"=>$userresult['email'],
-                        "username"=>$userresult['username']);
+                        "username"=>$userresult['username'],
+                        "answered"=>$userresult['answered'],
+                        "bio"=>$userresult['bio'],
+                        "surveys"=>$userresult['surveys']);
                     header("location:login_success.php");
                 }else{
                     $errors['password'] = "Password is invalid";
