@@ -21,7 +21,7 @@ try {
         header('location: index.php');
     }
 
-    $stmt = $db->prepare("DELETE Surveys WHERE id = :id");
+    $stmt = $db->prepare("DELETE FROM Surveys WHERE id = :id");
     $r = $stmt->execute(array(":id" => $_GET['id']));
 
     unset($surveys[array_search($_GET['id'],$surveys)]);
@@ -30,6 +30,7 @@ try {
     $stmt = $db->prepare("UPDATE Users SET surveys = :surveys WHERE id = :id");
     $r = $stmt->execute(array(":surveys"=>join(',',$surveys),":id" => $_SESSION['user']['id']));
 
+    header('location: index.php');
 } catch (Exception $e) {
     echo $e->getMessage();
 }
