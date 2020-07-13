@@ -1,11 +1,11 @@
 <?php
-session_start();
+
 require("config.php");
 
 if(!isset($_SESSION['user'])){
     header('location: index.php');
-    session_abort();
 }
+session_start();
 
 if(!isset($_GET['id'])){
     header('location: index.php');
@@ -17,8 +17,10 @@ try {
     $db = new PDO($connection_string, $dbuser, $dbpass);
 
     $surveys = explode(',',$_SESSION['user']['surveys']);
+    echo var_export($surveys);
     if(!in_array($_GET['id'],$surveys)){
-        header('location: index.php');
+        //header('location: index.php');
+        echo 'test 1';
     }
 
     $stmt = $db->prepare("DELETE FROM Surveys WHERE id = :id");
@@ -30,7 +32,8 @@ try {
     $stmt = $db->prepare("UPDATE Users SET surveys = :surveys WHERE id = :id");
     $r = $stmt->execute(array(":surveys"=>join(',',$surveys),":id" => $_SESSION['user']['id']));
 
-    header('location: index.php');
+    //header('location: index.php');
+    echo 'test 2';
 } catch (Exception $e) {
     echo $e->getMessage();
 }
