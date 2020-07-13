@@ -102,7 +102,7 @@
                     }
                 }
 
-                echo '<div class="survey" id="survey_'.$s['id'].'">';
+                echo '<a href="results.php?id='.$s['id'].'"><div class="survey" id="survey_'.$s['id'].'">';
                 echo '<table class="survey-table">';
                 echo '<tr> <h1 class="profile-survey-title">' . $s['title'] . '</h1>
                         <th>
@@ -123,7 +123,7 @@
 
                 echo '</table>';
                 echo '<div id="poll'.$s['id'].'"></div>';
-                echo '</div>';
+                echo '</div></a>';
             }
         }
     }catch(Exception $e){
