@@ -72,7 +72,7 @@
                     }
 
                     echo '<div class="survey" id="survey_'.$s['id'].'">';
-                    echo '<form class="survey-form" method="post" action="results.php?id='.$s['id'].'">'; //onsubmit="vote(top.value,bottom.value,'.$s['id'].')"
+                    echo '<form class="survey-form" method="post" action="survey.php?id='.$s['id'].'">'; //onsubmit="vote(top.value,bottom.value,'.$s['id'].')"
                     echo '<h1 class="survey-title">' . $s['title'] . '</h1>';
 
                     echo '<h3>created: '.$s['created_at'].'</h3>';
