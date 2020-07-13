@@ -5,11 +5,11 @@ require("config.php");
 if(!isset($_SESSION['user'])){
     header('location: index.php');
 }else {
-    session_start();
-
     if (!isset($_GET['id'])) {
         header('location: index.php');
     }else {
+
+        session_start();
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 
         try {
