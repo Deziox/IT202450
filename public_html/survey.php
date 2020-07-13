@@ -21,7 +21,7 @@ include("aws_config.php");
 </head>
 <body>
     <div class="container">
-        <h2>results</h2>
+        <!--<h2>results</h2>-->
         <div class="content">
         <?php
         try {
