@@ -91,7 +91,7 @@
             $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
 
             $offset = (((int) $_GET['p']) * 2) - 2;
-            if($offset < 0){ $offset = 0;}
+            if($offset < 0 || $offset >= sizeof($surveys)){ $offset = 0;}
             $i = 2;
 
             foreach($surveys as $s) {
