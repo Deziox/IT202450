@@ -59,9 +59,9 @@
                     echo "test ".$_SESSION['user']['id']."</br>";
                     $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
                     $r = $stmt->execute(array(":id" => $_SESSION['user']['id']));
-                    $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+                    $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
-                    $answered = explode(',',$s['answered']);
+                    $answered = explode(',',$userresult['answered']);
                     //echo var_export($answered);
                 }
 
