@@ -96,6 +96,8 @@
                 $p = $_GET['p'];
                 if($p > ceil(sizeof($surveys)/2)){
                     $p = ceil(sizeof($surveys)/2);
+                }else if($p < 1){
+                    $p = 1;
                 }
             }
 
