@@ -41,7 +41,7 @@ include("aws_config.php");
                 $r = $stmt->execute(array(":id" => $_GET['id']));
                 $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
-                if($s['published'] !== 2 || $s['approved'] !== 1){
+                if($s['published'] !== '2' || $s['approved'] !== '1'){
                     //header('location: index.php');
                     echo var_export($s);
                     echo "\n\ntest".($s['published'] !== '2');
