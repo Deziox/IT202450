@@ -141,9 +141,9 @@ if(isset($_POST['submit'])){
             <label>Visibility</label>
             <!--<input type="checkbox" name="published" value="yes">--><br/>
             <select id="date_sort" name="published">
-                <option value="0">draft</option>
-                <option value="1">private</option>
-                <option value="2" selected>public</option>
+                <option value=0>draft</option>
+                <option value=1>private</option>
+                <option value=2 selected>public</option>
             </select>
 
             <div style="margin: 20px;">
