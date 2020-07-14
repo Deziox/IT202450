@@ -72,7 +72,9 @@
                     }
 
                     echo '<div class="survey" id="survey_'.$s['id'].'">';
-                    echo '<form class="survey-form" method="post" action="survey.php?id='.$s['id'].'">'; //onsubmit="vote(top.value,bottom.value,'.$s['id'].')"
+                    if($sessionset) {
+                        echo '<form class="survey-form" method="post" action="survey.php?id=' . $s['id'] . '">'; //onsubmit="vote(top.value,bottom.value,'.$s['id'].')"
+                    }
                     echo '<a href="survey.php?id='.$s['id'].'"><h1 class="survey-title">' . $s['title'] . '</h1></a>';
 
                     echo '<h3>created: '.$s['created_at'].'</h3>';
@@ -99,11 +101,12 @@
 
                     if($sessionset) {
                         echo '<input class="vote-button" type="submit" value="vote">';
+                        echo '</form>';
                     }else{
                         echo '<input class="vote-button" type="button" onclick="window.location.href=\'login.php\'" value="login to vote"/>';
                     }
 
-                    echo '</form>';
+
                     echo '<div id="poll'.$s['id'].'"></div>';
                     echo '</div>';
                 }
