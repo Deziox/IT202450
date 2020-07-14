@@ -26,6 +26,7 @@ include("aws_config.php");
                 header("location: index.php");
             }else {
                 $answered = explode(',',$_SESSION['user']['answered']);
+                echo var_export($answered);
 
                 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                 $db = new PDO($connection_string, $dbuser, $dbpass);
