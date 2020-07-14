@@ -67,6 +67,8 @@
                 foreach($surveys as $s) {
                     if($sessionset) {
                         echo "test 1";
+                        echo var_export($answered);
+                        echo $s['id'];
                         if (in_array($s['id'], $answered)) {
                             echo "test 2";
                             continue;
