@@ -31,9 +31,9 @@ include("aws_config.php");
 
                 $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
                 $r = $stmt->execute(array(":id" => $_SESSION['user']['id']));
-                $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+                $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
-                $answered = explode(',',$s['answered']);
+                $answered = explode(',',$userresult['answered']);
                 echo var_export($answered);
 
                 $query = "SELECT * FROM Surveys WHERE id = :id";
@@ -41,7 +41,7 @@ include("aws_config.php");
                 $r = $stmt->execute(array(":id" => $_GET['id']));
                 $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
-                if($s['approved'] !== '1'){
+                if($s['approved'] !== '1' && $userresult['admin'] !== '1'){
                     header('location: index.php');
 //                    echo var_export($s);
 //                    echo "\n\ntest".($s['published'] !== '2');

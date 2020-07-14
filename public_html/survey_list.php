@@ -68,8 +68,8 @@
                 $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
                 foreach($surveys as $s) {
                     if($sessionset) {
-                        echo var_export($answered);
-                        if (in_array($s['id'], $answered)) {
+                        //echo var_export($answered);
+                        if (in_array($s['id'], $answered) && $userresult['admin'] !== '1') {
                             continue;
                         }
                     }
@@ -125,7 +125,6 @@
                         echo '<input class="vote-button" type="button" onclick="window.location.href=\'login.php\'" value="login to vote"/>';
                         echo '</div>';
                     }
-
 
                     echo '<div id="poll'.$s['id'].'"></div>';
                     echo '</div>';
