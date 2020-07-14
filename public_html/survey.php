@@ -189,11 +189,11 @@ include("aws_config.php");
                         $stmt = $db->prepare("UPDATE Users SET answered = :answered WHERE id = :id");
 
                         $r = $stmt->execute(array(":answered" => $_SESSION['user']['answered'].','.$_GET['id'],":id"=>$_SESSION['user']['id']));
-                        //$_SESSION['user']['answered'] .= ','.$_GET['id'];
 
                         unset($_POST['top']);
                         unset($_POST['bottom']);
 
+                        header('location: survey.php?id=' . $s['id']);
                     }
                 }
             }
