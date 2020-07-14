@@ -140,6 +140,7 @@
 
         if(!$a_surveys){
             $h = $uname." has answered no surveys";
+            echo var_export($answered);
             echo var_export($a_surveys);
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
