@@ -56,7 +56,7 @@
                 echo "<h1>No Survey Results</h1>";
             }else{
                 if($sessionset) {
-                    echo "test 0";
+                    echo "test ".$_SESSION['user']['id']."</br>";
                     $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
                     $r = $stmt->execute(array(":id" => $_SESSION['user']['id']));
                     $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -66,9 +66,9 @@
                 $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
                 foreach($surveys as $s) {
                     if($sessionset) {
-                        echo "test 1";
+                        //echo "test 1";
                         echo var_export($answered);
-                        echo $s['id'];
+                        //echo $s['id'];
                         if (in_array($s['id'], $answered)) {
                             echo "test 2";
                             continue;
