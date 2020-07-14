@@ -97,6 +97,7 @@
             }
 
             $offset = (((int)$p) * 2) - 2;
+
             if ($offset < 0 || $offset >= sizeof($surveys)) {
                 $offset = 0;
             }
@@ -151,8 +152,14 @@
             }
         }
         ?>
-        <a href="#" class="prev-profile">&#8249;</a>
-        <a href="#" class="next-profile">&#8250;</a>
+
+        <div class="profile-arrows">
+            <?php
+                echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.($p-1).'" class="prev-profile">&#8249;</a>';
+                ?>
+            <a href="#" class="next-profile">&#8250;</a>
+        </div>
+
         <?php
         //answered surveys
         if(isset($_SESSION['user'])) {
@@ -176,7 +183,7 @@
 //            echo implode(',', array_fill(0, count($answered), '?'));
                     echo '<h1 class="content-header">'.$h.'</h1><hr>';
                 }else{
-                    echo var_export($a_surveys);
+                    //echo var_export($a_surveys);
                     echo '<h1 class="content-header">'.$h.'</h1><hr>';
                     $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
                     foreach($a_surveys as $s) {
@@ -224,6 +231,8 @@
     }catch(Exception $e){
         echo "Connection failed = ".$e->getMessage();
     }
+
+    include('footer.php');
     ?>
 </body>
 </html>

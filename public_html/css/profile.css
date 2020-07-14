@@ -32,15 +32,20 @@ h1.profile-survey-title{
     color: black;
 }
 
-a.prev-profile, a.next-profile{
+a.prev-profile, a.next-profile {
     text-decoration: black;
     display: inline-block;
-    padding: 8px 16px;
+    padding: 20px 60px;
     background-color: lightskyblue;
     color: black;
+    margin: 0% 18%;
 }
 
 a:hover{
     background-color: cornflowerblue;
     color: black;
+}
+
+div.profile-arrows{
+    text-align: center;
 }
