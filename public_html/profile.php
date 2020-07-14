@@ -279,6 +279,9 @@
                     ?>
                     <div class="profile-arrows">
                         <?php
+                        echo $a_prev;
+                        echo $a_next;
+                        echo ceil(sizeof($a_surveys)/2);
                         if($a_prev > 0) {
                             echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $p .'&a='.$a_prev. '" class="prev-profile">&#8249;</a>';
                         }
