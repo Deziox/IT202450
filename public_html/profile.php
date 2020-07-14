@@ -192,6 +192,7 @@
 
                 foreach($answered as $a) {
                     if($a === '') {continue;}
+                    echo $a."\n";
                     $stmt = $db->prepare('SELECT * FROM Surveys WHERE id = :id');
                     $r = $stmt->execute(array(":id"=>$a));
                     array_push($a_surveys,$stmt->fetchAll(PDO::FETCH_ASSOC)[0]);
