@@ -94,6 +94,9 @@
                 $p = 1;
             } else {
                 $p = $_GET['p'];
+                if($p > ceil(sizeof($surveys)/2)){
+                    $p = ceil(sizeof($surveys)/2);
+                }
             }
 
             $offset = (((int)$p) * 2) - 2;
