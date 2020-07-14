@@ -96,7 +96,11 @@
                     }
                     echo '<a href="survey.php?id='.$s['id'].'"><h1 class="survey-title">' . $s['title'] . '</h1></a>';
 
-                    echo '<a href="profile.php?profile_id='.$s['user_id'].'"><h3>created: '.$s['created_at'].'</h3></a>';
+                    $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
+                    $r = $stmt->execute(array(":id" => $s['user_id']));
+                    $un = $stmt->fetchAll(PDO::FETCH_ASSOC)[0]['username'];
+
+                    echo '<a href="profile.php?profile_id='.$s['user_id'].'"><h3>by: '.$un.'</h3></a>';
 
                     echo '<h3>created: '.$s['created_at'].'</h3>';
                     echo '<h3>tags: '.$s['tags'].'</h3>';
