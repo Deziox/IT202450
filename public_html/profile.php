@@ -129,6 +129,61 @@
                 echo '</div></a>';
             }
         }
+
+        //answered surveys
+        $h = $uname."'s answered surveys";
+        $answered = explode(',',$userresult['answered']);
+
+        $stmt = $db->prepare('SELECT * FROM Surveys WHERE id IN('.implode(',', array_fill(0, count($answered), '?')).')');
+        $r = $stmt->execute();
+        $a_surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if(!$a_surveys){
+            $h = $uname." has answered no surveys";
+            echo '<h1 class="content-header">'.$h.'</h1><hr>';
+        }else{
+            echo '<h1 class="content-header">'.$h.'</h1><hr>';
+            $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
+            foreach($a_surveys as $s) {
+
+                unset($b1,$b2,$t1,$t2);
+                foreach($result['Contents'] as $object){
+                    //echo var_export($object).'\n';
+                    if (strpos($object['Key'],$s['id'].'t1') !== false) {
+                        $t1 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
+                    } else if (strpos($object['Key'],$s['id'].'t2') !== false) {
+                        $t2 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
+                    } else if (strpos($object['Key'],$s['id'].'b1') !== false) {
+                        $b1 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
+                    } else if (strpos($object['Key'],$s['id'].'b2') !== false) {
+                        $b2 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
+                    }
+                }
+
+                echo '<a href="survey.php?id='.$s['id'].'"><div class="survey" id="survey_'.$s['id'].'">';
+                echo '<table class="survey-table">';
+                echo '<tr> <h1 class="profile-survey-title">' . $s['title'] . '</h1>
+                        <th>
+                            <img class="profile-clothes" src="' . $t1 . '">
+                        </th>
+                        <th>
+                            <img class="profile-clothes" src="' . $t2 . '">
+                        </th>
+                        <th>
+                            <img class="profile-clothes" src="' . $b1 . '">
+                        </th>
+                        <th>
+                            <img class="profile-clothes" src="' . $b2 . '">
+                        </th>
+                      </tr>';
+                echo '<tr><h3>created: '.$s['created_at'].'</h3></tr>';
+                echo '<tr><h3>tags: '.$s['tags'].'</h3></tr>';
+
+                echo '</table>';
+                echo '<div id="poll'.$s['id'].'"></div>';
+                echo '</div></a>';
+            }
+        }
     }catch(Exception $e){
         echo "Connection failed = ".$e->getMessage();
     }
