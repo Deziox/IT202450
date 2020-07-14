@@ -96,6 +96,8 @@
                     }
                     echo '<a href="survey.php?id='.$s['id'].'"><h1 class="survey-title">' . $s['title'] . '</h1></a>';
 
+                    echo '<a href="profile.php?profile_id='.$s['user_id'].'"><h3>created: '.$s['created_at'].'</h3></a>';
+
                     echo '<h3>created: '.$s['created_at'].'</h3>';
                     echo '<h3>tags: '.$s['tags'].'</h3>';
 
