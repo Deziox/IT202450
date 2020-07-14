@@ -34,7 +34,7 @@ include("aws_config.php");
                 $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
                 $answered = explode(',',$userresult['answered']);
-                echo var_export($answered);
+                //echo var_export($answered);
 
                 $query = "SELECT * FROM Surveys WHERE id = :id";
                 $stmt = $db->prepare($query);

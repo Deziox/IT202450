@@ -111,7 +111,6 @@
             $i = 2;
 
             foreach ($surveys as $s) {
-
                 if ($offset != 0) {
                     $offset--;
                     continue;
@@ -162,11 +161,22 @@
 
         <div class="profile-arrows">
             <?php
+                $an = '';
+                if(isset($_SESSION['user'])) {
+                    if ($_SESSION['user']['id'] === $_GET['profile_id']) {
+                        if(isset($_GET['a'])){
+                            $an = '&a='.$_GET['a'];
+                        }else{
+                            $an = '&a=1';
+                        }
+                    }
+                }
+
                 if($prev > 0) {
-                    echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . ($p - 1) . '" class="prev-profile">&#8249;</a>';
+                    echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $prev.$an. '" class="prev-profile">&#8249;</a>';
                 }
                 if($next <= ceil(sizeof($surveys)/2)){
-                    echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.$next.'" class="next-profile">&#8250;</a>';
+                    echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.$next.$an.'" class="next-profile">&#8250;</a>';
                 }
                 ?>
         </div>
@@ -197,7 +207,37 @@
                     //echo var_export($a_surveys);
                     echo '<h1 class="content-header">'.$h.'</h1><hr>';
                     $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
+
+                    if (!isset($_GET['a'])) {
+                        $an = 1;
+                    } else {
+                        $an = $_GET['a'];
+                        if($an > ceil(sizeof($a_surveys)/2)){
+                            $an = ceil(sizeof($a_surveys)/2);
+                        }else if($an < 1){
+                            $an = 1;
+                        }
+                    }
+
+                    $offset = (((int)$an) * 2) - 2;
+
+                    $a_prev = $an-1;
+                    $a_next = $an+1;
+                    if ($offset < 0 || $offset >= sizeof($a_surveys)) {
+                        $offset = 0;
+                    }
+                    $i = 2;
+
                     foreach($a_surveys as $s) {
+
+                        if ($offset != 0) {
+                            $offset--;
+                            continue;
+                        }
+                        if ($i == 0) {
+                            break;
+                        }
+                        $i--;
 
                         unset($b1,$b2,$t1,$t2);
                         foreach($result['Contents'] as $object){
@@ -236,6 +276,19 @@
                         echo '<div id="poll'.$s['id'].'"></div>';
                         echo '</div></a>';
                     }
+                    ?>
+                    <div class="profile-arrows">
+                        <?php
+                        if($a_prev > 0) {
+                            echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $p .'&a='.$a_prev. '" class="prev-profile">&#8249;</a>';
+                        }
+                        if($a_next <= ceil(sizeof($a_surveys)/2)){
+                            echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.$p.'&a='.$a_next.'" class="next-profile">&#8250;</a>';
+                        }
+                        ?>
+                    </div>
+
+                    <?php
                 }
             }
         }
