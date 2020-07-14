@@ -59,8 +59,10 @@
                     echo "test ".$_SESSION['user']['id']."</br>";
                     $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
                     $r = $stmt->execute(array(":id" => $_SESSION['user']['id']));
-                    $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    $answered = explode(',', $userresult['answered']);
+                    $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+
+                    $answered = explode(',',$s['answered']);
+                    //echo var_export($answered);
                 }
 
                 $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
