@@ -25,11 +25,16 @@ include("aws_config.php");
             }else if(!isset($_GET['id'])){
                 header("location: index.php");
             }else {
-                $answered = explode(',',$_SESSION['user']['answered']);
-                echo var_export($answered);
 
                 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                 $db = new PDO($connection_string, $dbuser, $dbpass);
+
+                $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
+                $r = $stmt->execute(array(":id" => $_SESSION['user']['id']));
+                $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+
+                $answered = explode(',',$s['answered']);
+                echo var_export($answered);
 
                 $query = "SELECT * FROM Surveys WHERE id = :id";
                 $stmt = $db->prepare($query);
@@ -184,7 +189,7 @@ include("aws_config.php");
                         $stmt = $db->prepare("UPDATE Users SET answered = :answered WHERE id = :id");
 
                         $r = $stmt->execute(array(":answered" => $_SESSION['user']['answered'].','.$_GET['id'],":id"=>$_SESSION['user']['id']));
-                        $_SESSION['user']['answered'] .= ','.$_GET['id'];
+                        //$_SESSION['user']['answered'] .= ','.$_GET['id'];
 
                         unset($_POST['top']);
                         unset($_POST['bottom']);
