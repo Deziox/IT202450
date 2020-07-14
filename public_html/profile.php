@@ -86,39 +86,47 @@
         if(!$surveys){
             $h = $uname." has no public outfits";
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
-        }else{
-            echo '<h1 class="content-header">'.$h.'</h1><hr>';
-            $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
+        }else {
+            echo '<h1 class="content-header">' . $h . '</h1><hr>';
+            $result = $s3->listObjects(array('Bucket' => 'aestheticus'));
 
-            $offset = (((int) $_GET['p']) * 2) - 2;
-            if($offset < 0 || $offset >= sizeof($surveys)){ $offset = 0;}
+            if (!isset($_GET['p'])) {
+                $p = 1;
+            } else {
+                $p = $_GET['p'];
+            }
+
+            $offset = (((int)$p) * 2) - 2;
+            if ($offset < 0 || $offset >= sizeof($surveys)) {
+                $offset = 0;
+            }
             $i = 2;
 
-            foreach($surveys as $s) {
+            foreach ($surveys as $s) {
 
-                if($offset != 0){
+                if ($offset != 0) {
                     $offset--;
                     continue;
                 }
-                if($i == 0){
+                if ($i == 0) {
                     break;
                 }
                 $i--;
-                unset($b1,$b2,$t1,$t2);
-                foreach($result['Contents'] as $object){
+                unset($b1, $b2, $t1, $t2);
+                foreach ($result['Contents'] as $object) {
                     //echo var_export($object).'\n';
-                    if (strpos($object['Key'],$s['id'].'t1') !== false) {
+                    if (strpos($object['Key'], $s['id'] . 't1') !== false) {
                         $t1 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
-                    } else if (strpos($object['Key'],$s['id'].'t2') !== false) {
+                    } else if (strpos($object['Key'], $s['id'] . 't2') !== false) {
                         $t2 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
-                    } else if (strpos($object['Key'],$s['id'].'b1') !== false) {
+                    } else if (strpos($object['Key'], $s['id'] . 'b1') !== false) {
                         $b1 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
-                    } else if (strpos($object['Key'],$s['id'].'b2') !== false) {
+                    } else if (strpos($object['Key'], $s['id'] . 'b2') !== false) {
                         $b2 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
                     }
                 }
 
-                echo '<a href="survey.php?id='.$s['id'].'"><div class="survey" id="survey_'.$s['id'].'">';
+                echo '<a href="survey.php?id=' . $s['id'] . '"><div class="survey" id="survey_' . $s['id'] . '">';
                 echo '<table class="survey-table">';
                 echo '<tr> <h1 class="profile-survey-title">' . $s['title'] . '</h1>
                         <th>
@@ -134,15 +142,18 @@
                             <img class="profile-clothes" src="' . $b2 . '">
                         </th>
                       </tr>';
-                echo '<tr><h3>created: '.$s['created_at'].'</h3></tr>';
-                echo '<tr><h3>tags: '.$s['tags'].'</h3></tr>';
+                echo '<tr><h3>created: ' . $s['created_at'] . '</h3></tr>';
+                echo '<tr><h3>tags: ' . $s['tags'] . '</h3></tr>';
 
                 echo '</table>';
-                echo '<div id="poll'.$s['id'].'"></div>';
+                echo '<div id="poll' . $s['id'] . '"></div>';
                 echo '</div></a>';
             }
         }
-
+        ?>
+        <a href="#" class="prev-profile">&#8249;</a>
+        <a href="#" class="next-profile">&#8250;</a>
+        <?php
         //answered surveys
         if(isset($_SESSION['user'])) {
             if ($_SESSION['user']['id'] === $_GET['profile_id']) {

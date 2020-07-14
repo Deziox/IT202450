@@ -31,3 +31,16 @@ h1.profile-survey-title{
     text-decoration: underline;
     color: black;
 }
+
+a.prev-profile, a.next-profile{
+    text-decoration: black;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: lightskyblue;
+    color: black;
+}
+
+a:hover{
+    background-color: cornflowerblue;
+    color: black;
+}
