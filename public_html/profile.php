@@ -89,8 +89,21 @@
         }else{
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
             $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
+
+            $offset = (((int) $_GET['p']) * 2) - 2;
+            if($offset < 0){ $offset = 0;}
+            $i = 2;
+
             foreach($surveys as $s) {
 
+                if($offset != 0){
+                    $offset--;
+                    continue;
+                }
+                if($i == 0){
+                    break;
+                }
+                $i--;
                 unset($b1,$b2,$t1,$t2);
                 foreach($result['Contents'] as $object){
                     //echo var_export($object).'\n';
