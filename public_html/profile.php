@@ -98,6 +98,8 @@
 
             $offset = (((int)$p) * 2) - 2;
 
+            $prev = $p-1;
+            $next = $p+1;
             if ($offset < 0 || $offset >= sizeof($surveys)) {
                 $offset = 0;
             }
@@ -155,9 +157,13 @@
 
         <div class="profile-arrows">
             <?php
-                echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.($p-1).'" class="prev-profile">&#8249;</a>';
+                if($prev > 0) {
+                    echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . ($p - 1) . '" class="prev-profile">&#8249;</a>';
+                }
+                if($next <= ceil(sizeof($surveys)/2)){
+                    echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.$next.'" class="next-profile">&#8250;</a>';
+                }
                 ?>
-            <a href="#" class="next-profile">&#8250;</a>
         </div>
 
         <?php
