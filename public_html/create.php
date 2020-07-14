@@ -94,7 +94,10 @@ if(isset($_POST['submit'])){
                 $s3->upload($bucket, $nextId.'b1.'.$imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
                 $s3->upload($bucket, $nextId.'b2.'.$imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
 
-                header("location:index.php");
+                //header("location:index.php");
+                echo var_export($r);
+                echo var_export($nextId);
+
             }
 
         }catch(Exception $e){
