@@ -41,7 +41,7 @@ include("aws_config.php");
                 $r = $stmt->execute(array(":id" => $_GET['id']));
                 $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
-                if($s['published'] !== '2' || $s['approved'] !== '1'){
+                if($s['approved'] !== '1'){
                     header('location: index.php');
 //                    echo var_export($s);
 //                    echo "\n\ntest".($s['published'] !== '2');
@@ -49,7 +49,7 @@ include("aws_config.php");
 //                    echo "\n\nyerd".($s['published'] != '2');
 //                    echo "\n\nyerd".($s['approved'] != '1');
                 }else {
-
+                    //check if draft
                     $top1_bottom1 = $s['top1_bottom1'];
                     $top1_bottom2 = $s['top1_bottom2'];
                     $top2_bottom1 = $s['top2_bottom1'];

@@ -45,18 +45,31 @@
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
 
-
             $stmt = $db->prepare($query);
             $r = $stmt->execute(array(":searchstring"=>$searchstring));
             $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $s_i = 0;
 
             if(!$surveys){
                 //echo var_export($_GET);
                 echo "<h1>No Survey Results</h1>";
             }else{
+                if($sessionset) {
+                    $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
+                    $r = $stmt->execute(array(":id" => $_SESSION['user']['id']));
+                    $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $answered = explode(',', $userresult['answered']);
+                }
+
                 $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
                 foreach($surveys as $s) {
-
+                    if($sessionset) {
+                        if (in_array($s['id'], $answered)) {
+                            continue;
+                        }
+                    }
+                    $s_i++;
                     unset($b1,$b2,$t1,$t2);
                     foreach($result['Contents'] as $object){
                         //echo var_export($object).'\n';
@@ -112,6 +125,9 @@
 
                     echo '<div id="poll'.$s['id'].'"></div>';
                     echo '</div>';
+                }
+                if($s_i == 0){
+                    echo "<h1>No Survey Results</h1>";
                 }
             }
         }catch(Exception $e){
