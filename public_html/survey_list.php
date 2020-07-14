@@ -5,12 +5,12 @@
 
         if(isset($_GET['search'])){
             $searchstring = $_GET['search'];
-            $query = "SELECT * FROM Surveys WHERE tags LIKE CONCAT('%',:searchstring,'%') ORDER BY 
+            $query = "SELECT * FROM Surveys WHERE tags LIKE CONCAT('%',:searchstring,'%') AND published = 2 AND approved = 1 ORDER BY 
                             CASE
                                 WHEN tags LIKE CONCAT(:searchstring,'%') THEN 1
                                 WHEN tags LIKE CONCAT('%',:searchstring) THEN 3
                                 ELSE 2
-                            END AND published = 2";
+                            END";
             $h = 'outfits matching "'.$_GET['search'].'"';
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
@@ -20,7 +20,7 @@
                 $sort = 'DESC';
             }
             $searchstring = '';
-            $query = "SELECT * FROM Surveys ORDER BY created_at ".$sort;
+            $query = "SELECT * FROM Surveys WHERE published = 2 AND approved = 1 ORDER BY created_at ".$sort;
             $h = "recent outfits";
 
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
