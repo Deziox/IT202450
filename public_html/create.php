@@ -143,7 +143,7 @@ if(isset($_POST['submit'])){
             <select id="date_sort" name="published">
                 <option value="0">draft</option>
                 <option value="1">private</option>
-                <option value="2">public</option>
+                <option value="2" selected>public</option>
             </select>
 
             <div style="margin: 20px;">
