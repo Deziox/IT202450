@@ -133,10 +133,13 @@
         //answered surveys
         $h = $uname."'s answered surveys";
         $answered = explode(',',$userresult['answered']);
+        $a_surveys = array();
 
-        $stmt = $db->prepare('SELECT * FROM Surveys WHERE id IN('.implode(',', array_fill(0, count($answered), '?')).')');
-        $r = $stmt->execute();
-        $a_surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach($answered as $a) {
+            $stmt = $db->prepare('SELECT * FROM Surveys WHERE id = :id');
+            $r = $stmt->execute(array(":id"=>$a));
+            array_push($a_surveys,$stmt->fetchAll(PDO::FETCH_ASSOC)[0]);
+        }
 
         if(!$a_surveys){
             $h = $uname." has answered no surveys";
@@ -145,6 +148,7 @@
             echo implode(',', array_fill(0, count($answered), '?'));
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
+            echo var_export($a_surveys);
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
             $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
             foreach($a_surveys as $s) {
