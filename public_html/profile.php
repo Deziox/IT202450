@@ -192,7 +192,6 @@
 
                 foreach($answered as $a) {
                     if($a === '') {continue;}
-                    echo $a."\n";
                     $stmt = $db->prepare('SELECT * FROM Surveys WHERE id = :id');
                     $r = $stmt->execute(array(":id"=>$a));
                     array_push($a_surveys,$stmt->fetchAll(PDO::FETCH_ASSOC)[0]);
@@ -280,9 +279,6 @@
                     ?>
                     <div class="profile-arrows">
                         <?php
-                        echo $a_prev;
-                        echo $a_next;
-                        echo ceil(sizeof($a_surveys)/2);
                         if($a_prev > 0) {
                             echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $p .'&a='.$a_prev. '" class="prev-profile">&#8249;</a>';
                         }
