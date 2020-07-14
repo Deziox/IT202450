@@ -34,12 +34,12 @@ if(isset($_POST['submit'])){
             $errors['bottom_2_image'] = "An image is required for second bottom";
         }
 
-        if($_POST['published'] == 'public'){
-            $published = '2';
-        }else if($_POST['published'] == 'private'){
-            $published = '1';
+        if($_POST['published'] === 'public'){
+            $published = "2";
+        }else if($_POST['published'] === 'private'){
+            $published = "1";
         }else{
-            $published = '0';
+            $published = "0";
         }
     }
 
