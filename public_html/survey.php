@@ -44,10 +44,10 @@ include("aws_config.php");
                 if($s['published'] !== 2 || $s['approved'] !== 1){
                     //header('location: index.php');
                     echo var_export($s);
-                    echo "\n".($s['published'] !== 2);
-                    echo "\n".($s['approved'] !== 1);
-                    echo "\n".($s['published'] != 2);
-                    echo "\n".($s['approved'] != 1);
+                    echo "\n\ntest".($s['published'] !== 2);
+                    echo "\n\ntest".($s['approved'] !== 1);
+                    echo "\n\nyerd".($s['published'] != 2);
+                    echo "\n\nyerd".($s['approved'] != 1);
                 }else {
 
                     $top1_bottom1 = $s['top1_bottom1'];
