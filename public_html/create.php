@@ -34,7 +34,13 @@ if(isset($_POST['submit'])){
             $errors['bottom_2_image'] = "An image is required for second bottom";
         }
 
-        $published = $_POST['published'];
+        if($_POST['published'] == 'public'){
+            $published = '2';
+        }else if($_POST['published'] == 'private'){
+            $published = '1';
+        }else{
+            $published = '0';
+        }
     }
 
     //Database Managment
@@ -141,9 +147,9 @@ if(isset($_POST['submit'])){
             <label>Visibility</label>
             <!--<input type="checkbox" name="published" value="yes">--><br/>
             <select id="date_sort" name="published">
-                <option value=0>draft</option>
-                <option value=1>private</option>
-                <option value=2 selected>public</option>
+                <option value="draft">draft</option>
+                <option value="private">private</option>
+                <option value="public" selected>public</option>
             </select>
 
             <div style="margin: 20px;">
