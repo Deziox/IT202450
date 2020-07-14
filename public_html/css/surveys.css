@@ -26,7 +26,11 @@ img.clothes{
 
 img.results-clothes{
     height: auto;
-    max-width: 20%;
+    max-width: 50%;
+}
+
+th.results{
+    text-align: left;
 }
 
 tr.clothes{

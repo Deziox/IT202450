@@ -34,7 +34,7 @@ include("aws_config.php");
                 $s = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
 
                 $answered = explode(',',$s['answered']);
-                echo var_export($answered);
+                //echo var_export($answered);
 
                 $query = "SELECT * FROM Surveys WHERE id = :id";
                 $stmt = $db->prepare($query);
@@ -74,7 +74,7 @@ include("aws_config.php");
 
                     echo '<tr><th><h3 class="result-label">'.$s['top_1'].' + '.$s['bottom_1'].'</h3></th></tr><tr>';
                     echo '<th><img class="results-clothes" src="' . $t1 . '"></th>';
-                    echo '<th><img class="results-clothes" src="' . $b1 . '"></th>';
+                    echo '<th class="results"><img class="results-clothes" src="' . $b1 . '"></th>';
                     echo '<th><h4 class="result-label">votes: '.$top1_bottom1.'/'.$votes.'</h4></th></tr>';
 
                     echo '<tr><th><h3 class="result-label">'.$s['top_1'].' + '.$s['bottom_2'].'</h3></th></tr><tr>';
