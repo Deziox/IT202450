@@ -14,9 +14,19 @@
     text-align: center;
 }
 
+.result-label{
+    font-family: 'Space Mono',normal;
+    text-align: left;
+}
+
 img.clothes{
     height: auto;
     max-width: 60%;
+}
+
+img.results-clothes{
+    height: auto;
+    max-width: 20%;
 }
 
 tr.clothes{

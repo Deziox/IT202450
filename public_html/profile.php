@@ -74,7 +74,6 @@
     if(isset($_GET['profile_id']))
         $query = "SELECT * FROM Surveys WHERE user_id = :user_id ORDER BY created_at DESC";
         $h = $uname."'s outfits";
-        echo '<h1 class="content-header">'.$h.'</h1><hr>';
 
     try{
 //        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -85,10 +84,10 @@
         $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if(!$surveys){
-            echo var_export($surveys)."\n";
-            echo var_export($_GET);
-            echo "no surveys";
+            $h = $uname." has no public outfits";
+            echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
+            echo '<h1 class="content-header">'.$h.'</h1><hr>';
             $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
             foreach($surveys as $s) {
 

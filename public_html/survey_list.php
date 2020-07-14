@@ -51,8 +51,8 @@
             $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if(!$surveys){
-                echo var_export($_GET);
-                echo "no surveys";
+                //echo var_export($_GET);
+                echo "<h1>No Survey Results</h1>";
             }else{
                 $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
                 foreach($surveys as $s) {
