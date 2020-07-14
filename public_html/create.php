@@ -34,11 +34,7 @@ if(isset($_POST['submit'])){
             $errors['bottom_2_image'] = "An image is required for second bottom";
         }
 
-        if($_POST['published'] == 'yes'){
-            $published = '1';
-        }else{
-            $published = '0';
-        }
+        $published = $_POST['published'];
     }
 
     //Database Managment
@@ -142,8 +138,13 @@ if(isset($_POST['submit'])){
             <?php echo "<div class=\"error\">".$errors['tags']."</div>";?>
             <input type="text" name="tags"><br/>
 
-            <label>Published</label>
-            <input type="checkbox" name="published" value="yes"><br/>
+            <label>Visibility</label>
+            <!--<input type="checkbox" name="published" value="yes">--><br/>
+            <select id="date_sort" name="published">
+                <option value="0">draft</option>
+                <option value="1">private</option>
+                <option value="2">public</option>
+            </select>
 
             <div style="margin: 20px;">
                 <input class="create-button" type="submit" name="submit" value="find aesthetic">

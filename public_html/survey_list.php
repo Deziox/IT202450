@@ -10,7 +10,7 @@
                                 WHEN tags LIKE CONCAT(:searchstring,'%') THEN 1
                                 WHEN tags LIKE CONCAT('%',:searchstring) THEN 3
                                 ELSE 2
-                            END";
+                            END AND published = 2";
             $h = 'outfits matching "'.$_GET['search'].'"';
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
