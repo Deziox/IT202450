@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
                 //header("location:index.php");
                 echo var_export($r);
                 echo var_export($nextId);
-
+                echo 'published: '.var_export($published);
             }
 
         }catch(Exception $e){
