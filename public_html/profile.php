@@ -142,6 +142,7 @@
             $h = $uname." has answered no surveys";
             echo var_export($answered);
             echo var_export($a_surveys);
+            echo implode(',', array_fill(0, count($answered), '?'));
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
