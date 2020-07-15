@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
         try{
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
-            $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            //$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
             $target_dir = "images/";
 
@@ -98,10 +98,10 @@ if(isset($_POST['submit'])){
                 $s3->upload($bucket, $nextId.'b1.'.$imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
                 $s3->upload($bucket, $nextId.'b2.'.$imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
 
-                //header("location:index.php");
-                echo var_export($r);
-                echo var_export($nextId);
-                echo 'published: '.var_export($published);
+                header("location:index.php");
+//                echo var_export($r);
+//                echo var_export($nextId);
+//                echo 'published: '.var_export($published);
 
 
                 //trigger_error("PDO errorInfo: ".$db->errorInfo());
