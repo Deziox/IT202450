@@ -104,6 +104,7 @@
 
                     echo '<h3>created: '.$s['created_at'].'</h3>';
                     echo '<h3>tags: '.$s['tags'].'</h3>';
+                    echo '<h4 class="result-label">total votes: ' . $s['votes'] . '</h4>';
 
                     echo '<table class="survey-table">';
                     echo '<tr><th><h4 class="top">top: </h4></th></tr><tr">';
