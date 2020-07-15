@@ -52,6 +52,7 @@ if(isset($_POST['submit'])){
         try{
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             $db = new PDO($connection_string,$dbuser,$dbpass);
+            $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
             $target_dir = "images/";
 
@@ -102,8 +103,9 @@ if(isset($_POST['submit'])){
                 echo var_export($nextId);
                 echo 'published: '.var_export($published);
 
-                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-                trigger_error("PDO errorInfo: ".$db->errorInfo());
+
+                //trigger_error("PDO errorInfo: ".$db->errorInfo());
+                echo "PDO errorInfo: ".$db->errorInfo();
             }
 
         }catch(Exception $e){
