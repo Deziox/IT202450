@@ -101,10 +101,13 @@ if(isset($_POST['submit'])){
                 echo var_export($r);
                 echo var_export($nextId);
                 echo 'published: '.var_export($published);
+
+                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                trigger_error("PDO errorInfo: ".$db->errorInfo());
             }
 
         }catch(Exception $e){
-            echo "Connection failed = ".$e->getMessage();
+            echo "PDO ERROR = ".$e->getMessage();
         }
     }
 }
