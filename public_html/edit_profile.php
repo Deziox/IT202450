@@ -49,11 +49,13 @@ try{
                 }
             }
 
+            $bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);
+
             $stmt = $db->prepare("UPDATE Users SET username = :username, bio = :bio WHERE id = :id");
 
             $r = $stmt->execute(array(
                 ":username"=>$_POST['username'],
-                ":bio"=>$_POST['bio'],
+                ":bio"=>$bio,
                 ":id"=>$_SESSION['user']['id']
             ));
 
