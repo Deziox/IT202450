@@ -54,6 +54,12 @@ foreach($result['Contents'] as $object){
     <div class="profile-bio-edit"><h3 style="text-align: center;text-decoration: underline;">bio:</h3><?php echo '<h3 class="profile-bio"><textarea name="bio" rows="8" cols="80" style="text-align: center;font-size: 20px;">'.$bio.'</textarea></h3>'?></div>
 </div>
 
+    <div style="margin: 30px; text-align: center;">
+        <input class="create-button" type="submit" name="submit" value="save changes">
+    </div>
+
+</form>
+
 <?php
 $query = "SELECT * FROM Surveys WHERE user_id = :user_id ORDER BY created_at DESC";
 
@@ -125,11 +131,6 @@ try{
     }
     ?>
 
-    <div style="margin: 30px;">
-        <input class="create-button" type="submit" name="submit" value="save changes">
-    </div>
-
-</form>
     <?php include('footer.php'); ?>
 </body>
 </html>
