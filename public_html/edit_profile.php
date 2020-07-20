@@ -30,7 +30,7 @@ try{
         }
 
         if(!array_filter($errors)) {
-            if (isset($_FILES['profile-img']) && $_FILES['profile-img']['size'] <= 0) {
+            if (isset($_FILES['profile-img']) && $_FILES['profile-img']['size'] > 0) {
                 //echo 'size: '.$_FILES['profile-img']['size'];
                 $imgname = $_FILES['profile-img']['name'];
                 $target = 'images/' . basename($_FILES["profile-img"]["name"]);
