@@ -121,10 +121,10 @@ if(isset($_POST['submit'])){
     }
 }
 
-header("location: GameHW.php");
-die();
-
 try {
+
+    header("location: GameHW.php");
+    die();
 
         $query = "SELECT * FROM Surveys WHERE id = :id";
         $stmt = $db->prepare($query);
