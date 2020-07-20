@@ -1,5 +1,8 @@
 <?php
 
+echo var_export($_POST);
+die();
+
 require("config.php");
 session_start();
 

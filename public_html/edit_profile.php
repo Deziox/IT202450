@@ -90,9 +90,9 @@ try{
 
             echo '<a href="edit_survey.php?id=' . $s['id'] . '"><div class="survey" id="survey_' . $s['id'] . '">';
             echo '<table class="survey-table">';
-            echo '<div style="margin-left: 94%; margin-top: 1.25%;">
-                    <a href="#" id="delete"><img src="images/1214428.svg" style="height: 5%;"></a>
-                    </div>';
+            //echo '<div style="margin-left: 94%; margin-top: 1.25%;">
+            //        <a href="#" id="delete-survey"><img src="images/1214428.svg" style="height: 5%;"></a>
+            //        </div>';
             echo '<tr> <h1 class="profile-survey-title">' . $s['title'];
             if($s['published'] === '0'){
                 echo ' [draft]';
@@ -124,6 +124,11 @@ try{
         echo "Connection failed = ".$e->getMessage();
     }
     ?>
+
+    <div style="margin: 30px;">
+        <input class="create-button" type="submit" name="submit" value="save changes">
+    </div>
+
 </form>
     <?php include('footer.php'); ?>
 </body>
