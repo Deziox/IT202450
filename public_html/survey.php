@@ -73,6 +73,13 @@ include("aws_config.php");
                             echo '<div style="margin: 20px;text-align: center;">
                                     <input class="delete-button" type="submit" name="submit" value="edit survey" onclick="window.location.href=\'edit_survey.php?id='.$s['id'].'\'">
                                   </div>';
+                            echo '<form class="survey-form" method="post" action="'.($s['approved'] === '0'?"approve.php":"disapprove.php").'">';
+                            echo '<input type="hidden" value="'.$s['id'].'" name="id">';
+                            echo '<div style="margin: 20px;text-align: center;">
+                                    <input class="'.($s['approved'] === '0'?"approve":"disapprove").'-button" type="submit" name="submit" value="'.($s['approved'] === '0'?"approve":"disapprove").' survey">
+                                  </div>';
+                            echo '</form>';
+
                         }
 
                         echo '<div class="survey" id="survey_' . $s['id'] . '">';

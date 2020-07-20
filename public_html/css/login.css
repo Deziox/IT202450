@@ -60,9 +60,23 @@ input.create-button {
     margin-bottom: 10px;
 }
 
-input.delete-button {
+input.delete-button, input.disapprove-button {
     border-radius: 4px;
     background-color: red;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 10px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+input.approve-button {
+    border-radius: 4px;
+    background-color: lawngreen;
     border: none;
     color: black;
     text-align: center;
