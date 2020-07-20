@@ -210,7 +210,11 @@
                     if($a === '') {continue;}
                     $stmt = $db->prepare('SELECT * FROM Surveys WHERE id = :id');
                     $r = $stmt->execute(array(":id"=>$a));
-                    array_push($a_surveys,$stmt->fetchAll(PDO::FETCH_ASSOC)[0]);
+                    $set = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    if(sizeof($set) < 1){
+                        continue;
+                    }
+                    array_push($a_surveys,$set[0]);
                 }
 
                 if(!$a_surveys){
