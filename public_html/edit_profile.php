@@ -32,8 +32,16 @@ try{
         if(!array_filter($errors)) {
             if (isset($_FILES['profile-img'])) {
                 $imgname = $_FILES['profile-img']['name'];
-                $target = 'images/' . basename($_FILES["top_1_image"]["name"]);
+                $target = 'images/' . basename($_FILES["profile-img"]["name"]);
                 $imgFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+                $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
+                foreach($result['Contents'] as $object){
+                    if (strpos($object['Key'],$profile_id.'_profile') !== false) {
+                        $s3->deleteObject(['Bucket'=>$bucket,'Key'=>$object['Key']]);
+                        break;
+                    }
+                }
                 $s3->upload($bucket, $_SESSION['user']['id'] . '_profile' . $imgFileType, fopen($_FILES['profile-img']['tmp_name'], 'rb'), 'public-read');
             }
 
