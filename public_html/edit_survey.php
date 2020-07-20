@@ -121,15 +121,15 @@ if(isset($_POST['submit'])){
     }
 }
 
+header("location: GameHW.php");
+die();
+
 try {
 
         $query = "SELECT * FROM Surveys WHERE id = :id";
         $stmt = $db->prepare($query);
         $r = $stmt->execute(array(":id" => $_GET['id']));
         $set = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    header("location: GameHW.php");
-    die();
 
         if(sizeof($set) < 1){
             header('location: index.php');
