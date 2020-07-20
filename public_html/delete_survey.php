@@ -17,32 +17,25 @@ if(!isset($_SESSION['user'])){
         try {
             $db = new PDO($connection_string, $dbuser, $dbpass);
 
-            //echo var_export($surveys);
-            if (!in_array($_GET['id'], $surveys)) {
+            $stmt = $db->prepare("SELECT * FROM Surveys WHERE id = :id");
+            $r = $stmt->execute(array(":id" => $_GET['id']));
+            $set = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if(sizeof($set) < 1){
                 header('location: index.php');
-                //echo 'test 1';
-            }else {
-
-                $stmt = $db->prepare("SELECT * FROM Surveys WHERE id = :id");
-                $r = $stmt->execute(array(":id" => $_GET['id']));
-                $set = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                if(sizeof($set) < 1){
-                    header('location: index.php');
-                    die();
-                }
-                $s = $set[0];
-
-                if($s['user_id'] !== $_SESSION['id']){
-                    header('location: index.php');
-                    die();
-                }
-
-                $stmt = $db->prepare("DELETE FROM Surveys WHERE id = :id");
-                $r = $stmt->execute(array(":id" => $_GET['id']));
-
-                header('location: index.php');
-                //echo 'test 2';
+                die();
             }
+            $s = $set[0];
+
+            if($s['user_id'] !== $_SESSION['id']){
+                header('location: index.php');
+                die();
+            }
+
+            $stmt = $db->prepare("DELETE FROM Surveys WHERE id = :id");
+            $r = $stmt->execute(array(":id" => $_GET['id']));
+
+            header('location: index.php');
+            //echo 'test 2';
         } catch (Exception $e) {
             echo $e->getMessage();
         }
