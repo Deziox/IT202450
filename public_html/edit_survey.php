@@ -180,25 +180,25 @@ try {
             <label>First Top</label>
             <?php echo "<div class=\"error\">".$errors['top_1']."</div>";?>
             <input type="text" name="top_1" value="<?php echo $s['top_1']?>"><br/>
-            <img src="<?php $t1?>" class="clothes" style="height: 100px;">
+            <img src="<?php echo $t1;?>" class="clothes" style="height: 100px;">
             <input type="file" name="top_1_image"> <?php echo "<div class=\"error\">".$errors['top_1_image']."</div>";?> <br/>
 
             <label>Second Top</label>
             <?php echo "<div class=\"error\">".$errors['top_2']."</div>";?>
             <input type="text" name="top_2" value="<?php echo $s['top_2']?>"><br/>
-            <img src="<?php $t2?>" class="clothes" style="height: 100px;">
+            <img src="<?php echo $t2;?>" class="clothes" style="height: 100px;">
             <input type="file" name="top_2_image"> <?php echo "<div class=\"error\">".$errors['top_2_image']."</div>";?> <br/>
 
             <label>First Bottom</label>
             <?php echo "<div class=\"error\">".$errors['bottom_1']."</div>";?>
             <input type="text" name="bottom_1" value="<?php echo $s['bottom_1']?>"><br/>
-            <img src="<?php $b1?>" class="clothes" style="height: 100px;">
+            <img src="<?php echo $b1;?>" class="clothes" style="height: 100px;">
             <input type="file" name="bottom_1_image"> <?php echo "<div class=\"error\">".$errors['bottom_1_image']."</div>";?> <br/>
 
             <label>Second Bottom</label>
             <?php echo "<div class=\"error\">".$errors['bottom_2']."</div>";?>
             <input type="text" name="bottom_2" value="<?php echo $s['bottom_2']?>"><br/>
-            <img src="<?php $b2?>" class="clothes" style="height: 100px;">
+            <img src="<?php echo $b2;?>" class="clothes" style="height: 100px;">
             <input type="file" name="bottom_2_image"> <?php echo "<div class=\"error\">".$errors['bottom_2_image']."</div>";?> <br/>
 
             <label>Tags (Separated by commas)</label>
