@@ -159,6 +159,9 @@ try{
             if($s['published'] === '0'){
                 echo ' [draft]';
             }
+            if($s['approved'] === '0'){
+                echo ' [unapproved]';
+            }
             echo '</h1>
                         <th>
                             <img class="profile-clothes" src="' . $t1 . '">
