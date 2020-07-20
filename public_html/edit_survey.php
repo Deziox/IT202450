@@ -81,7 +81,7 @@ if(isset($_POST['submit'])){
                                                                     bottom_1 = :bottom_1,
                                                                     bottom_2 = :bottom_2,
                                                                     published = :published,
-                                                                    approved = 0");
+                                                                    approved = 0 WHERE id = :id");
 
                 $r = $stmt->execute(array(
                     ":title"=>$title,
@@ -92,7 +92,8 @@ if(isset($_POST['submit'])){
 
                     ":bottom_1"=>$bottom_1,
                     ":bottom_2"=>$bottom_2,
-                    ":published"=>$published
+                    ":published"=>$published,
+                    ":id"=>$id
                 ));
 
                 if($_FILES['top_1_image']['size'] > 0) {
