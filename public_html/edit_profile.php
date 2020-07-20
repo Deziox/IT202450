@@ -15,7 +15,7 @@ try{
 
     if(isset($_POST['submit'])){
 //        echo var_export($_POST);
-        echo var_export($_FILES);
+        //echo var_export($_FILES);
         if(empty($_POST['username'])){
             $errors['username'] = 'Username cannot be empty';
         }else if (!preg_match("/^[a-zA-Z0-9]+$/", $_POST['username'])) {
@@ -30,20 +30,23 @@ try{
         }
 
         if(!array_filter($errors)) {
-            if (isset($_FILES['profile-img'])) {
-                echo 'size: '.$_FILES['profile-img']['size'];
+            if (isset($_FILES['profile-img']) && $_FILES['profile-img']['size'] <= 0) {
+                //echo 'size: '.$_FILES['profile-img']['size'];
                 $imgname = $_FILES['profile-img']['name'];
                 $target = 'images/' . basename($_FILES["profile-img"]["name"]);
                 $imgFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-                $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
-                foreach($result['Contents'] as $object){
-                    if (strpos($object['Key'],$profile_id.'_profile') !== false) {
-                        $s3->deleteObject(['Bucket'=>$bucket,'Key'=>$object['Key']]);
-                        break;
+                if($imgFileType === 'jpg' || $imgFileType === 'jpeg' || $imgFileType === 'png') {
+
+                    $result = $s3->listObjects(array('Bucket' => 'aestheticus'));
+                    foreach ($result['Contents'] as $object) {
+                        if (strpos($object['Key'], $profile_id . '_profile') !== false) {
+                            $s3->deleteObject(['Bucket' => $bucket, 'Key' => $object['Key']]);
+                            break;
+                        }
                     }
+                    $s3->upload($bucket, $_SESSION['user']['id'] . '_profile.' . $imgFileType, fopen($_FILES['profile-img']['tmp_name'], 'rb'), 'public-read');
                 }
-                $s3->upload($bucket, $_SESSION['user']['id'] . '_profile.' . $imgFileType, fopen($_FILES['profile-img']['tmp_name'], 'rb'), 'public-read');
             }
 
             $stmt = $db->prepare("UPDATE Users SET username = :username, bio = :bio WHERE id = :id");
