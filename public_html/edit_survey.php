@@ -170,7 +170,7 @@ try {
 <section class="reglog-center">
     <div class="register">
         <div class="reglog-switch">
-            <h3>create new aesthetic</h3>
+            <h3>edit aesthetic</h3>
         </div>
         <form action="create.php" method="post" enctype="multipart/form-data">
             <label>aesthetic title:</label>
@@ -221,7 +221,7 @@ try {
         </form>
 
         <div style="margin: 10px;">
-            <?php echo '<input class="delete-button" type="submit"  value="delete aesthetic" onclick="window.location.href=delete_survey.php?id='.$s['id'].'">';?>
+            <?php echo '<input class="delete-button" type="submit"  value="delete aesthetic" onclick="window.location.href=\'delete_survey.php?id='.$s['id'].'\'">';?>
         </div>
     </div>
 </section>
