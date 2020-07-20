@@ -5,12 +5,12 @@
 
         if(isset($_GET['search'])){
             $searchstring = $_GET['search'];
-            $query = "SELECT * FROM Surveys WHERE tags LIKE CONCAT('%',:searchstring,'%') AND published = 2 AND approved = 1 ORDER BY 
+            $query = 'SELECT * FROM Surveys WHERE tags LIKE CONCAT(\'%\',:searchstring,\'%\')'. ($_SESSION['user']['admin']?'':'AND published = 2 AND approved = 1'). 'ORDER BY 
                             CASE
-                                WHEN tags LIKE CONCAT(:searchstring,'%') THEN 1
-                                WHEN tags LIKE CONCAT('%',:searchstring) THEN 3
+                                WHEN tags LIKE CONCAT(:searchstring,\'%\') THEN 1
+                                WHEN tags LIKE CONCAT(\'%\',:searchstring) THEN 3
                                 ELSE 2
-                            END";
+                            END';
             $h = 'outfits matching "'.$_GET['search'].'"';
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else{
@@ -20,7 +20,7 @@
                 $sort = 'DESC';
             }
             $searchstring = '';
-            $query = "SELECT * FROM Surveys WHERE published = 2 AND approved = 1 ORDER BY created_at ".$sort;
+            $query = 'SELECT * FROM Surveys WHERE'. ($_SESSION['user']['admin']?'':'AND published = 2 AND approved = 1'). 'ORDER BY created_at '.$sort;
             $h = "recent outfits";
 
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
@@ -124,7 +124,16 @@
                     }else{
                         echo '<div class="survey-form">';
                     }
-                    echo '<a href="survey.php?id='.$s['id'].'"><h1 class="survey-title">' . $s['title'] . '</h1></a>';
+                    echo '<a href="survey.php?id='.$s['id'].'"><h1 class="survey-title">' . $s['title'];
+                    if($s['published'] === '0'){
+                        echo ' [draft]';
+                    }else if($s['published'] === '1'){
+                        echo ' [private]';
+                    }
+                    if($s['approved'] === '0'){
+                        echo ' [unapproved]';
+                    }
+                    echo '</h1></a>';
 
                     $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
                     $r = $stmt->execute(array(":id" => $s['user_id']));
