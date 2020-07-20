@@ -24,7 +24,6 @@ if(isset($_SESSION['invalid_password'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <!--<input type="button" onclick="window.location.href='register.php'" value="Click Me To Register"/>-->
     <div class="container">
         <div class="content">
             <?php include($indexlink.".php");?>

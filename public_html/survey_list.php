@@ -66,6 +66,27 @@
                 }
 
                 $result = $s3->listObjects(array('Bucket'=>'aestheticus'));
+
+                if (!isset($_GET['p'])) {
+                    $p = 1;
+                } else {
+                    $p = $_GET['p'];
+                    if($p > ceil(sizeof($surveys)/2)){
+                        $p = ceil(sizeof($surveys)/2);
+                    }else if($p < 1){
+                        $p = 1;
+                    }
+                }
+
+                $offset = (((int)$p) * 2) - 2;
+                $prev = $p-1;
+                $next = $p+1;
+
+                if ($offset < 0 || $offset >= sizeof($surveys)) {
+                    $offset = 0;
+                }
+                $i = 2;
+
                 foreach($surveys as $s) {
                     if($sessionset) {
                         //echo var_export($answered);
@@ -73,6 +94,15 @@
                             continue;
                         }
                     }
+                    if ($offset != 0) {
+                        $offset--;
+                        continue;
+                    }
+                    if ($i == 0) {
+                        break;
+                    }
+
+                    $i--;
                     $s_i++;
                     unset($b1,$b2,$t1,$t2);
                     foreach($result['Contents'] as $object){
@@ -144,3 +174,14 @@
             echo "Connection failed = ".$e->getMessage();
         }
     ?>
+
+<div class="profile-arrows">
+    <?php
+    if($prev > 0) {
+        echo '<a href= "index.php&p=' . $prev.'" class="prev-profile">&#8249;</a>';
+    }
+    if($next <= ceil(sizeof($surveys)/2)){
+        echo '<a href= "index.php&p=' .$next.'" class="next-profile">&#8250;</a>';
+    }
+    ?>
+</div>
