@@ -21,6 +21,7 @@ div.profile-img, div.profile-bio{
 div.profile-img-edit, div.profile-bio-edit{
     text-align: center;
     margin: 5%;
+    margin-bottom: 2%;
 }
 
 h1.profile-name, h3.profile-bio{
