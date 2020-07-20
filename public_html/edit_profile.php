@@ -15,7 +15,7 @@ try{
 
     if(isset($_POST['submit'])){
 //        echo var_export($_POST);
-//        echo var_export($_FILES);
+        echo var_export($_FILES);
         if(empty($_POST['username'])){
             $errors['username'] = 'Username cannot be empty';
         }else if (!preg_match("/^[a-zA-Z0-9]+$/", $_POST['username'])) {
@@ -31,6 +31,7 @@ try{
 
         if(!array_filter($errors)) {
             if (isset($_FILES['profile-img'])) {
+                echo 'size: '.$_FILES['profile-img']['size'];
                 $imgname = $_FILES['profile-img']['name'];
                 $target = 'images/' . basename($_FILES["profile-img"]["name"]);
                 $imgFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
@@ -53,7 +54,7 @@ try{
                 ":id"=>$_SESSION['user']['id']
             ));
 
-            header('location: profile.php?profile_id='.$_SESSION['user']['id']);
+            //header('location: profile.php?profile_id='.$_SESSION['user']['id']);
         }
     }
 
