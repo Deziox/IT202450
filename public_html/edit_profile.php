@@ -16,7 +16,7 @@ try{
     if(isset($_POST['submit'])){
 
         echo var_export($_POST);
-
+        echo var_export($_FILES);
     }
 
     $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
