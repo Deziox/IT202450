@@ -60,7 +60,7 @@
             if($_SESSION['user']['id'] === $_GET['profile_id']) {
                 echo '
                 <div class="reglog-center" >
-                    <input class="login-button redtext" type = "button" onclick = "window.location.href=\'edit_profile.php?profile_id='.$profile_id.'\'" value = "edit profile" />
+                    <input class="login-button redtext" type = "button" onclick = "window.location.href=\'edit_profile.php\'" value = "edit profile" />
                 </div >
                 <div class="reglog-center" >
                     <input class="login-button redtext" type = "button" onclick = "window.location.href=\'logout.php\'" value = "logout" />
