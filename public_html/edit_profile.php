@@ -20,7 +20,7 @@ try{
             $errors['username'] = 'Username cannot be empty';
         }else if (!preg_match("/^[a-zA-Z0-9]+$/", $_POST['username'])) {
             $errors['username'] = "Username cannot have any special symbols";
-        }else {
+        }else if($_SESSION['user']['username'] !== $_POST['username']){
             $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username");
             $r = $stmt->execute(array(":username" => $_POST['username']));
             $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
