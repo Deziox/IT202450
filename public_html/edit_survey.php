@@ -100,7 +100,9 @@ if(isset($_POST['submit'])){
                     $s3->upload($bucket, $id . 't1.' . $imageFileTypeTop1, fopen($_FILES['top_1_image']['tmp_name'], 'rb'), 'public-read');
                 }
                 if($_FILES['top_2_image']['size'] > 0) {
+                    header('location: GameHW.php');
                     $s3->upload($bucket, $id . 't2.' . $imageFileTypeTop1, fopen($_FILES['top_2_image']['tmp_name'], 'rb'), 'public-read');
+                    die();
                 }
                 if($_FILES['bottom_1_image']['size'] > 0) {
                     $s3->upload($bucket, $id . 'b1.' . $imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'), 'public-read');
