@@ -175,7 +175,7 @@ try {
         <form action="create.php" method="post" enctype="multipart/form-data">
             <label>aesthetic title:</label>
             <?php echo "<div class=\"error\">".$errors['title']."</div>";?>
-            <input type="text" name="title"><br/>
+            <input type="text" name="title" value="<?php echo $s['title']?>"><br/>
 
             <label>First Top</label>
             <?php echo "<div class=\"error\">".$errors['top_1']."</div>";?>
