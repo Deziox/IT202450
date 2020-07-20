@@ -150,6 +150,8 @@ try {
             }
         }
 
+    header("location: GameHW.php");
+    die();
 }catch (Exception $e){
 }
 ?>
