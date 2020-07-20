@@ -267,7 +267,7 @@ try {
             </select>
 
             <div style="margin: 20px;">
-                <input class="create-button" type="submit" name="submit" value="find aesthetic">
+                <input class="create-button" type="submit" name="submit" value="edit aesthetic">
             </div>
         </form>
 

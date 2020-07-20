@@ -26,7 +26,7 @@ if(!isset($_SESSION['user'])){
             }
             $s = $set[0];
 
-            if($s['user_id'] !== $_SESSION['user']['id']){
+            if($s['user_id'] !== $_SESSION['user']['id'] && $_SESSION['user']['admin'] === '0'){
                 header('location: index.php');
                 die();
             }
