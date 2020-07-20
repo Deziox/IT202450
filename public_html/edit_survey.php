@@ -108,7 +108,7 @@ if(isset($_POST['submit'])){
                 if($_FILES['bottom_2_image']['size'] > 0) {
                     $s3->upload($bucket, $id . 'b2.' . $imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'), 'public-read');
                 }
-                header("location: GameHW.php");
+                header("location: index.php");
                 die();
 //                echo var_export($r);
 //                echo var_export($nextId);
