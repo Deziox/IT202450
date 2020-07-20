@@ -141,7 +141,11 @@
 
                 echo '<a href="survey.php?id=' . $s['id'] . '"><div class="survey" id="survey_' . $s['id'] . '">';
                 echo '<table class="survey-table">';
-                echo '<tr> <h1 class="profile-survey-title">' . $s['title'] . '</h1>
+                echo '<tr> <h1 class="profile-survey-title">' . $s['title'];
+                if($s['published'] === '0'){
+                    echo ' [draft]';
+                }
+                echo '</h1>
                         <th>
                             <img class="profile-clothes" src="' . $t1 . '">
                         </th>

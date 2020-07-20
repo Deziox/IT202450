@@ -93,7 +93,11 @@ try{
             echo '<div style="margin-left: 94%; margin-top: 1.25%;">
                     <a href="#" id="delete"><img src="images/1214428.svg" style="height: 5%;"></a>
                     </div>';
-            echo '<tr> <h1 class="profile-survey-title">' . $s['title'] . '</h1>
+            echo '<tr> <h1 class="profile-survey-title">' . $s['title'];
+            if($s['published'] === '0'){
+                echo ' [draft]';
+            }
+            echo '</h1>
                         <th>
                             <img class="profile-clothes" src="' . $t1 . '">
                         </th>
