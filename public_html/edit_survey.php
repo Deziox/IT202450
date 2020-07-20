@@ -74,8 +74,14 @@ if(isset($_POST['submit'])){
             if(!array_filter($errors)){
                 //$nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'] + 1;
 
-                $stmt = $db->prepare("UPDATE Surveys SET (title,tags,top_1,top_2,bottom_1,bottom_2,published,approved) VALUES 
-                                                                   (:title,:tags,:top_1,:top_2,:bottom_1,:bottom_2,:published,0)");
+                $stmt = $db->prepare("UPDATE Surveys SET title = :title,
+                                                                    tags = :tags,
+                                                                    top_1 = :top_1,
+                                                                    top_2 = :top_2,
+                                                                    bottom_1 = :bottom_1,
+                                                                    bottom_2 = :bottom_2,
+                                                                    published = :published,
+                                                                    approved = 0");
 
                 $r = $stmt->execute(array(
                     ":title"=>$title,
@@ -86,7 +92,6 @@ if(isset($_POST['submit'])){
 
                     ":bottom_1"=>$bottom_1,
                     ":bottom_2"=>$bottom_2,
-
                     ":published"=>$published
                 ));
 
