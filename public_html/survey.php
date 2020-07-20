@@ -219,7 +219,7 @@ include("aws_config.php");
         }
         ?>
         </div>
-        <?php include('footer.php');?>
     </div>
+    <?php include('footer.php');?>
 </body>
 </html>
