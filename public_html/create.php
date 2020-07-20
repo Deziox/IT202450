@@ -20,12 +20,12 @@ if(isset($_POST['submit'])){
     }else if(empty($_POST['top_2'])){
         $errors['bottom_2'] = "A title is required for second bottom";
     }else {
-        $title = $_POST['title'];
-        $tags = $_POST['tags'];
-        $top_1 = $_POST['top_1'];
-        $top_2 = $_POST['top_2'];
-        $bottom_1 = $_POST['bottom_1'];
-        $bottom_2 = $_POST['bottom_2'];
+        $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+        $tags = filter_var($_POST['tags'], FILTER_SANITIZE_STRING);
+        $top_1 = filter_var($_POST['top_1'], FILTER_SANITIZE_STRING);
+        $top_2 = filter_var($_POST['top_2'], FILTER_SANITIZE_STRING);
+        $bottom_1 = filter_var($_POST['bottom_1'], FILTER_SANITIZE_STRING);
+        $bottom_2 = filter_var($_POST['bottom_2'], FILTER_SANITIZE_STRING);
 
         if(!isset($_FILES['top_1_image']) || $_FILES['top_1_image']['size'] <= 0){
             $errors['top_1_image'] = "An image is required for first top";
