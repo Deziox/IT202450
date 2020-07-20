@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
                         "answered"=>$userresult['answered'],
                         "bio"=>$userresult['bio'],
                         "surveys"=>$userresult['surveys'],
-                        "admin"=>($userresult['admin'] == 1 ? true:false));
+                        "admin"=>($userresult['admin'] === '1' ? true:false));
                     header("location:login_success.php");
                 }else{
                     $errors['password'] = "Password is invalid";
