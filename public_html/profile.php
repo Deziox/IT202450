@@ -80,17 +80,30 @@
             }
         }
         $h = $uname."'s outfits";
+        if($_SESSION['user']['admin'] === '1'){
+            $h = "unapproved outfits";
+        }
 
     try{
 //        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 //        $db = new PDO($connection_string,$dbuser,$dbpass);
 
-        $stmt = $db->prepare($query);
-        $r = $stmt->execute(array(":user_id"=>$profile_id));
-        $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($_SESSION['user']['admin'] !== '1') {
+            $stmt = $db->prepare($query);
+            $r = $stmt->execute(array(":user_id" => $profile_id));
+            $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            $stmt = $db->prepare("SELECT * FROM Surveys WHERE approved = 0");
+            $r = $stmt->execute(array(":user_id" => $profile_id));
+            $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 
         if(!$surveys){
-            $h = $uname." has no public outfits";
+            if($_SESSION['user']['admin'] === '1') {
+                $h = "no unapproved outfits left";
+            }else {
+                $h = $uname . " has no public outfits";
+            }
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
         }else {
             echo '<h1 class="content-header">' . $h . '</h1><hr>';
@@ -200,7 +213,7 @@
         <?php
         //answered surveys
         if(isset($_SESSION['user'])) {
-            if ($_SESSION['user']['id'] === $_GET['profile_id']) {
+            if ($_SESSION['user']['id'] === $_GET['profile_id'] && $_SESSION['user']['admin'] !== '1') {
 
                 $h = $uname."'s answered surveys";
                 $answered = explode(',',$userresult['answered']);
