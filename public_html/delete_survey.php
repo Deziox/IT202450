@@ -1,14 +1,11 @@
 <?php
 
-echo var_export($_POST);
-die();
-
 require("config.php");
 session_start();
 
 if(!isset($_SESSION['user'])){
     session_abort();
-    header('location: GameHW.php');
+    header('location: index.php');
 }else {
     if (!isset($_GET['id'])) {
         header('location: index.php');
@@ -20,21 +17,28 @@ if(!isset($_SESSION['user'])){
         try {
             $db = new PDO($connection_string, $dbuser, $dbpass);
 
-            $surveys = explode(',', $_SESSION['user']['surveys']);
             //echo var_export($surveys);
             if (!in_array($_GET['id'], $surveys)) {
                 header('location: index.php');
                 //echo 'test 1';
             }else {
 
+                $stmt = $db->prepare("SELECT * FROM Surveys WHERE id = :id");
+                $r = $stmt->execute(array(":id" => $_GET['id']));
+                $set = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                if(sizeof($set) < 1){
+                    header('location: index.php');
+                    die();
+                }
+                $s = $set[0];
+
+                if($s['user_id'] !== $_SESSION['id']){
+                    header('location: index.php');
+                    die();
+                }
+
                 $stmt = $db->prepare("DELETE FROM Surveys WHERE id = :id");
                 $r = $stmt->execute(array(":id" => $_GET['id']));
-
-                unset($surveys[array_search($_GET['id'], $surveys)]);
-                $_SESSION['user']['surveys'] = $surveys;
-
-                $stmt = $db->prepare("UPDATE Users SET surveys = :surveys WHERE id = :id");
-                $r = $stmt->execute(array(":surveys" => join(',', $surveys), ":id" => $_SESSION['user']['id']));
 
                 header('location: index.php');
                 //echo 'test 2';
