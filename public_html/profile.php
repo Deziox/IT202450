@@ -75,7 +75,7 @@
 
         $query = "SELECT * FROM Surveys WHERE user_id = :user_id AND (published = 2 OR published = 1) AND approved = 1 ORDER BY created_at DESC";
         if(isset($_SESSION['user'])) {
-            if($_SESSION['user']['id'] === $_GET['profile_id']) {
+            if($_SESSION['user']['id'] === $_GET['profile_id'] || $_SESSION['user']['admin'] === '1') {
                 $query = "SELECT * FROM Surveys WHERE user_id = :user_id ORDER BY created_at DESC";
             }
         }
