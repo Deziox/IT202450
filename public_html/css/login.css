@@ -60,6 +60,20 @@ input.create-button {
     margin-bottom: 10px;
 }
 
+input.delete-button {
+    border-radius: 4px;
+    background-color: red;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 10px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
 .reglog-center{
     text-align: center
 }

@@ -177,11 +177,12 @@ try {
             <?php echo "<div class=\"error\">".$errors['title']."</div>";?>
             <input type="text" name="title" value="<?php echo $s['title']?>"><br/>
 
+            <div class="survey">
             <label>First Top</label>
             <?php echo "<div class=\"error\">".$errors['top_1']."</div>";?>
             <input type="text" name="top_1" value="<?php echo $s['top_1']?>"><br/>
             <img src="<?php echo $t1;?>" class="clothes" style="height: 100px;">
-            <input type="file" name="top_1_image"> <?php echo "<div class=\"error\">".$errors['top_1_image']."</div>";?> <br/>
+            <input type="file" name="top_1_image"> <?php echo "<div class=\"error\">".$errors['top_1_image']."</div>";?></div> <br/>
 
             <label>Second Top</label>
             <?php echo "<div class=\"error\">".$errors['top_2']."</div>";?>
@@ -189,11 +190,12 @@ try {
             <img src="<?php echo $t2;?>" class="clothes" style="height: 100px;">
             <input type="file" name="top_2_image"> <?php echo "<div class=\"error\">".$errors['top_2_image']."</div>";?> <br/>
 
+            <div class="survey">
             <label>First Bottom</label>
             <?php echo "<div class=\"error\">".$errors['bottom_1']."</div>";?>
             <input type="text" name="bottom_1" value="<?php echo $s['bottom_1']?>"><br/>
             <img src="<?php echo $b1;?>" class="clothes" style="height: 100px;">
-            <input type="file" name="bottom_1_image"> <?php echo "<div class=\"error\">".$errors['bottom_1_image']."</div>";?> <br/>
+            <input type="file" name="bottom_1_image"> <?php echo "<div class=\"error\">".$errors['bottom_1_image']."</div>";?></div><br/>
 
             <label>Second Bottom</label>
             <?php echo "<div class=\"error\">".$errors['bottom_2']."</div>";?>
@@ -217,6 +219,10 @@ try {
                 <input class="create-button" type="submit" name="submit" value="find aesthetic">
             </div>
         </form>
+
+        <div style="margin: 10px;">
+            <?php echo '<input class="delete-button" type="submit"  value="delete aesthetic" onclick="window.location.href=delete_survey.php?id='.$s['id'].'">';?>
+        </div>
     </div>
 </section>
 </body>
