@@ -14,9 +14,39 @@ try{
     $db = new PDO($connection_string,$dbuser,$dbpass);
 
     if(isset($_POST['submit'])){
+//        echo var_export($_POST);
+//        echo var_export($_FILES);
+        if(empty($_POST['username'])){
+            $errors['username'] = 'Username cannot be empty';
+        }else if (!preg_match("/^[a-zA-Z0-9]+$/", $_POST['username'])) {
+            $errors['username'] = "Username cannot have any special symbols";
+        }else {
+            $stmt = $db->prepare("SELECT * FROM Users WHERE username = :username");
+            $r = $stmt->execute(array(":username" => $_POST['username']));
+            $userresult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($stmt->rowCount() > 0) {
+                $errors['username'] = "Username already taken, choose another";
+            }
+        }
 
-        echo var_export($_POST);
-        echo var_export($_FILES);
+        if(!array_filter($errors)) {
+            if (isset($_FILES['profile-img'])) {
+                $imgname = $_FILES['profile-img']['name'];
+                $target = 'images/' . basename($_FILES["top_1_image"]["name"]);
+                $imgFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+                $s3->upload($bucket, $_SESSION['user']['id'] . '_profile' . $imgFileType, fopen($_FILES['profile-img']['tmp_name'], 'rb'), 'public-read');
+            }
+
+            $stmt = $db->prepare("UPDATE Users SET username = :username, bio = :bio WHERE id = :id");
+
+            $r = $stmt->execute(array(
+                ":username"=>$_POST['username'],
+                ":bio"=>$_POST['bio'],
+                ":id"=>$_SESSION['user']['id']
+            ));
+
+            header('location: profile.php?profile_id='.$_SESSION['user']['id']);
+        }
     }
 
     $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
@@ -54,6 +84,7 @@ foreach($result['Contents'] as $object){
 
 <div class="profile-container">
     <h3 style="text-align: center;text-decoration: underline;">username:</h3>
+    <?php echo "<div class=\"error\">".$errors['username']."</div>";?>
     <?php echo '<h1 class="profile-name"><input type="text" name="username" value="'.$uname.'" style="text-align: center;font-size: 30px;"></h1>'?>
     <div class="profile-img-edit"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?>
         <?php echo "<div class=\"error\">".$errors['profile-img']."</div>";?>
