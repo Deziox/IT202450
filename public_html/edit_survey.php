@@ -15,6 +15,8 @@ if(!isset($_GET['id'])){
     die();
 }
 
+$id = $_GET['id'];
+
 if(isset($_POST['submit'])){
     if(empty($_POST['title'])){
         $errors['title'] = "A title is required for your aesthetic";
@@ -33,16 +35,6 @@ if(isset($_POST['submit'])){
         $top_2 = filter_var($_POST['top_2'], FILTER_SANITIZE_STRING);
         $bottom_1 = filter_var($_POST['bottom_1'], FILTER_SANITIZE_STRING);
         $bottom_2 = filter_var($_POST['bottom_2'], FILTER_SANITIZE_STRING);
-
-        if(!isset($_FILES['top_1_image']) || $_FILES['top_1_image']['size'] <= 0){
-            $errors['top_1_image'] = "An image is required for first top";
-        }else if(!isset($_FILES['top_2_image']) || $_FILES['top_2_image']['size'] <= 0){
-            $errors['top_2_image'] = "An image is required for second top";
-        }else if(!isset($_FILES['bottom_1_image']) || $_FILES['bottom_1_image']['size'] <= 0){
-            $errors['bottom_1_image'] = "An image is required for first bottom";
-        }else if(!isset($_FILES['bottom_2_image']) || $_FILES['bottom_2_image']['size'] <= 0){
-            $errors['bottom_2_image'] = "An image is required for second bottom";
-        }
 
         if($_POST['published'] === 'public'){
             $published = "2";
@@ -80,14 +72,12 @@ if(isset($_POST['submit'])){
             $imageFileTypeBottom2 = strtolower(pathinfo($target_bottom2,PATHINFO_EXTENSION));
 
             if(!array_filter($errors)){
-                $nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'] + 1;
+                //$nextId = $db->query("SHOW TABLE STATUS LIKE 'Surveys'")->fetch(PDO::FETCH_ASSOC)['Auto_increment'] + 1;
 
-                $stmt = $db->prepare("INSERT INTO Surveys (id,user_id,title,tags,top_1,top_2,bottom_1,bottom_2,published) VALUES 
-                                                                   (:id,:user_id,:title,:tags,:top_1,:top_2,:bottom_1,:bottom_2,:published)");
+                $stmt = $db->prepare("UPDATE Surveys SET (title,tags,top_1,top_2,bottom_1,bottom_2,published,approved) VALUES 
+                                                                   (:title,:tags,:top_1,:top_2,:bottom_1,:bottom_2,:published,0)");
 
                 $r = $stmt->execute(array(
-                    ":id"=>$nextId,
-                    ":user_id"=>$_SESSION['user']['id'],
                     ":title"=>$title,
                     ":tags"=>$tags,
 
@@ -100,12 +90,20 @@ if(isset($_POST['submit'])){
                     ":published"=>$published
                 ));
 
-                $s3->upload($bucket, $nextId.'t1.'.$imageFileTypeTop1, fopen($_FILES['top_1_image']['tmp_name'], 'rb'),'public-read');
-                $s3->upload($bucket, $nextId.'t2.'.$imageFileTypeTop1, fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
-                $s3->upload($bucket, $nextId.'b1.'.$imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
-                $s3->upload($bucket, $nextId.'b2.'.$imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
-
+                if($_FILES['top_1_image']['size'] > 0) {
+                    $s3->upload($bucket, $id . 't1.' . $imageFileTypeTop1, fopen($_FILES['top_1_image']['tmp_name'], 'rb'), 'public-read');
+                }
+                if($_FILES['top_2_image']['size'] > 0) {
+                    $s3->upload($bucket, $id . 't2.' . $imageFileTypeTop1, fopen($_FILES['top_2_image']['tmp_name'], 'rb'), 'public-read');
+                }
+                if($_FILES['bottom_1_image']['size'] > 0) {
+                    $s3->upload($bucket, $id . 'b1.' . $imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'), 'public-read');
+                }
+                if($_FILES['bottom_2_image']['size'] > 0) {
+                    $s3->upload($bucket, $id . 'b2.' . $imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'), 'public-read');
+                }
                 header("location:index.php");
+                die();
 //                echo var_export($r);
 //                echo var_export($nextId);
 //                echo 'published: '.var_export($published);
@@ -172,7 +170,7 @@ try {
         <div class="reglog-switch">
             <h3>edit aesthetic</h3>
         </div>
-        <form action="create.php" method="post" enctype="multipart/form-data">
+        <?php echo '<form action="edit_survey.php?id='.$id.'" method="post" enctype="multipart/form-data">'?>
             <label>aesthetic title:</label>
             <?php echo "<div class=\"error\">".$errors['title']."</div>";?>
             <input type="text" name="title" value="<?php echo $s['title']?>"><br/>
