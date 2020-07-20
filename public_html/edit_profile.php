@@ -42,7 +42,7 @@ try{
                         break;
                     }
                 }
-                $s3->upload($bucket, $_SESSION['user']['id'] . '_profile' . $imgFileType, fopen($_FILES['profile-img']['tmp_name'], 'rb'), 'public-read');
+                $s3->upload($bucket, $_SESSION['user']['id'] . '_profile.' . $imgFileType, fopen($_FILES['profile-img']['tmp_name'], 'rb'), 'public-read');
             }
 
             $stmt = $db->prepare("UPDATE Users SET username = :username, bio = :bio WHERE id = :id");
