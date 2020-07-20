@@ -175,13 +175,13 @@
         }
     ?>
 
-<div class="profile-arrows">
+<div class="main-arrows">
     <?php
     if($prev > 0) {
-        echo '<a href= "index.php&p=' . $prev.'" class="prev-profile">&#8249;</a>';
+        echo '<a href= "index.php?p=' . $prev.'" class="prev-main">&#8249;</a>';
     }
     if($next <= ceil(sizeof($surveys)/2)){
-        echo '<a href= "index.php&p=' .$next.'" class="next-profile">&#8250;</a>';
+        echo '<a href= "index.php?p=' .$next.'" class="next-main">&#8250;</a>';
     }
     ?>
 </div>

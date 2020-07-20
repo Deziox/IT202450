@@ -52,6 +52,24 @@ div.survey-form, form.survey-form{
     text-align: center;
 }
 
+a.prev-main, a.next-main {
+    text-decoration: black;
+    display: inline-block;
+    padding: 20px 60px;
+    background-color: lightskyblue;
+    color: black;
+    margin: 0% 18%;
+}
+
+a:hover{
+    background-color: cornflowerblue;
+    color: black;
+}
+
+div.main-arrows{
+    text-align: center;
+}
+
 input.vote-button{
     border-radius: 4px;
     background-color: lightskyblue;
