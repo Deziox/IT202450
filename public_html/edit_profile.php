@@ -51,8 +51,7 @@ foreach($result['Contents'] as $object){
     <h3 style="text-align: center;text-decoration: underline;">username:</h3>
     <?php echo '<h1 class="profile-name"><input type="text" name="username" value="'.$uname.'" style="text-align: center;font-size: 30px;"></h1>'?>
     <div class="profile-img-edit"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?></div>
-    <h3 style="text-align: center;text-decoration: underline;">bio:</h3>
-    <div class="profile-bio-edit"><?php echo '<h3 class="profile-bio"><textarea name="bio" rows="8" cols="80" style="text-align: center;font-size: 20px;">'.$bio.'</textarea></h3>'?></div>
+    <div class="profile-bio-edit"><h3 style="text-align: center;text-decoration: underline;">bio:</h3><?php echo '<h3 class="profile-bio"><textarea name="bio" rows="8" cols="80" style="text-align: center;font-size: 20px;">'.$bio.'</textarea></h3>'?></div>
 </div>
 
 <?php
