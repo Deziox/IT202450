@@ -177,12 +177,14 @@
 
 <div class="main-arrows">
     <?php
-    echo '<div style="text-align: center;"><h3>'.$p.'</h3></div>';
-    if($prev > 0) {
-        echo '<a href= "index.php?p=' . $prev.'" class="prev-main">&#8249;</a>';
-    }
-    if($next <= ceil(sizeof($surveys)/2)){
-        echo '<a href= "index.php?p=' .$next.'" class="next-main">&#8250;</a>';
+    if($s_i > 2) {
+        echo '<div style="text-align: center;"><h3>' . $p . '</h3></div>';
+        if ($prev > 0) {
+            echo '<a href= "index.php?p=' . $prev . '" class="prev-main">&#8249;</a>';
+        }
+        if ($next <= ceil(sizeof($surveys) / 2)) {
+            echo '<a href= "index.php?p=' . $next . '" class="next-main">&#8250;</a>';
+        }
     }
     ?>
 </div>
