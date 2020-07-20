@@ -97,18 +97,58 @@ if(isset($_POST['submit'])){
                 ));
 
                 if($_FILES['top_1_image']['size'] > 0) {
-                    $s3->upload($bucket, $id . 't1.' . $imageFileTypeTop1, fopen($_FILES['top_1_image']['tmp_name'], 'rb'), 'public-read');
+                    if($imageFileTypeTop1 === 'jpg' || $imageFileTypeTop1 === 'jpeg' || $imageFileTypeTop1 === 'png') {
+
+                        $result = $s3->listObjects(array('Bucket' => 'aestheticus'));
+                        foreach ($result['Contents'] as $object) {
+                            if (strpos($object['Key'], $id . 't1') !== false) {
+                                $s3->deleteObject(['Bucket' => $bucket, 'Key' => $object['Key']]);
+                                break;
+                            }
+                        }
+                        $s3->upload($bucket, $id . 't1.' . $imageFileTypeTop1, fopen($_FILES['top_1_image']['tmp_name'], 'rb'), 'public-read');
+                    }
                 }
                 if($_FILES['top_2_image']['size'] > 0) {
-                    header('location: GameHW.php');
-                    $s3->upload($bucket, $id . 't2.' . $imageFileTypeTop1, fopen($_FILES['top_2_image']['tmp_name'], 'rb'), 'public-read');
-                    die();
+                    if($imageFileTypeTop2 === 'jpg' || $imageFileTypeTop2 === 'jpeg' || $imageFileTypeTop2 === 'png') {
+
+                        $result = $s3->listObjects(array('Bucket' => 'aestheticus'));
+                        foreach ($result['Contents'] as $object) {
+                            if (strpos($object['Key'], $id . 't2') !== false) {
+                                $s3->deleteObject(['Bucket' => $bucket, 'Key' => $object['Key']]);
+                                break;
+                            }
+                        }
+                        $s3->upload($bucket, $id . 't2.' . $imageFileTypeTop2, fopen($_FILES['top_2_image']['tmp_name'], 'rb'), 'public-read');
+                    }
                 }
                 if($_FILES['bottom_1_image']['size'] > 0) {
-                    $s3->upload($bucket, $id . 'b1.' . $imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'), 'public-read');
+                    if($imageFileTypeBottom1 === 'jpg' || $imageFileTypeBottom1 === 'jpeg' || $imageFileTypeBottom1 === 'png') {
+
+                        $result = $s3->listObjects(array('Bucket' => 'aestheticus'));
+                        foreach ($result['Contents'] as $object) {
+                            if (strpos($object['Key'], $id . 'b1') !== false) {
+                                $s3->deleteObject(['Bucket' => $bucket, 'Key' => $object['Key']]);
+                                break;
+                            }
+                        }
+                        $s3->upload($bucket, $id . 'b1.' . $imageFileTypeBottom1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'), 'public-read');
+                    }
+
                 }
                 if($_FILES['bottom_2_image']['size'] > 0) {
-                    $s3->upload($bucket, $id . 'b2.' . $imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'), 'public-read');
+                    if($imageFileTypeBottom2 === 'jpg' || $imageFileTypeBottom2 === 'jpeg' || $imageFileTypeBottom2 === 'png') {
+
+                        $result = $s3->listObjects(array('Bucket' => 'aestheticus'));
+                        foreach ($result['Contents'] as $object) {
+                            if (strpos($object['Key'], $id . 'b2') !== false) {
+                                $s3->deleteObject(['Bucket' => $bucket, 'Key' => $object['Key']]);
+                                break;
+                            }
+                        }
+                        $s3->upload($bucket, $id . 'b2.' . $imageFileTypeBottom2, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'), 'public-read');
+                    }
+
                 }
                 header("location: index.php");
                 die();

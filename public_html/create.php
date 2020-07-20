@@ -94,9 +94,9 @@ if(isset($_POST['submit'])){
                 ));
 
                 $s3->upload($bucket, $nextId.'t1.'.$imageFileTypeTop1, fopen($_FILES['top_1_image']['tmp_name'], 'rb'),'public-read');
-                $s3->upload($bucket, $nextId.'t2.'.$imageFileTypeTop1, fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
-                $s3->upload($bucket, $nextId.'b1.'.$imageFileTypeTop1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
-                $s3->upload($bucket, $nextId.'b2.'.$imageFileTypeTop1, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
+                $s3->upload($bucket, $nextId.'t2.'.$imageFileTypeTop2, fopen($_FILES['top_2_image']['tmp_name'], 'rb'),'public-read');
+                $s3->upload($bucket, $nextId.'b1.'.$imageFileTypeBottom1, fopen($_FILES['bottom_1_image']['tmp_name'], 'rb'),'public-read');
+                $s3->upload($bucket, $nextId.'b2.'.$imageFileTypeBottom2, fopen($_FILES['bottom_2_image']['tmp_name'], 'rb'),'public-read');
 
                 header("location:index.php");
 //                echo var_export($r);
