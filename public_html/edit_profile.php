@@ -52,7 +52,7 @@ foreach($result['Contents'] as $object){
     <?php echo '<h1 class="profile-name"><input type="text" name="username" value="'.$uname.'" style="text-align: center;font-size: 30px;"></h1>'?>
     <div class="profile-img-edit"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?>
         <?php echo "<div class=\"error\">".$errors['profile-img']."</div>";?>
-        <div style="text-align: center">
+        <div style="text-align: center;margin-top: 3%;">
             <input type="file" name="profile-img">
         </div>
     </div>
