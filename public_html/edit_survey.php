@@ -168,38 +168,38 @@ try {
         <form action="create.php" method="post" enctype="multipart/form-data">
             <label>aesthetic title:</label>
             <?php echo "<div class=\"error\">".$errors['title']."</div>";?>
-            <input type="text" name="title" value="<?php echo $s['title']?>"><br/>
+            <input type="text" name="title"><br/>
 
             <label>First Top</label>
             <?php echo "<div class=\"error\">".$errors['top_1']."</div>";?>
-            <input type="text" name="top_1" value="<?php echo $s['top_1']?>"><br/>
+            <input type="text" name="top_1"><br/>
             <input type="file" name="top_1_image"> <?php echo "<div class=\"error\">".$errors['top_1_image']."</div>";?> <br/>
 
             <label>Second Top</label>
             <?php echo "<div class=\"error\">".$errors['top_2']."</div>";?>
-            <input type="text" name="top_2" value="<?php echo $s['top_2']?>"><br/>
+            <input type="text" name="top_2"><br/>
             <input type="file" name="top_2_image"> <?php echo "<div class=\"error\">".$errors['top_2_image']."</div>";?> <br/>
 
             <label>First Bottom</label>
             <?php echo "<div class=\"error\">".$errors['bottom_1']."</div>";?>
-            <input type="text" name="bottom_1" value="<?php echo $s['bottom_1']?>"><br/>
+            <input type="text" name="bottom_1"><br/>
             <input type="file" name="bottom_1_image"> <?php echo "<div class=\"error\">".$errors['bottom_1_image']."</div>";?> <br/>
 
             <label>Second Bottom</label>
             <?php echo "<div class=\"error\">".$errors['bottom_2']."</div>";?>
-            <input type="text" name="bottom_2" value="<?php echo $s['bottom_2']?>"><br/>
+            <input type="text" name="bottom_2"><br/>
             <input type="file" name="bottom_2_image"> <?php echo "<div class=\"error\">".$errors['bottom_2_image']."</div>";?> <br/>
 
             <label>Tags (Separated by commas)</label>
             <?php echo "<div class=\"error\">".$errors['tags']."</div>";?>
-            <input type="text" name="tags" value="<?php echo $s['tags']?>"><br/>
+            <input type="text" name="tags"><br/>
 
             <label>Visibility</label>
             <!--<input type="checkbox" name="published" value="yes">--><br/>
             <select id="date_sort" name="published">
                 <option value="draft">draft</option>
                 <option value="private">private</option>
-                <option value="public">public</option>
+                <option value="public" selected>public</option>
             </select>
 
             <div style="margin: 20px;">
