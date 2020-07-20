@@ -57,7 +57,8 @@ try{
                 ":id"=>$_SESSION['user']['id']
             ));
 
-            //header('location: profile.php?profile_id='.$_SESSION['user']['id']);
+            header('location: profile.php?profile_id='.$_SESSION['user']['id']);
+            die();
         }
     }
 
@@ -96,7 +97,7 @@ foreach($result['Contents'] as $object){
 
 <div class="profile-container">
     <h3 style="text-align: center;text-decoration: underline;">username:</h3>
-    <?php echo "<div class=\"error\">".$errors['username']."</div>";?>
+    <?php echo "<div class=\"error\" style=\"text-align: center;\">".$errors['username']."</div>";?>
     <?php echo '<h1 class="profile-name"><input type="text" name="username" value="'.$uname.'" style="text-align: center;font-size: 30px;"></h1>'?>
     <div class="profile-img-edit"><?php echo '<img class="profile-img" src="'.$profile_img.'"';?>
         <?php echo "<div class=\"error\">".$errors['profile-img']."</div>";?>
