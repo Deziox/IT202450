@@ -168,16 +168,19 @@
         <div class="profile-arrows">
             <?php
                 $an = '';
+                $arr_an = '';
                 if(isset($_SESSION['user'])) {
                     if ($_SESSION['user']['id'] === $_GET['profile_id']) {
                         if(isset($_GET['a'])){
                             $an = '&a='.$_GET['a'];
+                            $arrow_an = $_GET['a'];
                         }else{
                             $an = '&a=1';
+                            $arrow_an = '1';
                         }
                     }
                 }
-
+                echo '<div style="text-align: center;"><h3>'.$p.'</h3></div>';
                 if($prev > 0) {
                     echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $prev.$an. '" class="prev-profile">&#8249;</a>';
                 }
@@ -285,10 +288,10 @@
                     ?>
                     <div class="profile-arrows">
                         <?php
+                        echo '<div style="text-align: center;"><h3>'.$arrow_an.'</h3></div>';
                         if($a_prev > 0) {
                             echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $p .'&a='.$a_prev. '" class="prev-profile">back &#8249;</a>';
                         }
-                        echo '<h3>'.$p.'</h3>';
                         if($a_next <= ceil(sizeof($a_surveys)/2)){
                             echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.$p.'&a='.$a_next.'" class="next-profile">next &#8250;</a>';
                         }
