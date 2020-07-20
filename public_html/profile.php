@@ -286,10 +286,11 @@
                     <div class="profile-arrows">
                         <?php
                         if($a_prev > 0) {
-                            echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $p .'&a='.$a_prev. '" class="prev-profile">&#8249;</a>';
+                            echo '<a href= "profile.php?profile_id=' . $_GET['profile_id'] . '&p=' . $p .'&a='.$a_prev. '" class="prev-profile">back &#8249;</a>';
                         }
+                        echo '<h3>'.$p.'</h3>';
                         if($a_next <= ceil(sizeof($a_surveys)/2)){
-                            echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.$p.'&a='.$a_next.'" class="next-profile">&#8250;</a>';
+                            echo '<a href= "profile.php?profile_id='.$_GET['profile_id'].'&p='.$p.'&a='.$a_next.'" class="next-profile">next &#8250;</a>';
                         }
                         ?>
                     </div>
