@@ -43,11 +43,6 @@ include("aws_config.php");
 
                 if($s['approved'] !== '1' && $userresult['admin'] !== '1'){
                     header('location: index.php');
-//                    echo var_export($s);
-//                    echo "\n\ntest".($s['published'] !== '2');
-//                    echo "\n\ntest".($s['approved'] !== '1');
-//                    echo "\n\nyerd".($s['published'] != '2');
-//                    echo "\n\nyerd".($s['approved'] != '1');
                 }else {
                     //check if draft
                     $top1_bottom1 = $s['top1_bottom1'];
@@ -56,7 +51,7 @@ include("aws_config.php");
                     $top2_bottom2 = $s['top2_bottom2'];
                     $votes = $s['votes'];
 
-                    if (in_array($_GET['id'], $answered)) {
+                    if (in_array($_GET['id'], $answered) || $_SESSION['user']['admin'] === '1') {
                         //results
                         $result = $s3->listObjects(array('Bucket' => 'aestheticus'));
 
@@ -72,6 +67,12 @@ include("aws_config.php");
                             } else if (strpos($object['Key'], $s['id'] . 'b2') !== false) {
                                 $b2 = 'https://aestheticus.s3.amazonaws.com/' . $object['Key'];
                             }
+                        }
+
+                        if($_SESSION['user']['admin'] === '1'){
+                            echo '<div style="margin: 20px;text-align: center;">
+                                    <input class="delete-button" type="submit" name="submit" value="edit survey" onclick="window.location.href=\'edit_survey.php?id='.$s['id'].'\'">
+                                  </div>';
                         }
 
                         echo '<div class="survey" id="survey_' . $s['id'] . '">';
