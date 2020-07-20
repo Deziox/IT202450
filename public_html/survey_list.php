@@ -130,7 +130,7 @@
                     }
 
                     echo '<div class="survey" id="survey_'.$s['id'].'">';
-                    if($sessionset) {
+                    if($sessionset && $_SESSION['user']['admin'] === '0') {
                         echo '<form class="survey-form" method="post" action="survey.php?id=' . $s['id'] . '">'; //onsubmit="vote(top.value,bottom.value,'.$s['id'].')"
                     }else{
                         echo '<div class="survey-form">';
@@ -175,9 +175,12 @@
 
                     echo '</table>';
 
-                    if($sessionset) {
+                    if($sessionset && $_SESSION['user']['admin'] === '0') {
                         echo '<input class="vote-button" type="submit" value="vote">';
                         echo '</form>';
+                    }else if($sessionset && $_SESSION['user']['admin'] === '1'){
+                        echo '<input class="vote-button" type="button" onclick="window.location.href=\'survey.php?id='.$s['id'].'\'" value="edit"/>';
+                        echo '</div>';
                     }else{
                         echo '<input class="vote-button" type="button" onclick="window.location.href=\'login.php\'" value="login to vote"/>';
                         echo '</div>';
