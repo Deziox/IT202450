@@ -2,7 +2,7 @@
         include("aws_config.php");
         require('config.php');
         session_start();
-
+        echo var_export($_SESSION);
         if(isset($_GET['search'])){
             $searchstring = $_GET['search'];
             $query = 'SELECT * FROM Surveys WHERE tags LIKE CONCAT(\'%\',:searchstring,\'%\')'. ($_SESSION['user']['admin']?'':'AND published = 2 AND approved = 1'). 'ORDER BY 
