@@ -5,7 +5,7 @@
         echo var_export($_SESSION);
         if(isset($_GET['search'])){
             $searchstring = $_GET['search'];
-            $query = 'SELECT * FROM Surveys WHERE tags LIKE CONCAT(\'%\',:searchstring,\'%\')'. ($_SESSION['user']['admin']?'':'AND published = 2 AND approved = 1'). 'ORDER BY 
+            $query = 'SELECT * FROM Surveys WHERE tags LIKE CONCAT(\'%\',:searchstring,\'%\')'. ($_SESSION['user']['admin'] === '1'?'':'AND published = 2 AND approved = 1'). 'ORDER BY 
                             CASE
                                 WHEN tags LIKE CONCAT(:searchstring,\'%\') THEN 1
                                 WHEN tags LIKE CONCAT(\'%\',:searchstring) THEN 3
@@ -20,7 +20,7 @@
                 $sort = 'DESC';
             }
             $searchstring = '';
-            $query = 'SELECT * FROM Surveys WHERE'. ($_SESSION['user']['admin']?'':'AND published = 2 AND approved = 1'). 'ORDER BY created_at '.$sort;
+            $query = 'SELECT * FROM Surveys WHERE'. ($_SESSION['user']['admin']  === '1'?'':'AND published = 2 AND approved = 1'). 'ORDER BY created_at '.$sort;
             $h = "recent outfits";
 
             echo '<h1 class="content-header">'.$h.'</h1><hr>';
@@ -55,7 +55,7 @@
                 //echo var_export($_GET);
                 echo "<h1>No Survey Results</h1>";
             }else{
-                if($sessionset) {
+                if($sessionset && $_SESSION['user']['admin'] === '0') {
                     //echo "test ".$_SESSION['user']['id']."</br>";
                     $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
                     $r = $stmt->execute(array(":id" => $_SESSION['user']['id']));
@@ -90,7 +90,7 @@
                 foreach($surveys as $s) {
                     if($sessionset) {
                         //echo var_export($answered);
-                        if (in_array($s['id'], $answered) && $userresult['admin'] !== '1') {
+                        if (in_array($s['id'], $answered) && $_SESSION['user']['admin'] === '0') {
                             continue;
                         }
                     }
