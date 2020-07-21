@@ -56,8 +56,8 @@ if(isset($_POST['submit'])){
                 $errors['username'] = "Username already taken, choose another";
             }
 
-            echo "SELECT email result: ".var_export($emailresult, true)."<br/>";
-            echo "SELECT user result: ".var_export($userresult, true)."<br/>";
+            //echo "SELECT email result: ".var_export($emailresult, true)."<br/>";
+            //echo "SELECT user result: ".var_export($userresult, true)."<br/>";
 
             if(!array_filter($errors)){
                 $stmt = $db->prepare("INSERT INTO Users (email,username,password) VALUES (:email,:username,:password)");
