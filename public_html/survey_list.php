@@ -27,7 +27,7 @@
                 $sort = 'DESC';
             }
             $searchstring = '';
-            $query = 'SELECT * FROM Surveys WHERE AND published = 2 AND approved = 1 ORDER BY created_at '.$sort;
+            $query = 'SELECT * FROM Surveys WHERE published = 2 AND approved = 1 ORDER BY created_at '.$sort;
 
             if(isset($_SESSION['user']) && $_SESSION['user']['admin'] === '1'){
                 $query = 'SELECT * FROM Surveys ORDER BY created_at '.$sort;
