@@ -59,6 +59,19 @@ try{
                 ":id"=>$_SESSION['user']['id']
             ));
 
+            $stmt = $db->prepare("SELECT * FROM Users WHERE id = :id");
+            $r = $stmt->execute(array(":id"=>$_SESSION['user']['id']));
+            $userresult = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $_SESSION['user'] = array(
+                "id"=>$userresult['id'],
+                "email"=>$userresult['email'],
+                "username"=>$userresult['username'],
+                "answered"=>$userresult['answered'],
+                "bio"=>$userresult['bio'],
+                "surveys"=>$userresult['surveys'],
+                "admin"=>$userresult['admin']);
+
             header('location: profile.php?profile_id='.$_SESSION['user']['id']);
             die();
         }
