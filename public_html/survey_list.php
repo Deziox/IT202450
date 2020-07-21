@@ -64,7 +64,7 @@
 
             if(!$surveys){
                 //echo var_export($_GET);
-                echo "<h1>No Survey Results</h1>";
+                echo "<h1>No Recent Survey Results</h1>";
             }else{
                 if($sessionset && $_SESSION['user']['admin'] === '0') {
                     //echo "test ".$_SESSION['user']['id']."</br>";
