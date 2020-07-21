@@ -64,7 +64,7 @@
 <body>
 <?php include('header.php'); ?>
 <section class="reglog-center">
-    <h2>Verify</h2>
+    <h2>Enter your new password</h2>
     <div class="login">
 
         <?php echo '<form action="password_reset.php?id='.$_GET['id'].'" method="post">' ?>
